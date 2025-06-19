@@ -1,17 +1,27 @@
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&pause=1200&color=6E45E2&center=true&vCenter=true&multiline=true&width=900&height=60&lines=I+build+thinking+systems+to+end+silent+chaos." alt="Typing SVG" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E45E2&height=100&section=footer" alt="Capsule Render Waving Banner" />
 </p>
 
 <p align="center">
   <a href="https://twitter.com/theyonecodes">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
+    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge" />
   </a>
   <a href="https://youtube.com/@theyonecodes">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" />
+    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge" />
+  </a>
+  <a href="https://www.linkedin.com/in/theyonecodes/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge" />
   </a>
   <a href="https://gravatar.com/theyonecodes">
-    <img src="https://img.shields.io/badge/Gravatar-1E8CBE?style=for-the-badge&logo=gravatar&logoColor=white" alt="Gravatar" />
+    <img src="https://img.shields.io/badge/Gravatar-181717?style=for-the-badge&logo=gravatar&logoColor=white" alt="Gravatar Badge" />
   </a>
+  <a href="https://github.com/theyonecodes">
+    <img src="https://img.shields.io/badge/GitHub-333333?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&pause=1200&color=6E45E2&center=true&vCenter=true&multiline=true&width=900&height=60&lines=I+build+thinking+systems+to+end+silent+chaos." alt="Typing SVG" />
 </p>
 
 <p align="center">
@@ -170,8 +180,6 @@
   <img src="https://badges.pufler.dev/repos/theyonecodes?style=for-the-badge&color=6E45E2"/>
 </p>
 
----
-
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E45E2&height=100&section=footer"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E45E2&height=100&section=footer" alt="Capsule Render Waving Banner" />
 </p>
