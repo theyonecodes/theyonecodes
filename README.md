@@ -1,19 +1,19 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E45E2&height=100&section=footer" alt="Capsule Render Waving Banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E45E2&height=100&section=footer" alt="Banner" />
 </p>
 
 <p align="center">
   <a href="https://twitter.com/theyonecodes">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge" />
+    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
   </a>
   <a href="https://youtube.com/@theyonecodes">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge" />
+    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" />
   </a>
   <a href="https://www.linkedin.com/in/theyonecodes/">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge" />
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   <a href="https://github.com/theyonecodes">
-    <img src="https://img.shields.io/badge/GitHub-333333?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge" />
+    <img src="https://img.shields.io/badge/GitHub-333333?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
 </p>
 
@@ -24,36 +24,27 @@
 ---
 
 <p align="center">
-  <a href="https://github.com/theyonecodes/theyonecodes">
-    <img src="https://komarev.com/ghpvc/?username=theyonecodes&style=for-the-badge&color=6E45E2&label=Profile+Views&style=flat" alt="Profile Views"/>
-  </a>
-  <img src="https://img.shields.io/github/followers/theyonecodes?label=Followers&style=flat&color=6E45E2" alt="GitHub Followers"/>
-  <img src="https://img.shields.io/github/stars/theyonecodes?label=Total+Stars&style=flat&color=6E45E2" alt="GitHub Stars"/>
+  <img src="https://komarev.com/ghpvc/?username=theyonecodes&style=for-the-badge&color=6E45E2&label=Views" alt="Views"/>
+  <img src="https://img.shields.io/github/followers/theyonecodes?label=Followers&style=flat&color=6E45E2" alt="Followers"/>
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117" height="180" alt="GitHub Stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=theyonecodes&theme=radical&hide_border=true&bg_color=0d1117" height="180" alt="GitHub Streak" />
+  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=purple&hide_border=true" height="180" alt="Stats"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=theyonecodes&theme=purple&hide_border=true" height="180" alt="Streak"/>
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=theyonecodes&theme=onedark&no-frame=true&no-bg=true&column=7" alt="GitHub Trophy" />
+  <img src="https://github-profile-trophy.vercel.app/?username=theyonecodes&theme=purple&column=8" alt="Trophy"/>
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://github-contribution-grid.vercel.app/?username=theyonecodes&theme=purple_dark&hide_border=true&bg_color=0d1117" height="180" alt="Contribution Grid" />
-</p>
-
----
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,typescript,js,html,css,nodejs,react,fastapi,chrome,github,ai,git,visualstudio,vscode,docker" height="36"/>
+  <img src="https://skillicons.dev/icons?i=python,typescript,js,html,css,nodejs,react,fastapi,chrome,github,ai,git,docker,vscode" height="36"/>
 </p>
 
 ---
@@ -62,86 +53,21 @@
 
 I'm **TheyOne Codes** — a developer who builds by need, not by niche.
 If I see a problem and the fix doesn't exist, I'll build it better.
-My work fuses logic, structure, AI, and purpose.
 
 ---
 
 ## 🚀 Featured Projects
 
-<table align="center" width="100%">
-  <tr>
-    <td align="center" valign="top" width="50%">
-      <h3>🎵 SproTeaFi</h3>
-      <p>High-Fidelity Spotify Signal Extraction</p>
-      <p><i>Extract studio-quality audio from YouTube using Spotify metadata</i></p>
-      <img src="https://img.shields.io/badge/Version-2.4.0-blue?style=flat-square" />
-      <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-orange?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/SproTeaFi">View Repo →</a>
-    </td>
-    <td align="center" valign="top" width="50%">
-      <h3>🤖 AIHawk</h3>
-      <p>AI Job Application Agent</p>
-      <p><i>Automated job search and application bot powered by AI</i></p>
-      <img src="https://img.shields.io/badge/LinkedIn-Job%20Automation-blue?style=flat-square" />
-      <img src="https://img.shields.io/badge/AI-Agent-purple?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/Jobs_Applier_AI_Agent_AIHawk">View Repo →</a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="50%">
-      <h3>🔖 ChatGPT Optimizer</h3>
-      <p>Chrome Extension for ChatGPT</p>
-      <p><i>Performance optimization and accountability tracking for ChatGPT</i></p>
-      <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square" />
-      <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/chatgpt-optimizer">View Repo →</a>
-    </td>
-    <td align="center" valign="top" width="50%">
-      <h3>💼 LinkedIn Auto Applier</h3>
-      <p>LinkedIn Job Automation</p>
-      <p><i>Automated job application tool for LinkedIn</i></p>
-      <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square" />
-      <img src="https://img.shields.io/badge/Automation-green?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/linkedin-auto-applier">View Repo →</a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="50%">
-      <h3>👤 Deven Portfolio</h3>
-      <p>Personal Portfolio Website</p>
-      <p><i>AI-powered personal portfolio with modern design</i></p>
-      <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square" />
-      <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/deven-portfolio">View Repo →</a>
-    </td>
-    <td align="center" valign="top" width="50%">
-      <h3>🛠️ Project Starter Kit</h3>
-      <p>Unified Workspace Manager</p>
-      <p><i>Cross-platform desktop app to manage all automation scripts</i></p>
-      <img src="https://img.shields.io/badge/Electron-47848F?style=flat-square" />
-      <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/project-starter-kit">View Repo →</a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="50%">
-      <h3>📁 CFME</h3>
-      <p>Contextual File Management Engine</p>
-      <p><i>AI-powered media organization using local LLM</i></p>
-      <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square" />
-      <img src="https://img.shields.io/badge/AI-Local-blue?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/CFME-Contextual-File-Management-Engine">View Repo →</a>
-    </td>
-    <td align="center" valign="top" width="50%">
-      <h3>🎯 AI Hub Pro</h3>
-      <p>Offline AI Model Runner</p>
-      <p><i>Private, offline AI running entirely on your hardware</i></p>
-      <img src="https://img.shields.io/badge/Offline-AI-purple?style=flat-square" />
-      <img src="https://img.shields.io/badge/Privacy-first-green?style=flat-square" />
-      <br/><a href="https://github.com/theyonecodes/ai-hub-pro">View Repo →</a>
-    </td>
-  </tr>
-</table>
+| Project | Description | Tech |
+|---------|-------------|------|
+| 🎵 **SproTeaFi** | Extract studio-quality audio from YouTube using Spotify metadata | Python, GUI |
+| 🤖 **AIHawk** | AI-powered automated job application agent | Python, AI |
+| 🔖 **ChatGPT Optimizer** | Chrome extension for ChatGPT optimization | TypeScript, React |
+| 💼 **LinkedIn Auto Applier** | Automated LinkedIn job application tool | Python, Automation |
+| 👤 **Deven Portfolio** | AI-powered personal portfolio website | React, TypeScript |
+| 🛠️ **Project Starter Kit** | Cross-platform desktop app for automation | Electron, FastAPI |
+| 📁 **CFME** | AI-powered media organization with local LLM | Python, AI |
+| 🎯 **AI Hub Pro** | Private offline AI model runner | Python |
 
 ---
 
@@ -156,30 +82,18 @@ My work fuses logic, structure, AI, and purpose.
 
 ---
 
-## 🚧 Currently Learning
+## 🛠️ Tech Stack
 
 <p align="center">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
-  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://skillicons.dev/icons?i=python,typescript,js,react,nodejs,fastapi,chrome,git,docker" height="30"/>
 </p>
 
 ---
 
-## 🏆 Achievements
+## 📊 Most Used Languages
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/achievements?username=theyonecodes&theme=purple_dark&hide_border=true" alt="Achievements" />
-</p>
-
----
-
-## 📈 Most Used Languages
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=radical&hide_border=true&bg_color=0d1117" alt="Top Languages" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=purple&hide_border=true" alt="Languages"/>
 </p>
 
 ---
@@ -193,5 +107,5 @@ My work fuses logic, structure, AI, and purpose.
 ---
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E45E2&height=100&section=footer" alt="Capsule Render Waving Banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E45E2&height=100&section=footer" alt="Banner" />
 </p>
