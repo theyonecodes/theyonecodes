@@ -5,14 +5,6 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,30:1e003e,70:4f0094,100:7c3aed&height=200&section=header&text=TheyOne%20Codes&fontSize=50&fontColor=ffffff&animation=twinkling&fontAlignY=35&desc=Building%20systems%20that%20think%2C%20automate%2C%20and%20scale&descSize=16&descAlignY=58&descColor=c4b5fd" width="100%"/>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<!--  HERO SECTION - Custom image                               -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/theyonecodes/theyonecodes/main/images/hero_0.5.png" width="100%" alt="TheyOne Codes Banner"/>
-</p>
-
-<!-- ═══════════════════════════════════════════════════════════════ -->
 <!--  TYPING ANIMATION                                        -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
 
@@ -89,10 +81,54 @@ I identify operational bottlenecks and build targeted systems to resolve them �
 
 ---
 
+## 🏆 GitHub Profile Trophy
+
+<p align="center">
+  <a href="https://github.com/ryo-ma/github-profile-trophy">
+    <img src="https://github-profile-trophy.vercel.app/?username=theyonecodes&theme=radical&hide_border=true" alt="GitHub Profile Trophy"/>
+  </a>
+</p>
+
+---
+
+## ⭐ Star History
+
+<p align="center">
+  <a href="https://star-history.com/#theyonecodes/theyonecodes&Date">
+    <img src="https://api.star-history.com/svg?repos=theyonecodes/theyonecodes&type=Date" alt="Star History Chart" width="100%"/>
+  </a>
+</p>
+
+---
+
 ## 📉 Contribution Timeline
 
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=theyonecodes&bg_color=0d1117&color=a78bfa&line=7c3aed&point=ffffff&area=true&area_color=7c3aed&hide_border=true&custom_title=Contribution%20Timeline" width="100%" alt="Activity Graph"/>
+</p>
+
+---
+
+## 🐍 Contribution Snake
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/theyonecodes/theyonecodes/output/github-contribution-grid-snake.svg" alt="Contribution Snake"/>
+</p>
+
+---
+
+## 🎨 3D Contribution Graph
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/theyonecodes/theyonecodes/main/profile-3d-contrib/profile-green-animate.svg" alt="3D Contribution Graph" width="100%"/>
+</p>
+
+---
+
+## 📈 GitHub Metrics
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/theyonecodes/theyonecodes/main/github-metrics.svg" alt="GitHub Metrics" width="100%"/>
 </p>
 
 ---
@@ -133,7 +169,7 @@ I identify operational bottlenecks and build targeted systems to resolve them �
 ```
 TypeScript   ████████████████░░░░  75%
 Next.js      ████████████░░░░░░░░  55%
-Playwright   █████████████░░░░░░░  65%
+Playwright   █████████████░░░░░░░░  65%
 Docker       ████████░░░░░░░░░░░░  40%
 ```
 
