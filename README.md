@@ -125,14 +125,6 @@ I identify operational bottlenecks and build targeted systems to resolve them �
 
 ---
 
-## 📈 GitHub Metrics
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/theyonecodes/theyonecodes/main/github-metrics.svg" alt="GitHub Metrics" width="100%"/>
-</p>
-
----
-
 ## 🛠️ Tech Stack
 
 <p align="center"><strong>Languages</strong></p>
