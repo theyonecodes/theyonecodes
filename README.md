@@ -38,6 +38,10 @@
   <img src="https://activity-graph.herokuapp.com/graph?username=theyonecodes&theme=react-dark" alt="Activity Graph" />
 </p>
 
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,typescript,js,html,css,nodejs,react,fastapi,chrome,github,ai" height="36"/>
+</p>
+
 ---
 
 ## 🧠 Who Am I?
@@ -102,6 +106,25 @@ My work fuses logic, structure, AI, and purpose.
       <p><i>Cross-platform desktop app to manage all automation scripts</i></p>
       <img src="https://img.shields.io/badge/Electron-47848F?style=flat-square" />
       <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square" />
+      <br/><a href="https://github.com/theyonecodes/project-starter-kit">View Repo →</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <h3>📁 CFME</h3>
+      <p>Contextual File Management Engine</p>
+      <p><i>AI-powered media organization using local LLM</i></p>
+      <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square" />
+      <img src="https://img.shields.io/badge/AI-Local-blue?style=flat-square" />
+      <br/><a href="https://github.com/theyonecodes/CFME-Contextual-File-Management-Engine">View Repo →</a>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <h3>🎯 AI Hub Pro</h3>
+      <p>Offline AI Model Runner</p>
+      <p><i>Private, offline AI running entirely on your hardware</i></p>
+      <img src="https://img.shields.io/badge/Offline-AI-purple?style=flat-square" />
+      <img src="https://img.shields.io/badge/Privacy-first-green?style=flat-square" />
+      <br/><a href="https://github.com/theyonecodes/ai-hub-pro">View Repo →</a>
     </td>
   </tr>
 </table>
@@ -123,6 +146,18 @@ My work fuses logic, structure, AI, and purpose.
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=python,typescript,js,html,css,nodejs,react,fastapi,chrome,github,ai" height="36"/>
+</p>
+
+---
+
+## 🚧 Currently Learning
+
+<p align="center">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
 </p>
 
 ---
