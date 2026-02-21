@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: generate-github-profile-3d-contrib
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
       - uses: yoshi389111/github-profile-3d-contrib@0.6.0
@@ -17,8 +19,8 @@ jobs:
           USERNAME: ${{ github.repository_owner }}
       - name: Commit & Push
         run: |
-          git config user.name idimetrix
-          git config user.email selikhov.dmitrey@gmail.com
+          git config user.name theyonecodes
+          git config user.email theyonecodes@gmail.com
           git add -A .
-          git commit -m "generated"
+          git commit -m "generated" || echo "No changes to push"
           git push
