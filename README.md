@@ -1,19 +1,30 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--                         HEADER                                      -->
+<!--  HEADER — capsule-render with twinkling animation                   -->
+<!--  animation=twinkling: embeds CSS keyframe star sparkle in SVG      -->
+<!--  Renders as a true CSS animation on GitHub — no external JS needed -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,40:3b0764,100:7c3aed&height=210&section=header&text=TheyOne%20Codes&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Building%20systems%20that%20think%2C%20automate%2C%20and%20scale&descSize=17&descAlignY=60&descColor=c4b5fd" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,30:1e003e,70:4f0094,100:7c3aed&height=240&section=header&text=TheyOne%20Codes&fontSize=55&fontColor=ffffff&animation=twinkling&fontAlignY=40&desc=Building%20systems%20that%20think%2C%20automate%2C%20and%20scale&descSize=17&descAlignY=62&descColor=c4b5fd" width="100%"/>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!--  TYPING ANIMATION — two lines, different cadence                   -->
+<!--  demolab is self-hosted, zero rate limits, always renders          -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
 
 <p align="center">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=18&duration=3000&pause=1200&color=A78BFA&center=true&vCenter=true&repeat=true&width=580&height=40&lines=Problem+Solver+%7C+Systems+Builder;AI+%26+Automation+Engineer;Turning+operational+friction+into+engineered+solutions" alt="Typing SVG"/>
-  </a>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=2800&pause=1200&color=A78BFA&center=true&vCenter=true&repeat=true&width=620&height=50&lines=Problem+Solver+%7C+Systems+Builder+%E2%9A%99%EF%B8%8F;AI+%26+Automation+Engineer+%F0%9F%A4%96;Turning+operational+friction+into+solutions+%F0%9F%94%A5;If+it+wastes+time%2C+I%27m+building+the+fix+%F0%9F%9A%80" alt="Typing SVG"/>
 </p>
 
----
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!--  ANIMATED GRADIENT DIVIDER — hosted on GitHub's own CDN            -->
+<!--  user-images.githubusercontent.com is GitHub's permanent CDN.     -->
+<!--  This GIF is used by thousands of profiles — always available.    -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--                         SOCIAL LINKS                                -->
+<!--  SOCIAL LINKS & METRICS                                             -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 
 <p align="center">
@@ -30,12 +41,14 @@
   <img src="https://img.shields.io/github/stars/theyonecodes?label=STARS&style=for-the-badge&color=7c3aed&labelColor=13111a"/>
 </p>
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
+
 ---
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  IDENTITY — plain ## heading, no <div> before the code fence.      -->
-<!--  Reason: an HTML block before backtick fences breaks GitHub's      -->
-<!--  CommonMark parser, rendering the fence as literal raw text.       -->
+<!--  ABOUT — plain ## heading, NO <div> before code fence              -->
+<!--  Critical: an HTML block before ``` breaks GitHub's CommonMark     -->
+<!--  parser, causing the fence to render as raw literal text           -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 
 ## ⚡ About
@@ -52,30 +65,28 @@ const theyOne = {
 };
 ```
 
----
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--                       APPROACH                                      -->
-<!-- Clean, direct, professional — no gimmicks                          -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
+---
 
 ## 🔍 How I Work
 
-I identify operational bottlenecks and build targeted systems to resolve them — leveraging AI as infrastructure, not a shortcut. Every project starts with a clearly defined problem, moves through structured solution design, and ships as a tool others can rely on.
+I identify operational bottlenecks and build targeted systems to resolve them — leveraging AI as infrastructure, not a shortcut. Every project starts with a clearly defined problem, moves through structured solution design, and ships as a reliable tool.
 
 **Core areas:**
 
-- **AI-Powered Agents** — designing autonomous workflows that handle multi-step decision pipelines
-- **Browser Automation** — Chrome extensions and scripted agents that augment productivity at scale  
+- **AI-Powered Agents** — autonomous workflows that handle multi-step decision pipelines
+- **Browser Automation** — Chrome extensions and scripted agents that augment productivity at scale
 - **System Design** — modular, maintainable architectures that outlast the first version
 - **Tool Building** — if the right tool doesn't exist, building it is the only reasonable answer
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
 
 ---
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--                       GITHUB STATS                                  -->
-<!-- Using direct <img> tags — avoids GitHub's camo proxy double-cache  -->
-<!-- which causes intermittent "Error Fetching Resource" on ![]() syntax -->
+<!--  GITHUB STATS — direct <img> tags avoid GitHub's camo proxy cache  -->
+<!--  which causes intermittent failures with markdown ![]() syntax     -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 
 ## 📊 GitHub Stats
@@ -96,7 +107,18 @@ I identify operational bottlenecks and build targeted systems to resolve them �
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=theyonecodes&theme=radical&utcOffset=5.5" height="165" alt="Productive Time"/>
 </p>
 
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!--  MID-PAGE ANIMATED BAND — capsule-render rect with scaleIn         -->
+<!--  Creates a visual rhythm break between data-heavy sections         -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:7c3aed,100:4f0094&height=3&animation=fadeIn" width="100%"/>
+
 ---
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!--  CONTRIBUTION TIMELINE — activity-graph animates the line on load  -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
 
 ## 📉 Contribution Timeline
 
@@ -104,17 +126,21 @@ I identify operational bottlenecks and build targeted systems to resolve them �
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=theyonecodes&bg_color=0d1117&color=a78bfa&line=7c3aed&point=ffffff&area=true&area_color=7c3aed&hide_border=true&custom_title=Contribution%20Timeline" width="100%" alt="Activity Graph"/>
 </p>
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
+
 ---
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  3D CONTRIBUTION CALENDAR — activate via GitHub Action             -->
-<!--  Stored in your own repo — never rate-limited, always loads fast   -->
+<!--  3D CONTRIBUTION CALENDAR — yoshi389111/github-profile-3d-contrib  -->
+<!--  Stored in YOUR repo via GitHub Action. Loads from                  -->
+<!--  raw.githubusercontent.com — GitHub's own CDN. Zero rate limits.  -->
+<!--  This is an animated SVG: the 3D bars grow on first render.        -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 
 ## 🌐 3D Contribution Calendar
 
 <details>
-<summary>⚙️ <strong>Setup — one-time GitHub Action (most reliable visual on any profile)</strong></summary>
+<summary>⚙️ <strong>Activate the 3D Calendar — the most striking visual on any GitHub profile</strong></summary>
 
 Create `.github/workflows/3d-contrib.yml`:
 
@@ -141,7 +167,7 @@ jobs:
           git push
 ```
 
-Run once from Actions tab → `profile-3d-contrib/` folder appears. Then replace this block with:
+Run once from the Actions tab → `profile-3d-contrib/` folder appears with multiple animated SVG themes. Then replace this `<details>` block with:
 
 ```html
 <p align="center">
@@ -151,17 +177,19 @@ Run once from Actions tab → `profile-3d-contrib/` folder appears. Then replace
 
 </details>
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
+
 ---
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  CONTRIBUTION SNAKE — activate via GitHub Action                   -->
-<!--  Hidden until Action creates the SVG at the output/ branch URL     -->
+<!--  CONTRIBUTION SNAKE                                                 -->
+<!--  Hidden until Action creates the SVG at output/ branch             -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 
 ## 🐍 Contribution Snake
 
 <details>
-<summary>⚙️ <strong>Setup — 60-second GitHub Action</strong></summary>
+<summary>⚙️ <strong>Activate — 60-second setup</strong></summary>
 
 Create `.github/workflows/snake.yml`:
 
@@ -206,27 +234,32 @@ Run once from Actions tab. Then replace this block with:
 
 </details>
 
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:4f0094,100:7c3aed&height=3&animation=fadeIn" width="100%"/>
+
 ---
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TECH STACK — skillicons.dev (CDN-backed, never rate-limited)      -->
+<!--  TECH STACK — skillicons.dev CDN sprites + devicons from jsDelivr  -->
+<!--  Both are served from global CDNs. Never rate-limited.             -->
+<!--  devicons: cdn.jsdelivr.net/gh/devicons/devicon — global CDN       -->
+<!--  skillicons: CDN-backed sprite sheets, consistent rendering        -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 
 ## 🛠️ Tech Stack
 
-### Languages
+<p align="center"><strong>Languages</strong></p>
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=python,typescript,javascript,html,css&perline=5" alt="Languages"/>
 </p>
 
-### Frameworks & Runtimes
+<p align="center"><strong>Frameworks & Runtimes</strong></p>
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=nodejs,react,nextjs,fastapi,electron&perline=5" alt="Frameworks"/>
 </p>
 
-### AI & Automation
+<p align="center"><strong>AI & Automation</strong></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white"/>&nbsp;
@@ -236,17 +269,19 @@ Run once from Actions tab. Then replace this block with:
   <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white"/>
 </p>
 
-### Tools & Platforms
+<p align="center"><strong>Tools & Platforms</strong></p>
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=docker,git,github,vscode,figma,notion&perline=6" alt="Tools"/>
 </p>
 
-### Currently Learning
+<p align="center"><strong>Currently Mastering</strong></p>
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=typescript,nextjs,docker&perline=3" alt="Learning"/>
 </p>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
 
 ---
 
@@ -259,6 +294,8 @@ Playwright   █████████████░░░░░░░  65%
 Docker       ████████░░░░░░░░░░░░  40%
 ```
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11e7-90b0-dc490bff7b7e.gif" width="100%"/>
+
 ---
 
 ## ⚖️ Principles
@@ -270,6 +307,10 @@ Docker       ████████░░░░░░░░░░░░  40%
 
 ---
 
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!--  FOOTER — capsule-render waving with twinkling stars               -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
 <p align="center">
   <br/>
   <em>"If I feel the friction, I explore it.<br/>
@@ -279,7 +320,7 @@ Docker       ████████░░░░░░░░░░░░  40%
   <br/>
 </p>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7c3aed,50:4f0094,100:0d1117&height=120&section=footer&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7c3aed,40:4f0094,100:0d1117&height=140&section=footer&animation=twinkling" width="100%"/>
 
 <p align="center">
   <sub>Last updated: February 2026</sub>
