@@ -21,25 +21,39 @@
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&pause=1200&color=6E45E2&center=true&vCenter=true&multiline=true&width=900&height=60&lines=I+build+thinking+systems+to+end+silent+chaos." alt="Typing SVG" />
 </p>
 
-<p align="center">
-  <img src="https://visitor-badge.glitch.me/badge?page_id=theyonecodes.theyonecodes" alt="Visitor Count"/>
-</p>
+---
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=radical" height="150" alt="GitHub Stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=theyonecodes&theme=dark" height="150" alt="GitHub Streak" />
+  <a href="https://github.com/theyonecodes/theyonecodes">
+    <img src="https://komarev.com/ghpvc/?username=theyonecodes&style=for-the-badge&color=6E45E2&label=Profile+Views&style=flat" alt="Profile Views"/>
+  </a>
+  <img src="https://img.shields.io/github/followers/theyonecodes?label=Followers&style=flat&color=6E45E2" alt="GitHub Followers"/>
+  <img src="https://img.shields.io/github/stars/theyonecodes?label=Total+Stars&style=flat&color=6E45E2" alt="GitHub Stars"/>
 </p>
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=theyonecodes&theme=onedark" alt="GitHub Trophy" />
-</p>
+---
 
 <p align="center">
-  <img src="https://activity-graph.herokuapp.com/graph?username=theyonecodes&theme=react-dark" alt="Activity Graph" />
+  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117" height="180" alt="GitHub Stats" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=theyonecodes&theme=radical&hide_border=true&bg_color=0d1117" height="180" alt="GitHub Streak" />
 </p>
 
+---
+
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=python,typescript,js,html,css,nodejs,react,fastapi,chrome,github,ai" height="36"/>
+  <img src="https://github-profile-trophy.vercel.app/?username=theyonecodes&theme=onedark&no-frame=true&no-bg=true&column=7" alt="GitHub Trophy" />
+</p>
+
+---
+
+<p align="center">
+  <img src="https://github-contribution-grid.vercel.app/?username=theyonecodes&theme=purple_dark&hide_border=true&bg_color=0d1117" height="180" alt="Contribution Grid" />
+</p>
+
+---
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,typescript,js,html,css,nodejs,react,fastapi,chrome,github,ai,git,visualstudio,vscode,docker" height="36"/>
 </p>
 
 ---
@@ -142,14 +156,6 @@ My work fuses logic, structure, AI, and purpose.
 
 ---
 
-## 🛠️ Tech Stack
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,typescript,js,html,css,nodejs,react,fastapi,chrome,github,ai" height="36"/>
-</p>
-
----
-
 ## 🚧 Currently Learning
 
 <p align="center">
@@ -162,13 +168,18 @@ My work fuses logic, structure, AI, and purpose.
 
 ---
 
-## 📊 GitHub Stats
+## 🏆 Achievements
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=theyonecodes&style=for-the-badge&color=6E45E2" alt="Profile Views"/>
-  <img src="https://img.shields.io/github/followers/theyonecodes?label=Follow&style=for-the-badge&color=6E45E2"/>
-  <img src="https://badges.pufler.dev/years/theyonecodes?style=for-the-badge&color=6E45E2"/>
-  <img src="https://badges.pufler.dev/repos/theyonecodes?style=for-the-badge&color=6E45E2"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/achievements?username=theyonecodes&theme=purple_dark&hide_border=true" alt="Achievements" />
+</p>
+
+---
+
+## 📈 Most Used Languages
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=radical&hide_border=true&bg_color=0d1117" alt="Top Languages" />
 </p>
 
 ---
