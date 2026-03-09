@@ -4,7 +4,7 @@
   <h1>Removing the Friction</h1>
   
   <p align="center">
-    <img src="assets/typing.svg" alt="Typing SVG" />
+    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=38BDF8&center=true&vCenter=true&width=435&lines=Deleting+the+lag;Making+software+feel+instant;Automating+the+boring;Building+tools+that+work" alt="Typing SVG" /></a>
   </p>
 
   <div align="center">
