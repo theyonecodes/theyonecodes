@@ -1,0 +1,20 @@
+# 🛡️ THEYONE CODES - Profile Containment Shield
+# This file protects your Public GitHub Profile from Internal Workspace Slop.
+
+# Ignore internal engine and workspace
+/theyonecodes-workspace/
+/Projects/
+/.obsidian/
+
+# Ignore unwanted profile slop
+/profile-3d-contrib/
+/images/
+
+# Ignore local system files
+.DS_Store
+Thumbs.db
+*.log
+
+# Keep the profile clean
+/.gemini/
+/.cursor/
