@@ -26,15 +26,21 @@
 ---
 
 ## 🖥️ Command Center
+
 <div align="center">
-  <!-- Unified Engineering Dashboard (Terminal Style) -->
-  <img src="https://metrics.lecoq.io/theyonecodes?template=terminal&base.header=0&base.activity=0&base.community=0&base.repositories=0&base.metadata=0&languages=1&languages.ignored=html,css&languages.details=lines,percentage&languages.limit=8&achievements=1&achievements.threshold=B&achievements.display=compact&projects=1&projects.limit=4&config.timezone=UTC" width="100%" />
+  <!-- Professional Stats Card -->
+  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=ffffff&icon_color=38bdf8&bg_color=0d1117" width="49.5%" />
+  <!-- Streak Stats Card -->
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=theyonecodes&theme=tokyonight&hide_border=true&stroke=38bdf8&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8&background=0d1117" width="49.5%" />
 </div>
 
-<br>
+<div align="center">
+  <!-- Top Languages Card -->
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=ffffff&icon_color=38bdf8&bg_color=0d1117" width="100%" />
+</div>
 
 <div align="center">
-  <!-- High-Density Activity Summary -->
+  <!-- Engineering Activity Graph -->
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=theyonecodes&bg_color=0d1117&color=38bdf8&line=38bdf8&point=ffffff&area=true&area_color=38bdf8&hide_border=true&custom_title=ENGINEERING_STREAM" width="100%" />
 </div>
 
