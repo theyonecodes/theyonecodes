@@ -28,15 +28,15 @@
 ## 🖥️ Command Center
 
 <div align="center">
-  <!-- Professional Stats Card -->
-  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=ffffff&icon_color=38bdf8&bg_color=0d1117" width="49.5%" />
+  <!-- Professional Stats Card (Icons Disabled for Reliability) -->
+  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=false&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=ffffff&bg_color=0d1117" width="49.5%" />
   <!-- Streak Stats Card -->
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=theyonecodes&theme=tokyonight&hide_border=true&stroke=38bdf8&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8&background=0d1117" width="49.5%" />
 </div>
 
 <div align="center">
   <!-- Top Languages Card -->
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=ffffff&icon_color=38bdf8&bg_color=0d1117" width="100%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=ffffff&bg_color=0d1117" width="100%" />
 </div>
 
 <div align="center">
