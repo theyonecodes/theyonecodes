@@ -20,11 +20,11 @@
     <tr>
       <!-- Large Stats Card (Bento Item 1) -->
       <td rowspan="2" width="60%" valign="top">
-        <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=transparent&hide_border=true&title_color=38bdf8&text_color=ffffff&icon_color=38bdf8" width="100%" alt="GitHub Stats" />
+        <img src="assets/metrics-base.svg" width="100%" alt="GitHub Stats" />
       </td>
       <!-- Small Languages Card (Bento Item 2) -->
       <td width="40%" valign="top">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=transparent&hide_border=true&title_color=38bdf8&text_color=ffffff" width="100%" alt="Top Languages" />
+        <img src="assets/metrics-langs.svg" width="100%" alt="Top Languages" />
       </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@
   <table border="0" width="100%">
     <tr>
       <td align="center">
-        <img src="https://github-readme-activity-graph.vercel.app/graph?username=theyonecodes&bg_color=0d1117&color=38bdf8&line=38bdf8&point=ffffff&area=true&area_color=38bdf8&hide_border=true&custom_title=ACTIVITY_STREAM" width="100%" alt="Activity Stream" />
+        <img src="assets/metrics-activity.svg" width="100%" alt="Activity Stream" />
       </td>
     </tr>
   </table>
