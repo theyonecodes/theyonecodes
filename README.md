@@ -1,4 +1,5 @@
 <div align="center">
+  <!-- Professional Header -->
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,70:00d4ff,100:000000&height=300&section=header&text=theyonecodes&fontSize=90&animation=fadeIn&fontAlignY=38" />
   
   <h1>Removing the Friction</h1>
@@ -6,12 +7,6 @@
   <p align="center">
     <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=38BDF8&center=true&vCenter=true&width=435&lines=Deleting+the+lag;Making+software+feel+instant;Automating+the+boring;Building+tools+that+work" alt="Typing SVG" /></a>
   </p>
-
-  <div align="center">
-    <img src="https://img.shields.io/badge/STATUS-SYSTEM_OPTIMIZED-38bdf8?style=for-the-badge&logo=windows11&logoColor=white" />
-    <img src="https://img.shields.io/badge/ARCH-OPTIMIZED-white?style=for-the-badge&logo=linux&logoColor=black" />
-    <img src="https://img.shields.io/badge/CORE-37_PROJECTS-38bdf8?style=for-the-badge" />
-  </div>
 </div>
 
 <br>
@@ -30,19 +25,28 @@
 
 ---
 
-## ⚡ Activity
+## 🖥️ Command Center
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=theyonecodes&bg_color=0d1117&color=38bdf8&line=38bdf8&point=ffffff&area=true&area_color=38bdf8&hide_border=true&custom_title=ACTIVITY_STREAM" width="100%" />
+  <!-- Unified Engineering Dashboard (Terminal Style) -->
+  <img src="https://metrics.lecoq.io/theyonecodes?template=terminal&base.header=0&base.activity=0&base.community=0&base.repositories=0&base.metadata=0&languages=1&languages.ignored=html,css&languages.details=lines,percentage&languages.limit=8&achievements=1&achievements.threshold=B&achievements.display=compact&projects=1&projects.limit=4&config.timezone=UTC" width="100%" />
 </div>
 
+<br>
+
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=theyonecodes&theme=tokyonight&hide_border=true&stroke=38bdf8&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8" width="48%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=ffffff" width="48%" />
+  <!-- High-Density Activity Summary -->
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=theyonecodes&bg_color=0d1117&color=38bdf8&line=38bdf8&point=ffffff&area=true&area_color=38bdf8&hide_border=true&custom_title=ENGINEERING_STREAM" width="100%" />
 </div>
 
 ---
 
-## 🏗️ What I Build
+## 🏗️ The Stack
+
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=bash,powershell,c,py,fastapi,ts,react,vite,docker,aws,git,postgres&theme=dark" />
+</div>
+
+<br>
 
 <table border="0">
   <tr>
@@ -50,13 +54,11 @@
       <img src="assets/kernel.gif" width="100%" />
       <h3>SYSTEMS</h3>
       <p><i>Cleaning up the junk. If it's slowing you down, I'm removing it.</i></p>
-      <code>Batch</code> • <code>Shell</code> • <code>PowerShell</code> • <code>C</code>
     </td>
     <td width="50%" align="center">
       <img src="assets/ai.gif" width="100%" />
       <h3>AUTOMATION</h3>
       <p><i>Making AI handle the boring parts so you don't have to.</i></p>
-      <code>Python</code> • <code>FastAPI</code> • <code>LLMs</code> • <code>Agents</code>
     </td>
   </tr>
   <tr>
@@ -64,13 +66,11 @@
       <img src="assets/ui.gif" width="100%" />
       <h3>INTERFACES</h3>
       <p><i>UIs that actually keep up with you. No lag, no jitters.</i></p>
-      <code>TypeScript</code> • <code>React</code> • <code>Vite</code> • <code>Figma</code>
     </td>
     <td width="50%" align="center">
       <img src="assets/devops.gif" width="100%" />
       <h3>INFRASTRUCTURE</h3>
       <p><i>Reliable systems that just work and stay out of the way.</i></p>
-      <code>Docker</code> • <code>AWS</code> • <code>Git</code> • <code>Postgres</code>
     </td>
   </tr>
 </table>
