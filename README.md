@@ -1,99 +1,109 @@
 <div align="center">
 
-<!-- Header Banner -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,70:00d4ff,100:000000&height=200&section=header&text=theyonecodes&fontSize=70&animation=fadeIn&fontAlignY=38" width="100%" />
+<!-- 2026 ELITE HERO: 3D PARALLAX OVERHAUL -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,70:38BDF8,100:0F172A&height=250&section=header&text=theyonecodes&fontSize=80&animation=fadeIn&fontAlignY=35&stroke=000000&strokeWidth=1" width="100%" />
 
 <br>
 
+<!-- KINETIC TYPING ENGINE -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=38BDF8&center=true&vCenter=true&width=500&lines=Deleting+the+lag;Making+software+feel+instant;Automating+the+boring;Building+tools+that+work" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Syncopate&weight=700&size=30&pause=1000&color=38BDF8&center=true&vCenter=true&width=600&lines=DELETING+THE+LAG;ENGINEERING+FLOW;DNA+SWAP+ACTIVE;120FPS+OR+BUST" alt="Typing SVG" />
 </a>
 
 <br><br>
 
+<!-- DEPTH-LAYERED INTRO -->
 <table border="0" width="100%" style="border-collapse: collapse;">
   <tr>
     <td width="60%" valign="middle">
-      <p>Let’s be real: Out-of-the-box software feels like it’s trying to run a marathon while carrying a backpack full of bricks. 🎒 Between bloated dependencies, background telemetry, and systems constantly second-guessing themselves, it’s a wonder we get any coding done at all.</p>
-      <p>I am the "Axe" to those bricks. I’m not here to just write code; I’m here to perform a <b>DNA Swap</b> on your infrastructure so it finally acts like the high-performance engine you paid for. 🏎️</p>
-      <p><b>"If it's repetitive, it's a bug. If it eats 10% of your CPU for breakfast, it's malware. 🍳"</b></p>
+      <div style="background: #1e293b; border-left: 5px solid #38BDF8; padding: 25px; border-radius: 12px; box-shadow: 15px 15px 0px rgba(56,189,248,0.1);">
+        <p>Out-of-the-box software is a marathon with a backpack full of bricks. 🎒</p>
+        <p>I am the <b><font color="#38BDF8">AXE</font></b>. I perform a <b>DNA Swap</b> on your infrastructure until it breathes with the high-performance rhythm of an elite machine. 🏎️</p>
+        <b><i>"If it eats 10% of your CPU for breakfast, it's malware. 🍳"</i></b>
+      </div>
     </td>
     <td width="40%" align="center" valign="middle">
-      <img src="assets/main.gif" width="100%" style="border-radius: 10px;" />
+      <img src="assets/main.gif" width="100%" style="filter: drop-shadow(0 0 20px #38BDF8); border-radius: 15px;" />
     </td>
   </tr>
 </table>
 
 <br>
 
-<!-- COMMAND CENTER -->
-<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=COMMAND%20CENTER&fontSize=30&fontAlignY=50&fontColor=000000" />
+<!-- 3D COMMAND CENTER -->
+<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=🛰️%20QUANTUM%20COMMAND%20CENTER&fontSize=30&fontAlignY=50&fontColor=000000" />
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <!-- Left Column: Core Stats -->
     <td width="60%" valign="top" align="center">
-      <img src="assets/metrics-base.svg" width="100%" alt="Core Stats" />
+      <div style="border: 1px solid #38BDF8; border-radius: 15px; padding: 10px; background: #0F172A; box-shadow: 0 0 20px rgba(56,189,248,0.2);">
+        <img src="assets/metrics-base.svg" width="100%" alt="Core Stats" />
+      </div>
     </td>
-    <td width="1%"></td>
-    <!-- Right Column: Languages & Tech Stack -->
-    <td width="39%" valign="top" align="center">
-      <img src="assets/metrics-langs.svg" width="100%" alt="Top Languages" />
-      <br><br>
-      <img src="https://skillicons.dev/icons?i=bash,powershell,c,py,fastapi,ts,react,vite,docker,aws,git,postgres&theme=dark&perline=4" width="100%" alt="Tech Stack" />
-    </td>
-  </tr>
-</table>
-
-<br>
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-  <tr>
-    <td width="100%" align="center">
-      <img src="assets/metrics-activity.svg" width="100%" alt="Activity Calendar" />
+    <td width="2%"></td>
+    <td width="38%" valign="top" align="center">
+      <div style="border: 1px solid #ffffff; border-radius: 15px; padding: 10px; background: #0F172A; box-shadow: 0 0 20px rgba(255,255,255,0.1);">
+        <img src="assets/metrics-langs.svg" width="100%" alt="Top Languages" />
+        <br><br>
+        <img src="https://skillicons.dev/icons?i=bash,powershell,c,py,fastapi,ts,react,vite,docker,aws,git,postgres&theme=dark&perline=4" width="100%" alt="Tech Stack" />
+      </div>
     </td>
   </tr>
 </table>
 
 <br>
 
-<!-- THE INFRASTRUCTURE -->
-<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=THE%20INFRASTRUCTURE&fontSize=30&fontAlignY=50&fontColor=000000" />
+<div style="border: 1px solid #38BDF8; border-radius: 15px; background: #0F172A; padding: 10px; box-shadow: 0 0 30px rgba(56,189,248,0.1);">
+  <img src="assets/metrics-activity.svg" width="100%" alt="Activity Calendar" />
+</div>
 
-<table border="0" cellpadding="5" cellspacing="0" width="100%">
+<br>
+
+<!-- THE INFRASTRUCTURE: 3D GRID -->
+<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=⚙️%20THE%20ELITE%20INFRASTRUCTURE&fontSize=30&fontAlignY=50&fontColor=000000" />
+
+<table border="0" cellpadding="10" cellspacing="0" width="100%">
   <tr>
     <td width="25%" align="center" valign="top">
-      <img src="assets/kernel.gif" width="100%" style="border-radius:8px;" />
-      <br>
-      <b>🧠 KERNEL & SYSTEMS</b><br>
-      <i>The "DNA Swap." Pinning the core to the fast lane. Telling the OS to stop hoarding background tasks like a pack-rat. 🧹</i>
+      <div style="background: #1e293b; border: 1px solid #38BDF8; border-radius: 12px; padding: 15px; height: 350px;">
+        <img src="assets/kernel.gif" width="100%" style="border-radius:8px;" />
+        <br><br>
+        <b>🧠 KERNEL</b>
+        <sub style="display:block; margin-top:10px;">The DNA Swap. Pinning the core to the fast lane. No pack-rat background tasks. 🧹</sub>
+      </div>
     </td>
     <td width="25%" align="center" valign="top">
-      <img src="assets/ai.gif" width="100%" style="border-radius:8px;" />
-      <br>
-      <b>🤖 AI & AUTOMATION</b><br>
-      <i>Orchestrating AI swarms to do the heavy lifting while your machine takes a coffee break. ☕ Minus the Skynet vibe.</i>
+      <div style="background: #1e293b; border: 1px solid #ffffff; border-radius: 12px; padding: 15px; height: 350px;">
+        <img src="assets/ai.gif" width="100%" style="border-radius:8px;" />
+        <br><br>
+        <b>🤖 AI SWARM</b>
+        <sub style="display:block; margin-top:10px;">Orchestrating agents while your machine takes a coffee break. ☕ Zero Skynet vibes.</sub>
+      </div>
     </td>
     <td width="25%" align="center" valign="top">
-      <img src="assets/ui.gif" width="100%" style="border-radius:8px;" />
-      <br>
-      <b>⚡ INTERFACE & VISION</b><br>
-      <i>The "Snappy" Scheduler. When you click, the UI says "Yes, sir!" immediately. 120FPS or bust.</i>
+      <div style="background: #1e293b; border: 1px solid #38BDF8; border-radius: 12px; padding: 15px; height: 350px;">
+        <img src="assets/ui.gif" width="100%" style="border-radius:8px;" />
+        <br><br>
+        <b>⚡ VISION</b>
+        <sub style="display:block; margin-top:10px;">The Snappy Scheduler. Instant response. 120FPS or bust. Perfect motion.</sub>
+      </div>
     </td>
     <td width="25%" align="center" valign="top">
-      <img src="assets/devops.gif" width="100%" style="border-radius:8px;" />
-      <br>
-      <b>🛣️ CLOUDOPS & DATA</b><br>
-      <i>Direct Highway for Data. Infrastructure that doesn't eat your CPU for breakfast. Scalable, ruthless efficiency.</i>
+      <div style="background: #1e293b; border: 1px solid #ffffff; border-radius: 12px; padding: 15px; height: 350px;">
+        <img src="assets/devops.gif" width="100%" style="border-radius:8px;" />
+        <br><br>
+        <b>🛣️ HIGHWAY</b>
+        <sub style="display:block; margin-top:10px;">CloudOps at scale. Infrastructure that doesn't choke. Pure efficiency.</sub>
+      </div>
     </td>
   </tr>
 </table>
 
 <br><br>
 
-<!-- FEATURED PROJECT BANNER -->
+<!-- FEATURED PROJECT: GLASS BANNER -->
 <a href="https://github.com/theyonecodes/Windows-Super-Smooth">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0d1117&height=120&text=🏆%20Featured:%20Windows%20Super%20Smooth&fontColor=38bdf8&fontSize=30&desc=Because%20your%20computer%20should%20work%20for%20YOU,%20not%20the%20other%20way%20around.&descAlignY=70&descSize=15&stroke=38bdf8&strokeWidth=2" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0d1117&height=150&text=🏆%20Featured:%20Windows%20Super%20Smooth&fontColor=38bdf8&fontSize=35&desc=Your%20computer%20should%20work%20for%20YOU.%20Re-programming+Windows+DNA.&descAlignY=75&descSize=18&stroke=38bdf8&strokeWidth=3" width="100%" />
 </a>
 
 <br><br>
@@ -101,7 +111,7 @@
 <div align="center">
   <img src="https://komarev.com/ghpvc/?username=theyonecodes&style=flat-square&color=38bdf8&label=ACCESS_GRANTED"/>
   <br><br>
-  <b>Current Status:</b> <i>Engine Tuned. Friction Deleted. Now go build something cool.</i> 🚀
+  <b><font color="#38BDF8">Current Status:</font></b> <i>Engine Tuned. Friction Deleted. Now go build something cool.</i> 🚀
 </div>
 
 </div>
