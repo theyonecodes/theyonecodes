@@ -1,11 +1,11 @@
 <div align="center">
 
-<!-- 2026 ELITE HERO: 3D PARALLAX OVERHAUL -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,70:38BDF8,100:0F172A&height=250&section=header&text=theyonecodes&fontSize=80&animation=fadeIn&fontAlignY=35&stroke=000000&strokeWidth=1" width="100%" />
+<!-- 2026 BULLETPROOF HERO: CUSTOM SVG -->
+<img src="assets/branding/hero.svg" width="100%" />
 
 <br>
 
-<!-- KINETIC TYPING ENGINE -->
+<!-- KINETIC NEURAL TYPING -->
 <a href="https://git.io/typing-svg">
   <img src="https://readme-typing-svg.demolab.com?font=Syncopate&weight=700&size=30&pause=1000&color=38BDF8&center=true&vCenter=true&width=600&lines=DELETING+THE+LAG;ENGINEERING+FLOW;DNA+SWAP+ACTIVE;120FPS+OR+BUST" alt="Typing SVG" />
 </a>
@@ -30,8 +30,8 @@
 
 <br>
 
-<!-- 3D COMMAND CENTER -->
-<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=🛰️%20QUANTUM%20COMMAND%20CENTER&fontSize=30&fontAlignY=50&fontColor=000000" />
+<!-- COMMAND CENTER STRIPE: CUSTOM GLASS SVG -->
+<img src="assets/branding/title_command.svg" width="100%" />
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
@@ -59,8 +59,8 @@
 
 <br>
 
-<!-- THE INFRASTRUCTURE: 3D GRID -->
-<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=⚙️%20THE%20ELITE%20INFRASTRUCTURE&fontSize=30&fontAlignY=50&fontColor=000000" />
+<!-- INFRASTRUCTURE STRIPE: CUSTOM GLASS SVG -->
+<img src="assets/branding/title_infrastructure.svg" width="100%" />
 
 <table border="0" cellpadding="10" cellspacing="0" width="100%">
   <tr>
