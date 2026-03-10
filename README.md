@@ -65,26 +65,26 @@
     <td width="25%" align="center" valign="top">
       <img src="assets/kernel.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3 style="margin: 5px 0; color: #38BDF8;">🧠 KERNEL & SYSTEMS</h3>
-      <sub style="color: #8b949e;"><i>The "DNA Swap." Pinning the core to the fast lane. Telling the OS to stop hoarding background tasks like a pack-rat. 🧹</i></sub>
+      <b>🧠 KERNEL & SYSTEMS</b><br>
+      <i>The "DNA Swap." Pinning the core to the fast lane. Telling the OS to stop hoarding background tasks like a pack-rat. 🧹</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/ai.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3 style="margin: 5px 0; color: #38BDF8;">🤖 AI & AUTOMATION</h3>
-      <sub style="color: #8b949e;"><i>Orchestrating AI swarms to do the heavy lifting while your machine takes a coffee break. ☕ Minus the Skynet vibe.</i></sub>
+      <b>🤖 AI & AUTOMATION</b><br>
+      <i>Orchestrating AI swarms to do the heavy lifting while your machine takes a coffee break. ☕ Minus the Skynet vibe.</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/ui.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3 style="margin: 5px 0; color: #38BDF8;">⚡ INTERFACE & VISION</h3>
-      <sub style="color: #8b949e;"><i>The "Snappy" Scheduler. When you click, the UI says "Yes, sir!" immediately. 120FPS or bust.</i></sub>
+      <b>⚡ INTERFACE & VISION</b><br>
+      <i>The "Snappy" Scheduler. When you click, the UI says "Yes, sir!" immediately. 120FPS or bust.</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/devops.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3 style="margin: 5px 0; color: #38BDF8;">🛣️ CLOUDOPS & DATA</h3>
-      <sub style="color: #8b949e;"><i>Direct Highway for Data. Infrastructure that doesn't eat your CPU for breakfast. Scalable, ruthless efficiency.</i></sub>
+      <b>🛣️ CLOUDOPS & DATA</b><br>
+      <i>Direct Highway for Data. Infrastructure that doesn't eat your CPU for breakfast. Scalable, ruthless efficiency.</i>
     </td>
   </tr>
 </table>
@@ -101,7 +101,7 @@
 <div align="center">
   <img src="https://komarev.com/ghpvc/?username=theyonecodes&style=flat-square&color=38bdf8&label=ACCESS_GRANTED"/>
   <br><br>
-  <p style="color: #8b949e;"><sub><b>Current Status:</b> <i>Engine Tuned. Friction Deleted. Now go build something cool.</i> 🚀</sub></p>
+  <b>Current Status:</b> <i>Engine Tuned. Friction Deleted. Now go build something cool.</i> 🚀
 </div>
 
 </div>
