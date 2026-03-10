@@ -27,7 +27,7 @@
 <br>
 
 <!-- COMMAND CENTER -->
-<img src="https://capsule-render.vercel.app/api?type=transparent&color=38BDF8&height=60&section=header&text=COMMAND%20CENTER&fontSize=30&fontAlignY=50" />
+<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=COMMAND%20CENTER&fontSize=30&fontAlignY=50&fontColor=000000" />
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
@@ -58,7 +58,7 @@
 <br>
 
 <!-- THE INFRASTRUCTURE -->
-<img src="https://capsule-render.vercel.app/api?type=transparent&color=38BDF8&height=60&section=header&text=THE%20INFRASTRUCTURE&fontSize=30&fontAlignY=50" />
+<img src="https://capsule-render.vercel.app/api?type=soft&color=38BDF8&height=60&section=header&text=THE%20INFRASTRUCTURE&fontSize=30&fontAlignY=50&fontColor=000000" />
 
 <table border="0" cellpadding="5" cellspacing="0" width="100%">
   <tr>
