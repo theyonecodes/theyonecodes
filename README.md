@@ -15,8 +15,8 @@
   <tr>
     <td width="60%" valign="middle">
       <p>Let’s be real: Out-of-the-box software feels like it’s trying to run a marathon while carrying a backpack full of bricks. 🎒 Between bloated dependencies, background telemetry, and systems constantly second-guessing themselves, it’s a wonder we get any coding done at all.</p>
-      <p>I am the "Axe" to those bricks. I’m not here to just write code; I’m here to perform a <b>DNA Swap</b> on your infrastructure so it finally acts like the high-performance engine you paid for. 🏎️</p>
-      <p><b>"If it's repetitive, it's a bug. If it eats 10% of your CPU for breakfast, it's malware. 🍳"</b></p>
+      <p>I am the "Axe" to those bricks. I’m not here to just write code; I’m here to perform a <b><font color="#38BDF8">DNA Swap</font></b> on your infrastructure so it finally acts like the high-performance engine you paid for. 🏎️</p>
+      <p><b><font color="#38BDF8">"If it's repetitive, it's a bug. If it eats 10% of your CPU for breakfast, it's malware. 🍳"</font></b></p>
     </td>
     <td width="40%" align="center" valign="middle">
       <img src="assets/main.gif" width="100%" style="border-radius: 10px;" />
@@ -65,25 +65,25 @@
     <td width="25%" align="center" valign="top">
       <img src="assets/kernel.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3>🧠 KERNEL & SYSTEMS</h3>
+      <h3><font color="#38BDF8">🧠 KERNEL & SYSTEMS</font></h3>
       <i>The "DNA Swap." Pinning the core to the fast lane. Telling the OS to stop hoarding background tasks like a pack-rat. 🧹</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/ai.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3>🤖 AI & AUTOMATION</h3>
+      <h3><font color="#38BDF8">🤖 AI & AUTOMATION</font></h3>
       <i>Orchestrating AI swarms to do the heavy lifting while your machine takes a coffee break. ☕ Minus the Skynet vibe.</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/ui.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3>⚡ INTERFACE & VISION</h3>
+      <h3><font color="#38BDF8">⚡ INTERFACE & VISION</font></h3>
       <i>The "Snappy" Scheduler. When you click, the UI says "Yes, sir!" immediately. 120FPS or bust.</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/devops.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <h3>🛣️ CLOUDOPS & DATA</h3>
+      <h3><font color="#38BDF8">🛣️ CLOUDOPS & DATA</font></h3>
       <i>Direct Highway for Data. Infrastructure that doesn't eat your CPU for breakfast. Scalable, ruthless efficiency.</i>
     </td>
   </tr>
@@ -101,7 +101,7 @@
 <div align="center">
   <img src="https://komarev.com/ghpvc/?username=theyonecodes&style=flat-square&color=38bdf8&label=ACCESS_GRANTED"/>
   <br><br>
-  <b>Current Status:</b> <i>Engine Tuned. Friction Deleted. Now go build something cool.</i> 🚀
+  <b><font color="#38BDF8">Current Status:</font></b> <i>Engine Tuned. Friction Deleted. Now go build something cool.</i> 🚀
 </div>
 
 </div>
