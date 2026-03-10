@@ -65,25 +65,25 @@
     <td width="25%" align="center" valign="top">
       <img src="assets/kernel.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <b>🧠 KERNEL & SYSTEMS</b><br>
+      <h3>🧠 KERNEL & SYSTEMS</h3>
       <i>The "DNA Swap." Pinning the core to the fast lane. Telling the OS to stop hoarding background tasks like a pack-rat. 🧹</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/ai.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <b>🤖 AI & AUTOMATION</b><br>
+      <h3>🤖 AI & AUTOMATION</h3>
       <i>Orchestrating AI swarms to do the heavy lifting while your machine takes a coffee break. ☕ Minus the Skynet vibe.</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/ui.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <b>⚡ INTERFACE & VISION</b><br>
+      <h3>⚡ INTERFACE & VISION</h3>
       <i>The "Snappy" Scheduler. When you click, the UI says "Yes, sir!" immediately. 120FPS or bust.</i>
     </td>
     <td width="25%" align="center" valign="top">
       <img src="assets/devops.gif" width="100%" style="border-radius:8px;" />
       <br>
-      <b>🛣️ CLOUDOPS & DATA</b><br>
+      <h3>🛣️ CLOUDOPS & DATA</h3>
       <i>Direct Highway for Data. Infrastructure that doesn't eat your CPU for breakfast. Scalable, ruthless efficiency.</i>
     </td>
   </tr>
