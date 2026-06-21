@@ -6,9 +6,9 @@ import WebGLScene from '../components/WebGLScene.astro';
 <Layout>
   <WebGLScene />
 
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-[#111]">
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-[#111]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
-      <a href="#" class="text-xs font-medium tracking-[0.4em] text-[#555] hover:text-white transition-colors duration-300">
+      <a href="#" class="text-xs font-medium tracking-[0.4em] text-[#555] hover:text-[var(--color-accent)] transition-colors duration-300">
         THEYONE
       </a>
       <div class="hidden md:flex items-center gap-12">
@@ -17,9 +17,9 @@ import WebGLScene from '../components/WebGLScene.astro';
         <a href="#stack" class="nav-link">Stack</a>
         <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="nav-link">Github</a>
       </div>
-      <div class="flex items-center gap-2 text-[9px] tracking-[0.2em] text-[#2a2a2a]">
-        <span class="w-1 h-1 bg-[#2a2a2a] rounded-full animate-pulse"></span>
-        <span>OPERATIONAL</span>
+      <div class="flex items-center gap-2">
+        <div class="status-dot"></div>
+        <span class="text-[9px] tracking-[0.2em] text-[#333]">OPERATIONAL</span>
       </div>
     </div>
   </nav>
@@ -31,25 +31,40 @@ import WebGLScene from '../components/WebGLScene.astro';
           <span class="section-label">// theyone_codes.sys</span>
         </div>
 
-        <h1 class="text-[12vw] lg:text-[10vw] font-bold tracking-tighter leading-[0.85] mb-12">
-          <span class="word"><span class="word-inner">THEYONE</span></span><br/>
-          <span class="word"><span class="word-inner text-[#2a2a2a]">CODES</span></span>
+        <h1 class="text-massive leading-[0.85] mb-8 hero-title">
+          <span class="word-reveal">
+            <span class="word-inner gradient-text">THEYONE</span>
+          </span><br/>
+          <span class="word-reveal">
+            <span class="word-inner text-[#1a1a1a]">CODES</span>
+          </span>
         </h1>
 
-        <div class="max-w-xl">
-          <p class="text-[#555] text-sm leading-relaxed mb-12 fade-up">
-            Engineering autonomous execution systems since day one.<br/>
-            No vendor lock-in. No third-party dependencies. No compromises.
-          </p>
-          
-          <div class="flex items-center gap-6 fade-up">
-            <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="btn-outline">
-              <span>View GitHub</span>
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-              </svg>
-            </a>
-          </div>
+        <div class="flex items-center gap-3 text-sm font-medium text-[#444] mb-12 hero-subtitle">
+          <span class="text-[var(--color-accent)]">$</span>
+          <span>zero_waste</span>
+          <span class="text-[#222]">.</span>
+          <span>maximum_speed</span>
+          <span class="text-[#222]">.</span>
+          <span class="text-[var(--color-cyan)]">autonomy</span>
+          <span class="text-[var(--color-accent)]">()</span>
+        </div>
+
+        <p class="text-base text-[#555] max-w-xl leading-relaxed mb-16 hero-subtitle">
+          Engineering autonomous execution systems since day one.<br/>
+          <span class="text-[#777]">No vendor lock-in.</span> <span class="text-[#444]">No third-party dependencies.</span> <span class="text-[var(--color-accent)]">No compromises.</span>
+        </p>
+
+        <div class="flex items-center gap-6 flex-wrap hero-subtitle">
+          <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="btn-primary">
+            <span>View GitHub</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+            </svg>
+          </a>
+          <a href="#manifesto" class="btn-secondary">
+            <span>Read Manifesto</span>
+          </a>
         </div>
 
         <div class="mt-32 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 fade-up">
@@ -70,24 +85,28 @@ import WebGLScene from '../components/WebGLScene.astro';
 
     <div class="px-6 lg:px-12">
       <div class="max-w-7xl mx-auto">
-        <div class="split-line mb-24"></div>
+        <div class="gradient-line line-draw"></div>
       </div>
     </div>
 
-    <section id="manifesto" class="py-24 px-6 lg:px-12">
+    <section id="manifesto" class="py-32 px-6 lg:px-12">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-end justify-between mb-16">
+        <div class="flex items-end justify-between mb-16 fade-up">
           <div>
             <span class="section-label mb-4 block">// manifesto.src</span>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              The Manifesto
+            <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+              <span class="char-reveal">
+                {'The Manifesto'.split('').map(char => (
+                  <span class="char">{char === ' ' ? '\u00A0' : char}</span>
+                ))}
+              </span>
             </h2>
           </div>
         </div>
 
-        <div class="split-line mb-16"></div>
+        <div class="gradient-line-accent line-draw mb-16"></div>
 
-        <div class="grid md:grid-cols-2 gap-px bg-[#0f0f0f]">
+        <div class="grid md:grid-cols-2 gap-px bg-[#0a0a0a] card-stagger">
           {[
             { 
               num: '01',
@@ -110,10 +129,10 @@ import WebGLScene from '../components/WebGLScene.astro';
               desc: 'Once built, the system runs. No prompts. No confirmations. No hand-holding. Operational from day one. Autonomous by design.' 
             }
           ].map((item, i) => (
-            <div class={`card bg-black p-10 md:p-12 card-reveal`}>
+            <div class="card bg-black p-10 md:p-12 card-item">
               <div class="flex items-start gap-8 mb-6">
-                <span class="card-year mt-1">{item.num}</span>
-                <h3 class="card-title">{item.title}</h3>
+                <span class="card-year">{item.num}</span>
+                <h3 class="card-title text-[var(--color-text)]">{item.title}</h3>
               </div>
               <p class="card-desc">{item.desc}</p>
             </div>
@@ -124,24 +143,28 @@ import WebGLScene from '../components/WebGLScene.astro';
 
     <div class="px-6 lg:px-12">
       <div class="max-w-7xl mx-auto">
-        <div class="split-line mb-24"></div>
+        <div class="gradient-line line-draw"></div>
       </div>
     </div>
 
-    <section id="focus" class="py-24 px-6 lg:px-12">
+    <section id="focus" class="py-32 px-6 lg:px-12">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-end justify-between mb-16">
+        <div class="flex items-end justify-between mb-16 fade-up">
           <div>
             <span class="section-label mb-4 block">// focus_areas.config</span>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Focus Areas
+            <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+              <span class="char-reveal">
+                {'Focus Areas'.split('').map(char => (
+                  <span class="char">{char === ' ' ? '\u00A0' : char}</span>
+                ))}
+              </span>
             </h2>
           </div>
         </div>
 
-        <div class="split-line mb-16"></div>
+        <div class="gradient-line-accent line-draw mb-16"></div>
 
-        <div class="space-y-px">
+        <div class="space-y-px card-stagger">
           {[
             { 
               num: '01',
@@ -165,13 +188,13 @@ import WebGLScene from '../components/WebGLScene.astro';
               tags: ['CLI', 'API-first', 'Zero-deps']
             }
           ].map((item, i) => (
-            <div class={`card bg-black p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12 card-reveal`}>
+            <div class="card bg-black p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12 card-item group">
               <div class="flex items-center gap-8 md:w-32 md:flex-col md:items-start">
                 <span class="card-year">{item.num}</span>
                 <span class="text-[9px] tracking-[0.15em] text-[#252525]">{item.year}</span>
               </div>
               <div class="flex-1">
-                <h3 class="text-lg md:text-xl font-semibold mb-3 tracking-tight">{item.title}</h3>
+                <h3 class="text-lg md:text-xl font-semibold mb-3 tracking-tight text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors duration-300">{item.title}</h3>
                 <p class="card-desc mb-6">{item.desc}</p>
                 <div class="flex flex-wrap gap-2">
                   {item.tags.map(tag => (
@@ -179,8 +202,8 @@ import WebGLScene from '../components/WebGLScene.astro';
                   ))}
                 </div>
               </div>
-              <div class="md:pl-12">
-                <svg class="w-5 h-5 text-[#2a2a2a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="md:pl-12 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
                 </svg>
               </div>
@@ -192,26 +215,31 @@ import WebGLScene from '../components/WebGLScene.astro';
 
     <div class="px-6 lg:px-12">
       <div class="max-w-7xl mx-auto">
-        <div class="split-line mb-24"></div>
+        <div class="gradient-line line-draw"></div>
       </div>
     </div>
 
-    <section id="stack" class="py-24 px-6 lg:px-12">
+    <section id="stack" class="py-32 px-6 lg:px-12">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-end justify-between mb-16">
+        <div class="flex items-end justify-between mb-16 fade-up">
           <div>
             <span class="section-label mb-4 block">// tech_stack.json</span>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Tech Stack
+            <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+              <span class="char-reveal">
+                {'Tech Stack'.split('').map(char => (
+                  <span class="char">{char === ' ' ? '\u00A0' : char}</span>
+                ))}
+              </span>
             </h2>
           </div>
         </div>
 
-        <div class="split-line mb-16"></div>
+        <div class="gradient-line-accent line-draw mb-16"></div>
 
-        <div class="flex flex-wrap gap-3">
+        <div class="flex flex-wrap gap-3 fade-up">
           {['Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'].map((tech, i) => (
-            <span class="text-[11px] tracking-[0.15em] text-[#444] px-6 py-4 border border-[#111] hover:border-[#222] hover:text-[#666] transition-all duration-500 card-reveal" style={`transition-delay: ${i * 0.04}s`}>
+            <span class="text-[11px] tracking-[0.15em] text-[#555] px-6 py-4 border border-[#111] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-500 cursor-default"
+                  style={`transition-delay: ${i * 0.05}s`}>
               {tech}
             </span>
           ))}
@@ -221,17 +249,19 @@ import WebGLScene from '../components/WebGLScene.astro';
 
     <div class="px-6 lg:px-12">
       <div class="max-w-7xl mx-auto">
-        <div class="split-line mb-24"></div>
+        <div class="gradient-line line-draw"></div>
       </div>
     </div>
 
-    <section class="py-32 px-6 lg:px-12">
-      <div class="max-w-7xl mx-auto text-center">
+    <section class="py-40 px-6 lg:px-12">
+      <div class="max-w-4xl mx-auto text-center fade-up">
         <span class="section-label mb-8 block">// contact.init</span>
-        <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8">
-          Let's Build
+        
+        <h2 class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8">
+          <span class="shimmer">Let's Build</span>
         </h2>
-        <p class="text-[#555] text-base mb-16">
+        
+        <p class="text-[#555] text-lg mb-16">
           I don't do collaborations.<br/>
           <span class="text-[#777]">I build alone and ship.</span>
         </p>
@@ -240,7 +270,7 @@ import WebGLScene from '../components/WebGLScene.astro';
           href="https://github.com/theyonecodes"
           target="_blank"
           rel="noopener"
-          class="btn-outline inline-flex items-center gap-4 px-10 py-6"
+          class="btn-primary inline-flex items-center gap-4 px-10 py-6 glow-pulse"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
@@ -256,8 +286,8 @@ import WebGLScene from '../components/WebGLScene.astro';
     <footer class="py-12 px-6 lg:px-12 border-t border-[#111]">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
-          <div class="w-1 h-1 bg-[#252525] rounded-full"></div>
-          <span class="text-[9px] tracking-[0.25em] text-[#2a2a2a] uppercase">Status: Operational</span>
+          <div class="status-dot"></div>
+          <span class="text-[9px] tracking-[0.25em] text-[#333] uppercase">Status: Operational</span>
         </div>
         <p class="text-[9px] tracking-[0.2em] text-[#252525] uppercase">
           &copy; 2024 TheyOne Codes
@@ -266,7 +296,7 @@ import WebGLScene from '../components/WebGLScene.astro';
           href="https://github.com/theyonecodes"
           target="_blank"
           rel="noopener"
-          class="text-[9px] tracking-[0.2em] text-[#333] uppercase hover:text-[#555] transition-colors duration-300"
+          class="text-[9px] tracking-[0.2em] text-[#333] uppercase hover:text-[var(--color-accent)] transition-colors duration-300"
         >
           github.com/theyonecodes
         </a>
@@ -274,3 +304,38 @@ import WebGLScene from '../components/WebGLScene.astro';
     </footer>
   </main>
 </Layout>
+
+<script>
+  // Additional word reveal animations
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Word reveal animation
+    document.querySelectorAll('.word-reveal').forEach((word: any) => {
+      const inner = word.querySelector('.word-inner');
+      if (inner) {
+        gsap.to(inner, {
+          y: '0%',
+          duration: 1.4,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: word,
+            start: 'top 90%',
+            once: true
+          }
+        });
+      }
+    });
+    
+    // Initialize char reveals with proper spacing
+    document.querySelectorAll('.char-reveal').forEach((el: any) => {
+      const chars = el.querySelectorAll('.char');
+      chars.forEach((char: any, i: number) => {
+        (char as HTMLElement).style.transitionDelay = `${i * 0.02}s`;
+      });
+    });
+  });
+</script>

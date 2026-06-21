@@ -1,0 +1,129 @@
+/* GSAP Animation Helper Classes */
+
+/* Initial states for elements animated by GSAP */
+.hero-title,
+.hero-subtitle {
+  will-change: transform, opacity;
+}
+
+.fade-up {
+  will-change: transform, opacity;
+}
+
+.line-draw {
+  will-change: width;
+}
+
+.card-item {
+  will-change: transform, opacity;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Word reveal containers */
+.word-reveal {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.word-reveal .word-inner {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+/* Magnetic hover effect */
+.magnetic {
+  transition: transform 0.3s ease;
+}
+
+/* Cursor effects */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+/* Number counter animation helper */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shimmer effect for accent text */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent) 0%,
+    var(--color-cyan) 25%,
+    var(--color-purple) 50%,
+    var(--color-accent) 75%,
+    var(--color-accent) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Glow pulse for accent elements */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Border gradient animation */
+@keyframes border-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.border-gradient-animated {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-cyan), var(--color-purple), var(--color-accent));
+  background-size: 300% 100%;
+  animation: border-rotate 4s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cursor-glow {
+    display: none;
+  }
+}

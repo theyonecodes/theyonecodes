@@ -6,12 +6,13 @@
 <script>
 import * as THREE from 'three';
 
-class MinimalScene {
+class AdvancedScene {
   private canvas: HTMLCanvasElement;
   private renderer: THREE.WebGLRenderer;
   private scene: THREE.Scene;
   private camera: THREE.PerspectiveCamera;
   private particles: THREE.Points;
+  private shapes: THREE.Mesh[] = [];
   private time = 0;
   private scroll = 0;
   private mouse = { x: 0, y: 0 };
@@ -28,41 +29,62 @@ class MinimalScene {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
-      antialias: false,
-      powerPreference: 'low-power'
+      antialias: true,
+      powerPreference: 'high-performance'
     });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     this.camera.position.z = 50;
 
     this.createParticles();
     this.createGrid();
+    this.createWireframeShapes();
     this.bindEvents();
     this.animate();
   }
 
   private createParticles() {
-    const count = 600;
+    const count = 1000;
     const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+
+    const color1 = new THREE.Color('#00ff88');
+    const color2 = new THREE.Color('#22d3ee');
+    const color3 = new THREE.Color('#a855f7');
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
       positions[i3] = (Math.random() - 0.5) * 100;
       positions[i3 + 1] = (Math.random() - 0.5) * 100;
-      positions[i3 + 2] = (Math.random() - 0.5) * 30;
+      positions[i3 + 2] = (Math.random() - 0.5) * 50;
+
+      const colorChoice = Math.random();
+      let color;
+      if (colorChoice < 0.33) {
+        color = color1;
+      } else if (colorChoice < 0.66) {
+        color = color2;
+      } else {
+        color = color3;
+      }
+      
+      colors[i3] = color.r;
+      colors[i3 + 1] = color.g;
+      colors[i3 + 2] = color.b;
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: 0.06,
-      color: 0x333333,
+      size: 0.08,
+      vertexColors: true,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.6,
       sizeAttenuation: true
     });
 
@@ -72,9 +94,50 @@ class MinimalScene {
 
   private createGrid() {
     const gridHelper = new THREE.GridHelper(100, 50, 0x0a0a0a, 0x080808);
-    (gridHelper.material as THREE.LineBasicMaterial).opacity = 0.25;
+    (gridHelper.material as THREE.LineBasicMaterial).opacity = 0.3;
     (gridHelper.material as THREE.LineBasicMaterial).transparent = true;
     this.scene.add(gridHelper);
+  }
+
+  private createWireframeShapes() {
+    const geometries = [
+      new THREE.IcosahedronGeometry(2, 0),
+      new THREE.OctahedronGeometry(2, 0),
+      new THREE.TorusGeometry(1.5, 0.4, 8, 16),
+      new THREE.TetrahedronGeometry(2, 0),
+    ];
+
+    const positions = [
+      { x: -25, y: 15, z: -20 },
+      { x: 30, y: -10, z: -15 },
+      { x: -30, y: -20, z: -25 },
+      { x: 25, y: 20, z: -30 },
+    ];
+
+    const colors = [0x00ff88, 0x22d3ee, 0xa855f7, 0x00ff88];
+
+    geometries.forEach((geo, i) => {
+      const material = new THREE.MeshBasicMaterial({
+        color: colors[i],
+        wireframe: true,
+        transparent: true,
+        opacity: 0.15
+      });
+
+      const mesh = new THREE.Mesh(geo, material);
+      mesh.position.set(positions[i].x, positions[i].y, positions[i].z);
+      mesh.userData = {
+        originalY: positions[i].y,
+        rotationSpeed: {
+          x: (Math.random() - 0.5) * 0.003,
+          y: (Math.random() - 0.5) * 0.003,
+        },
+        floatOffset: Math.random() * Math.PI * 2
+      };
+
+      this.shapes.push(mesh);
+      this.scene.add(mesh);
+    });
   }
 
   private bindEvents() {
@@ -105,22 +168,29 @@ class MinimalScene {
 
   private animate() {
     this.animationId = requestAnimationFrame(() => this.animate());
-    this.time += 0.002;
+    this.time += 0.003;
 
-    this.camera.position.x = this.mouse.x * 1.5;
-    this.camera.position.y = this.mouse.y * 1.5;
+    this.camera.position.x += (this.mouse.x * 2 - this.camera.position.x) * 0.02;
+    this.camera.position.y += (this.mouse.y * 2 - this.camera.position.y) * 0.02;
     this.camera.lookAt(0, 0, 0);
     
-    this.camera.position.z = 50 - this.scroll * 12;
+    this.camera.position.z = 50 - this.scroll * 15;
 
-    this.particles.rotation.y = this.time * 0.05;
+    this.particles.rotation.y = this.time * 0.02;
+    this.particles.rotation.x = this.time * 0.01;
 
     const positions = this.particles.geometry.attributes.position.array as Float32Array;
     for (let i = 0; i < positions.length; i += 3) {
-      positions[i + 1] -= 0.005;
-      if (positions[i + 1] < -50) positions[i + 1] = 50;
+      positions[i + 1] += Math.sin(this.time + i * 0.01) * 0.005;
     }
     this.particles.geometry.attributes.position.needsUpdate = true;
+
+    this.shapes.forEach((shape) => {
+      const { originalY, rotationSpeed, floatOffset } = shape.userData;
+      shape.rotation.x += rotationSpeed.x;
+      shape.rotation.y += rotationSpeed.y;
+      shape.position.y = originalY + Math.sin(this.time * 0.5 + floatOffset) * 2;
+    });
 
     this.renderer.render(this.scene, this.camera);
   }
@@ -130,5 +200,5 @@ class MinimalScene {
   }
 }
 
-new MinimalScene();
+new AdvancedScene();
 </script>
