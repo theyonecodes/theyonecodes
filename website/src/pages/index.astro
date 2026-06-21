@@ -6,188 +6,205 @@ import WebGLScene from '../components/WebGLScene.astro';
 <Layout>
   <WebGLScene />
 
-  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-[#111]">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-sm font-medium tracking-tight text-[#888] hover:text-white transition-colors duration-500">
-        theyone
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[#0a0a0a] bg-black/90 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-xs font-medium tracking-[0.3em] text-[#555] hover:text-white transition-colors duration-300">
+        THEYONE
       </a>
-      <div class="flex items-center gap-8 text-xs tracking-wider">
-        <a href="#manifesto" class="underline-anim text-[#666] hover:text-white transition-colors duration-500">manifesto</a>
-        <a href="#focus" class="underline-anim text-[#666] hover:text-white transition-colors duration-500">focus</a>
-        <a href="#stack" class="underline-anim text-[#666] hover:text-white transition-colors duration-500">stack</a>
-        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="text-[#888] hover:text-white transition-colors duration-500">github</a>
+      <div class="flex items-center gap-10">
+        <a href="#manifesto" class="nav-link">Manifesto</a>
+        <a href="#focus" class="nav-link">Focus</a>
+        <a href="#stack" class="nav-link">Stack</a>
+        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="nav-link">Github</a>
       </div>
     </div>
   </nav>
 
   <div class="content-wrapper">
-    <section class="min-h-screen flex items-center justify-center px-6 pt-24">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="terminal-line mb-12 fade-up">
-          const identity = 'TheyOne';
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+      <div class="max-w-5xl mx-auto w-full">
+        <div class="mb-8 reveal">
+          <span class="text-[10px] tracking-[0.3em] text-[#333] uppercase">const identity</span>
+          <span class="text-[10px] tracking-[0.3em] text-[#555]"> = </span>
+          <span class="text-[10px] tracking-[0.3em] text-[#888]">'TheyOne'</span>
+          <span class="text-[10px] tracking-[0.3em] text-[#555]">;</span>
         </div>
 
-        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-12 leading-[0.9] fade-up fade-up-delay-1">
-          THEYONE<br/>CODES
+        <h1 class="text-massive mb-12 tracking-tight leading-[0.85]">
+          <span class="block text-[#e0e0e0] glitch flicker" data-text="THEYONE">THEYONE</span>
+          <span class="block text-[#1a1a1a]">CODES</span>
         </h1>
 
-        <div class="flex items-center justify-center gap-3 text-sm sm:text-base font-medium text-[#555] mb-16 fade-up fade-up-delay-2">
+        <div class="flex items-center gap-3 text-[11px] tracking-[0.1em] text-[#444] mb-16 font-medium reveal delay-1">
           <span>$</span>
-          <span>zero_waste</span>
-          <span class="text-[#333]">.</span>
-          <span>maximum_speed</span>
-          <span class="text-[#333]">.</span>
-          <span>autonomy</span>
+          <span class="text-[#555]">zero_waste</span>
+          <span class="text-[#222]">.</span>
+          <span class="text-[#555]">maximum_speed</span>
+          <span class="text-[#222]">.</span>
+          <span class="text-[#666]">autonomy</span>
           <span>()</span>
         </div>
 
-        <p class="text-base sm:text-lg text-[#666] max-w-xl mx-auto mb-20 leading-relaxed fade-up fade-up-delay-3">
+        <p class="text-sm text-[#555] max-w-lg leading-[1.8] mb-20 reveal delay-2">
           Engineering autonomous execution systems since day one.<br/>
-          No vendor lock-in. No third-party dependencies. No compromises.
+          No vendor lock-in. No third-party dependencies.<br/>
+          <span class="text-[#777]">No compromises.</span>
         </p>
 
-        <div class="flex items-center justify-center gap-4 flex-wrap fade-up fade-up-delay-4">
-          <a
-            href="https://github.com/theyonecodes"
-            target="_blank"
-            rel="noopener"
-            class="btn-primary px-8 py-4 text-sm tracking-wider"
-          >
+        <div class="flex items-center gap-6 reveal delay-3">
+          <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="btn">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
+            </svg>
             <span>View Profile</span>
           </a>
-          <a
-            href="#manifesto"
-            class="btn-secondary px-8 py-4 text-sm tracking-wider text-[#666]"
-          >
-            Read Manifesto
+          <a href="#manifesto" class="btn">
+            <span>Read Manifesto</span>
           </a>
-        </div>
-
-        <div class="absolute bottom-16 left-1/2 -translate-x-1/2">
-          <div class="w-px h-12 bg-gradient-to-b from-transparent via-[#222] to-transparent"></div>
         </div>
       </div>
     </section>
 
-    <section class="py-32 px-6 border-t border-[#111]">
+    <div class="hr-glow max-w-5xl mx-auto px-6 reveal"></div>
+
+    <section class="py-24 px-6">
       <div class="max-w-5xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#111]">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#0a0a0a]">
           {[
             { num: '42', label: 'repos' },
             { num: '0', label: 'third-party deps' },
             { num: '100', label: 'autonomy' },
             { num: '∞', label: 'zero waste' }
           ].map((stat, i) => (
-            <div class={`bg-black p-8 sm:p-12 text-center scale-in`} style={`transition-delay: ${i * 0.1}s`}>
-              <div class="stat-number">{stat.num}</div>
-              <div class="text-[#444] text-xs mt-4 tracking-wider uppercase">{stat.label}</div>
+            <div class="bg-black p-10 text-center reveal" style={`transition-delay: ${i * 0.08}s`}>
+              <div class="text-4xl font-bold tracking-tight text-[#c0c0c0] mb-3">{stat.num}</div>
+              <div class="text-[9px] tracking-[0.2em] text-[#333] uppercase">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="manifesto" class="py-32 px-6 border-t border-[#111]">
-      <div class="max-w-3xl mx-auto">
-        <div class="terminal-line mb-8 fade-up">
-          manifesto.src
+    <div class="hr-glow max-w-5xl mx-auto px-6 reveal"></div>
+
+    <section id="manifesto" class="py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-6 reveal">
+          <span class="text-[9px] tracking-[0.3em] text-[#282828] uppercase">// the_four_pillars.src</span>
         </div>
 
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-20 fade-up fade-up-delay-1">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#e0e0e0] mb-16 reveal delay-1">
           The Manifesto
         </h2>
 
-        <div class="space-y-px bg-[#111]">
+        <div class="space-y-px">
           {[
             { 
+              num: '01',
               title: 'Zero Waste', 
               desc: 'Every line of code earns its place. No bloat, no borrowed abstractions. If I didn\'t write it, I own it. Dependencies are liabilities. The less I depend on, the more I control.' 
             },
             { 
+              num: '02',
               title: 'Maximum Speed', 
               desc: 'Startup time is a feature. Latency is a bug. Performance is non-negotiable. A system that wastes resources is a system I don\'t trust. Lean code is fast code. Fast code is sovereign code.' 
             },
             { 
+              num: '03',
               title: 'Digital Sovereignty', 
               desc: 'Tools run on my hardware. On my terms. No telemetry. No accounts. No cloud dependency. My data stays on my machine. My tools stay under my control.' 
             },
             { 
+              num: '04',
               title: 'Autonomous Execution', 
               desc: 'Once built, the system runs. No prompts. No confirmations. No hand-holding. Operational from day one. Autonomous by design.' 
             }
           ].map((item, i) => (
-            <div class={`bg-black p-8 sm:p-10 card fade-up`} style={`transition-delay: ${i * 0.15}s`}>
-              <div class="flex items-start gap-8">
-                <span class="text-[#282828] text-xs font-medium w-6 mt-1">0{i + 1}</span>
-                <div>
-                  <h3 class="text-lg sm:text-xl font-medium mb-4 text-[#ccc]">{item.title}</h3>
-                  <p class="text-[#555] text-sm leading-relaxed">{item.desc}</p>
+            <div class="card relative group p-8 reveal" style={`transition-delay: ${i * 0.1}s`}>
+              <div class="grid-overlay"></div>
+              <div class="relative z-10 flex items-start gap-8">
+                <span class="text-[9px] tracking-[0.2em] text-[#252525] font-medium w-6 mt-1">{item.num}</span>
+                <div class="flex-1">
+                  <h3 class="text-base font-medium text-[#b0b0b0] mb-3 tracking-tight">{item.title}</h3>
+                  <p class="text-[11px] text-[#444] leading-[1.9]">{item.desc}</p>
                 </div>
               </div>
+              <div class="card-line absolute bottom-0 left-0 h-px bg-[#1a1a1a] w-0 transition-all duration-700"></div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="focus" class="py-32 px-6 border-t border-[#111]">
+    <div class="hr-glow max-w-5xl mx-auto px-6 reveal"></div>
+
+    <section id="focus" class="py-24 px-6">
       <div class="max-w-5xl mx-auto">
-        <div class="terminal-line mb-8 fade-up">
-          focus_areas.config
+        <div class="mb-6 reveal">
+          <span class="text-[9px] tracking-[0.3em] text-[#282828] uppercase">// focus_areas.config</span>
         </div>
 
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-20 fade-up fade-up-delay-1">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#e0e0e0] mb-16 reveal delay-1">
           Focus Areas
         </h2>
 
-        <div class="grid md:grid-cols-3 gap-px bg-[#111]">
+        <div class="grid md:grid-cols-3 gap-px bg-[#0a0a0a]">
           {[
             { 
+              num: '01',
               title: 'System Optimization', 
               desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.',
               tags: ['Linux', 'Rust', 'Bash', 'Python']
             },
             { 
+              num: '02',
               title: 'Security Auditing', 
               desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.',
               tags: ['Auditing', 'Offline', 'Privacy']
             },
             { 
+              num: '03',
               title: 'Developer Productivity', 
               desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.',
               tags: ['CLI', 'API-first', 'Zero-deps']
             }
           ].map((area, i) => (
-            <div class={`bg-black p-8 sm:p-10 card fade-up`} style={`transition-delay: ${i * 0.15}s`}>
-              <div class="text-[#282828] text-xs font-medium mb-6">0{i + 1}</div>
-              <h3 class="text-base sm:text-lg font-medium mb-4 text-[#ccc]">{area.title}</h3>
-              <p class="text-[#555] text-sm leading-relaxed mb-8">{area.desc}</p>
-              <div class="flex flex-wrap gap-2">
-                {area.tags.map(tag => (
-                  <span class="text-[#333] text-xs px-3 py-1 border border-[#1a1a1a]">{tag}</span>
-                ))}
+            <div class="card relative group bg-black p-8 reveal" style={`transition-delay: ${i * 0.1}s`}>
+              <div class="grid-overlay"></div>
+              <div class="relative z-10">
+                <div class="text-[9px] tracking-[0.2em] text-[#252525] font-medium mb-6">{area.num}</div>
+                <h3 class="text-sm font-medium text-[#b0b0b0] mb-4 tracking-tight">{area.title}</h3>
+                <p class="text-[11px] text-[#444] leading-[1.9] mb-8">{area.desc}</p>
+                <div class="flex flex-wrap gap-2">
+                  {area.tags.map(tag => (
+                    <span class="text-[9px] tracking-[0.15em] text-[#333] px-3 py-2 border border-[#111] uppercase">{tag}</span>
+                  ))}
+                </div>
               </div>
+              <div class="card-line absolute bottom-0 left-0 h-px bg-[#1a1a1a] w-0 transition-all duration-700"></div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="stack" class="py-32 px-6 border-t border-[#111]">
+    <div class="hr-glow max-w-5xl mx-auto px-6 reveal"></div>
+
+    <section id="stack" class="py-24 px-6">
       <div class="max-w-4xl mx-auto">
-        <div class="terminal-line mb-8 fade-up">
-          tech_stack.json
+        <div class="mb-6 reveal">
+          <span class="text-[9px] tracking-[0.3em] text-[#282828] uppercase">// tech_stack.json</span>
         </div>
 
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-20 fade-up fade-up-delay-1">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#e0e0e0] mb-16 reveal delay-1">
           Tech Stack
         </h2>
 
-        <div class="flex flex-wrap gap-3 fade-up fade-up-delay-2">
+        <div class="flex flex-wrap gap-3 reveal delay-2">
           {['Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'].map((tech, i) => (
             <span 
-              class="text-[#555] text-sm px-5 py-3 border border-[#1a1a1a] hover:border-[#333] hover:text-[#888] transition-all duration-700 cursor-default"
-              style={`transition-delay: ${i * 0.05}s`}
+              class="text-[10px] tracking-[0.15em] text-[#444] px-5 py-3 border border-[#111] uppercase hover:border-[#2a2a2a] hover:text-[#666] transition-all duration-500"
+              style={`transition-delay: ${i * 0.04}s`}
             >
               {tech}
             </span>
@@ -196,26 +213,28 @@ import WebGLScene from '../components/WebGLScene.astro';
       </div>
     </section>
 
-    <section class="py-40 px-6 border-t border-[#111]">
+    <div class="hr-glow max-w-5xl mx-auto px-6 reveal"></div>
+
+    <section class="py-32 px-6">
       <div class="max-w-3xl mx-auto text-center">
-        <div class="terminal-line mb-8 justify-center fade-up">
-          contact.init
+        <div class="mb-6 reveal">
+          <span class="text-[9px] tracking-[0.3em] text-[#282828] uppercase">// contact.init</span>
         </div>
 
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-8 fade-up fade-up-delay-1">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#e0e0e0] mb-8 reveal delay-1">
           Let's Build
         </h2>
 
-        <p class="text-[#666] text-base sm:text-lg mb-16 fade-up fade-up-delay-2">
+        <p class="text-[#555] text-sm mb-16 leading-relaxed reveal delay-2">
           I don't do collaborations.<br/>
-          <span class="text-[#999]">I build alone and ship.</span>
+          <span class="text-[#777]">I build alone and ship.</span>
         </p>
 
         <a
           href="https://github.com/theyonecodes"
           target="_blank"
           rel="noopener"
-          class="btn-primary inline-flex items-center gap-3 px-10 py-5 text-sm tracking-wider fade-up fade-up-delay-3"
+          class="btn inline-flex items-center gap-4 px-10 py-5 reveal delay-3"
         >
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
@@ -225,22 +244,22 @@ import WebGLScene from '../components/WebGLScene.astro';
       </div>
     </section>
 
-    <footer class="py-12 px-6 border-t border-[#111]">
+    <footer class="py-10 px-6 border-t border-[#0a0a0a]">
       <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <div class="w-1 h-1 bg-[#333] rounded-full"></div>
-          <span class="text-[#444] text-xs tracking-wider">STATUS: OPERATIONAL</span>
+        <div class="status">
+          <div class="status-dot"></div>
+          <span>Status: Operational</span>
         </div>
 
-        <p class="text-[#333] text-xs tracking-wider font-medium">
-          &copy; 2024 THEYONE_CODES
+        <p class="text-[9px] tracking-[0.2em] text-[#2a2a2a] uppercase">
+          &copy; 2024 TheyOne Codes
         </p>
 
         <a
           href="https://github.com/theyonecodes"
           target="_blank"
           rel="noopener"
-          class="text-[#444] text-xs tracking-wider hover:text-[#666] transition-colors duration-500"
+          class="text-[9px] tracking-[0.2em] text-[#333] uppercase hover:text-[#555] transition-colors duration-300"
         >
           github.com/theyonecodes
         </a>

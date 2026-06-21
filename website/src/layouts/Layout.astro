@@ -28,80 +28,24 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-black text-[#e8e8e8] antialiased overflow-x-hidden">
-    <div class="cursor-follower"></div>
-    <div class="scanline"></div>
+  <body class="min-h-screen bg-black text-[#c8c8c8] antialiased overflow-x-hidden">
     <slot />
     
     <script>
-      const follower = document.querySelector('.cursor-follower') as HTMLElement;
-      let mouseX = 0, mouseY = 0;
-      let followerX = 0, followerY = 0;
-      
-      if (follower && window.innerWidth > 768) {
-        document.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-        });
-        
-        function updateFollower() {
-          followerX += (mouseX - followerX) * 0.15;
-          followerY += (mouseY - followerY) * 0.15;
-          follower.style.left = followerX + 'px';
-          follower.style.top = followerY + 'px';
-          follower.style.transform = 'translate(-50%, -50%)';
-          requestAnimationFrame(updateFollower);
-        }
-        updateFollower();
-      }
-
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -80px 0px'
       };
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
-            const chars = entry.target.querySelectorAll('.char');
-            chars.forEach((char, i) => {
-              setTimeout(() => {
-                (char as HTMLElement).classList.add('visible');
-              }, i * 30);
-            });
           }
         });
       }, observerOptions);
 
-      document.querySelectorAll('.reveal, .fade-up, .scale-in, .text-reveal').forEach(el => {
-        observer.observe(el);
-      });
-
-      document.querySelectorAll('.line-draw').forEach(el => {
-        const lineObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        }, { threshold: 0.5 });
-        lineObserver.observe(el);
-      });
-
-      document.querySelectorAll('.magnetic').forEach(el => {
-        el.addEventListener('mousemove', (e) => {
-          const rect = (el as HTMLElement).getBoundingClientRect();
-          const x = (e as MouseEvent).clientX - rect.left - rect.width / 2;
-          const y = (e as MouseEvent).clientY - rect.top - rect.height / 2;
-          (el as HTMLElement).style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-        });
-        
-        el.addEventListener('mouseleave', () => {
-          (el as HTMLElement).style.transform = 'translate(0, 0)';
-        });
-      });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
   </body>
 </html>
