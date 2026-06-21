@@ -6,132 +6,122 @@ import WebGLScene from '../components/WebGLScene.astro';
 <Layout>
   <WebGLScene />
 
-  <div class="scanline"></div>
-
-  <nav class="fixed top-0 left-0 right-0 z-50 glass py-4 px-6">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="#" class="text-xl font-bold tracking-tight">
-        <span class="text-accent">//</span> theyone
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-[#111]">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#" class="text-sm font-medium tracking-tight text-[#888] hover:text-white transition-colors duration-500">
+        theyone
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm">
-        <a href="#manifesto" class="text-muted hover:text-accent transition-colors duration-300">Manifesto</a>
-        <a href="#focus" class="text-muted hover:text-accent transition-colors duration-300">Focus</a>
-        <a href="#stack" class="text-muted hover:text-accent transition-colors duration-300">Stack</a>
-        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="text-accent hover:text-accent-dim transition-colors duration-300">GitHub -></a>
-      </div>
-      <button id="mobile-menu-btn" class="md:hidden text-muted hover:text-accent transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-border/30 pt-4">
-      <div class="flex flex-col gap-4 text-sm">
-        <a href="#manifesto" class="text-muted hover:text-accent transition-colors duration-300">Manifesto</a>
-        <a href="#focus" class="text-muted hover:text-accent transition-colors duration-300">Focus</a>
-        <a href="#stack" class="text-muted hover:text-accent transition-colors duration-300">Stack</a>
-        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="text-accent hover:text-accent-dim transition-colors duration-300">GitHub -></a>
+      <div class="flex items-center gap-8 text-xs tracking-wider">
+        <a href="#manifesto" class="underline-anim text-[#666] hover:text-white transition-colors duration-500">manifesto</a>
+        <a href="#focus" class="underline-anim text-[#666] hover:text-white transition-colors duration-500">focus</a>
+        <a href="#stack" class="underline-anim text-[#666] hover:text-white transition-colors duration-500">stack</a>
+        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="text-[#888] hover:text-white transition-colors duration-500">github</a>
       </div>
     </div>
   </nav>
 
   <div class="content-wrapper">
-    <section class="min-h-screen flex items-center justify-center relative px-6 pt-20">
-      <div class="max-w-5xl mx-auto text-center">
-        <div class="terminal-line inline-block text-accent text-sm mb-8 opacity-70 reveal">
-          <span class="text-muted">const</span> identity <span class="text-muted">=</span> <span class="text-purple-400">'TheyOne'</span>;
+    <section class="min-h-screen flex items-center justify-center px-6 pt-24">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="terminal-line mb-12 fade-up">
+          const identity = 'TheyOne';
         </div>
 
-        <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 shimmer-text">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-12 leading-[0.9] fade-up fade-up-delay-1">
           THEYONE<br/>CODES
         </h1>
 
-        <div class="flex items-center justify-center gap-2 text-lg sm:text-xl md:text-2xl font-mono text-muted mb-12 reveal reveal-delay-1">
-          <span class="text-accent">$</span>
-          <span class="text-text">zero_waste</span>
-          <span class="text-purple-400">.</span>
-          <span class="text-accent">maximum_speed</span>
-          <span class="text-purple-400">.</span>
-          <span class="text-cyan-400">autonomy</span>
-          <span class="text-accent">()</span>
+        <div class="flex items-center justify-center gap-3 text-sm sm:text-base font-medium text-[#555] mb-16 fade-up fade-up-delay-2">
+          <span>$</span>
+          <span>zero_waste</span>
+          <span class="text-[#333]">.</span>
+          <span>maximum_speed</span>
+          <span class="text-[#333]">.</span>
+          <span>autonomy</span>
+          <span>()</span>
         </div>
 
-        <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto mb-16 leading-relaxed reveal reveal-delay-2">
+        <p class="text-base sm:text-lg text-[#666] max-w-xl mx-auto mb-20 leading-relaxed fade-up fade-up-delay-3">
           Engineering autonomous execution systems since day one.<br/>
-          <span class="text-accent">No vendor lock-in.</span> <span class="text-muted">No third-party dependencies.</span> <span class="text-purple-400">No compromises.</span>
+          No vendor lock-in. No third-party dependencies. No compromises.
         </p>
 
-        <div class="flex items-center justify-center gap-4 sm:gap-6 flex-wrap reveal reveal-delay-3">
+        <div class="flex items-center justify-center gap-4 flex-wrap fade-up fade-up-delay-4">
           <a
             href="https://github.com/theyonecodes"
             target="_blank"
             rel="noopener"
-            class="group px-6 sm:px-8 py-3 sm:py-4 bg-accent text-bg font-bold rounded-lg hover:bg-accent-dim transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
+            class="btn-primary px-8 py-4 text-sm tracking-wider"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
-            </svg>
-            View Profile
+            <span>View Profile</span>
           </a>
           <a
             href="#manifesto"
-            class="px-6 sm:px-8 py-3 sm:py-4 border border-border text-muted font-semibold rounded-lg hover:border-accent hover:text-accent transition-all duration-300 text-sm sm:text-base"
+            class="btn-secondary px-8 py-4 text-sm tracking-wider text-[#666]"
           >
-            Read Manifesto ->
+            Read Manifesto
           </a>
         </div>
 
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2">
-          <div class="w-6 h-10 border-2 border-muted rounded-full flex items-start justify-center p-2">
-            <div class="w-1 h-2 bg-accent rounded-full animate-bounce"></div>
-          </div>
+        <div class="absolute bottom-16 left-1/2 -translate-x-1/2">
+          <div class="w-px h-12 bg-gradient-to-b from-transparent via-[#222] to-transparent"></div>
         </div>
       </div>
     </section>
 
-    <section class="py-20 sm:py-32 px-6 border-t border-border/30 reveal">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+    <section class="py-32 px-6 border-t border-[#111]">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#111]">
           {[
-            { num: '42', label: 'repos_public_private' },
-            { num: '0', label: 'third_party_deps_owned' },
-            { num: '100', label: 'percent_operational_autonomy' },
-            { num: '∞', label: 'zero_waste_lines' }
+            { num: '42', label: 'repos' },
+            { num: '0', label: 'third-party deps' },
+            { num: '100', label: 'autonomy' },
+            { num: '∞', label: 'zero waste' }
           ].map((stat, i) => (
-            <div class={`text-center reveal reveal-delay-${i + 1}`}>
+            <div class={`bg-black p-8 sm:p-12 text-center scale-in`} style={`transition-delay: ${i * 0.1}s`}>
               <div class="stat-number">{stat.num}</div>
-              <div class="text-muted text-xs sm:text-sm mt-2 font-mono">{stat.label}</div>
+              <div class="text-[#444] text-xs mt-4 tracking-wider uppercase">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="manifesto" class="py-20 sm:py-32 px-6 border-t border-border/30 reveal">
-      <div class="max-w-4xl mx-auto">
-        <div class="terminal-line text-accent text-sm mb-6">
-          <span class="text-purple-400">//</span> <span class="text-muted">the_four_pillars.src</span>
+    <section id="manifesto" class="py-32 px-6 border-t border-[#111]">
+      <div class="max-w-3xl mx-auto">
+        <div class="terminal-line mb-8 fade-up">
+          manifesto.src
         </div>
 
-        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-12 sm:mb-16 shimmer-text">
-          THE MANIFESTO
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-20 fade-up fade-up-delay-1">
+          The Manifesto
         </h2>
 
-        <div class="space-y-6 sm:space-y-12">
+        <div class="space-y-px bg-[#111]">
           {[
-            { icon: '⚡', title: 'Zero Waste', color: 'text-accent', desc: 'Every line of code earns its place. No bloat, no borrowed abstractions. If I didn\'t write it, I own it. Dependencies are liabilities. The less I depend on, the more I control.' },
-            { icon: '🚀', title: 'Maximum Speed', color: 'text-cyan-400', desc: 'Startup time is a feature. Latency is a bug. Performance is non-negotiable. A system that wastes resources is a system I don\'t trust. Lean code is fast code. Fast code is sovereign code.' },
-            { icon: '🔐', title: 'Digital Sovereignty', color: 'text-purple-400', desc: 'Tools run on my hardware. On my terms. No telemetry. No accounts. No cloud dependency. My data stays on my machine. My tools stay under my control.' },
-            { icon: '⚙️', title: 'Autonomous Execution', color: 'text-green-400', desc: 'Once built, the system runs. No prompts. No confirmations. No hand-holding. Operational from day one. Autonomous by design.' }
-          ].map((pillar, i) => (
-            <div class={`card-glow rounded-2xl p-6 sm:p-8 reveal reveal-delay-${(i % 4) + 1}`}>
-              <div class="flex items-start gap-4 sm:gap-6">
-                <span class="text-3xl sm:text-4xl">{pillar.icon}</span>
+            { 
+              title: 'Zero Waste', 
+              desc: 'Every line of code earns its place. No bloat, no borrowed abstractions. If I didn\'t write it, I own it. Dependencies are liabilities. The less I depend on, the more I control.' 
+            },
+            { 
+              title: 'Maximum Speed', 
+              desc: 'Startup time is a feature. Latency is a bug. Performance is non-negotiable. A system that wastes resources is a system I don\'t trust. Lean code is fast code. Fast code is sovereign code.' 
+            },
+            { 
+              title: 'Digital Sovereignty', 
+              desc: 'Tools run on my hardware. On my terms. No telemetry. No accounts. No cloud dependency. My data stays on my machine. My tools stay under my control.' 
+            },
+            { 
+              title: 'Autonomous Execution', 
+              desc: 'Once built, the system runs. No prompts. No confirmations. No hand-holding. Operational from day one. Autonomous by design.' 
+            }
+          ].map((item, i) => (
+            <div class={`bg-black p-8 sm:p-10 card fade-up`} style={`transition-delay: ${i * 0.15}s`}>
+              <div class="flex items-start gap-8">
+                <span class="text-[#282828] text-xs font-medium w-6 mt-1">0{i + 1}</span>
                 <div>
-                  <h3 class={`text-xl sm:text-2xl font-bold mb-3 ${pillar.color}`}>{pillar.title}</h3>
-                  <p class="text-muted text-sm sm:text-base leading-relaxed">
-                    {pillar.desc}
-                  </p>
+                  <h3 class="text-lg sm:text-xl font-medium mb-4 text-[#ccc]">{item.title}</h3>
+                  <p class="text-[#555] text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             </div>
@@ -140,33 +130,41 @@ import WebGLScene from '../components/WebGLScene.astro';
       </div>
     </section>
 
-    <section id="focus" class="py-20 sm:py-32 px-6 border-t border-border/30 bg-surface/20 reveal">
-      <div class="max-w-6xl mx-auto">
-        <div class="terminal-line text-accent text-sm mb-6">
-          <span class="text-purple-400">//</span> <span class="text-muted">focus_areas.config</span>
+    <section id="focus" class="py-32 px-6 border-t border-[#111]">
+      <div class="max-w-5xl mx-auto">
+        <div class="terminal-line mb-8 fade-up">
+          focus_areas.config
         </div>
 
-        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-12 sm:mb-16 gradient-text-cyan">
-          FOCUS AREAS
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-20 fade-up fade-up-delay-1">
+          Focus Areas
         </h2>
 
-        <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+        <div class="grid md:grid-cols-3 gap-px bg-[#111]">
           {[
-            { num: '01', title: 'System Optimization', desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.', tags: ['Linux', 'Bash', 'Rust', 'Python'], tagColor: 'text-accent' },
-            { num: '02', title: 'Security Auditing', desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required. Security that respects your sovereignty.', tags: ['Auditing', 'Offline', 'Privacy'], tagColor: 'text-cyan-400' },
-            { num: '03', title: 'Developer Productivity', desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.', tags: ['CLI', 'API-first', 'Zero-deps'], tagColor: 'text-purple-400' }
+            { 
+              title: 'System Optimization', 
+              desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.',
+              tags: ['Linux', 'Rust', 'Bash', 'Python']
+            },
+            { 
+              title: 'Security Auditing', 
+              desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.',
+              tags: ['Auditing', 'Offline', 'Privacy']
+            },
+            { 
+              title: 'Developer Productivity', 
+              desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.',
+              tags: ['CLI', 'API-first', 'Zero-deps']
+            }
           ].map((area, i) => (
-            <div class={`card-glow rounded-2xl p-6 sm:p-8 reveal reveal-delay-${i + 1}`}>
-              <div class={`${i === 0 ? 'text-accent' : i === 1 ? 'text-cyan-400' : 'text-purple-400'} text-xs font-mono mb-4`}>{area.num}</div>
-              <h3 class="text-lg sm:text-xl font-bold mb-4">{area.title}</h3>
-              <p class="text-muted text-sm leading-relaxed mb-6">
-                {area.desc}
-              </p>
+            <div class={`bg-black p-8 sm:p-10 card fade-up`} style={`transition-delay: ${i * 0.15}s`}>
+              <div class="text-[#282828] text-xs font-medium mb-6">0{i + 1}</div>
+              <h3 class="text-base sm:text-lg font-medium mb-4 text-[#ccc]">{area.title}</h3>
+              <p class="text-[#555] text-sm leading-relaxed mb-8">{area.desc}</p>
               <div class="flex flex-wrap gap-2">
                 {area.tags.map(tag => (
-                  <span class={`px-3 py-1 text-xs bg-current/10 rounded-full ${area.tagColor}`}>
-                    {tag}
-                  </span>
+                  <span class="text-[#333] text-xs px-3 py-1 border border-[#1a1a1a]">{tag}</span>
                 ))}
               </div>
             </div>
@@ -175,72 +173,74 @@ import WebGLScene from '../components/WebGLScene.astro';
       </div>
     </section>
 
-    <section id="stack" class="py-20 sm:py-32 px-6 border-t border-border/30 reveal">
-      <div class="max-w-6xl mx-auto">
-        <div class="terminal-line text-accent text-sm mb-6">
-          <span class="text-purple-400">//</span> <span class="text-muted">tech_stack.json</span>
+    <section id="stack" class="py-32 px-6 border-t border-[#111]">
+      <div class="max-w-4xl mx-auto">
+        <div class="terminal-line mb-8 fade-up">
+          tech_stack.json
         </div>
 
-        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-12 sm:mb-16 shimmer-text">
-          TECH STACK
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-20 fade-up fade-up-delay-1">
+          Tech Stack
         </h2>
 
-        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 sm:gap-4">
+        <div class="flex flex-wrap gap-3 fade-up fade-up-delay-2">
           {['Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'].map((tech, i) => (
-            <div class={`card-glow rounded-xl p-4 sm:p-6 text-center font-bold text-sm sm:text-base reveal reveal-delay-${(i % 4) + 1}`}>
+            <span 
+              class="text-[#555] text-sm px-5 py-3 border border-[#1a1a1a] hover:border-[#333] hover:text-[#888] transition-all duration-700 cursor-default"
+              style={`transition-delay: ${i * 0.05}s`}
+            >
               {tech}
-            </div>
+            </span>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center px-6 border-t border-border/30 reveal">
+    <section class="py-40 px-6 border-t border-[#111]">
       <div class="max-w-3xl mx-auto text-center">
-        <div class="terminal-line text-accent text-sm mb-6 justify-center">
-          <span class="text-purple-400">//</span> <span class="text-muted">contact.init</span>
+        <div class="terminal-line mb-8 justify-center fade-up">
+          contact.init
         </div>
 
-        <h2 class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 sm:mb-8 shimmer-text">
-          LET'S BUILD
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-8 fade-up fade-up-delay-1">
+          Let's Build
         </h2>
 
-        <p class="text-lg sm:text-xl text-muted mb-10 sm:mb-12">
+        <p class="text-[#666] text-base sm:text-lg mb-16 fade-up fade-up-delay-2">
           I don't do collaborations.<br/>
-          <span class="text-accent">I build alone and ship.</span>
+          <span class="text-[#999]">I build alone and ship.</span>
         </p>
 
         <a
           href="https://github.com/theyonecodes"
           target="_blank"
           rel="noopener"
-          class="inline-flex items-center gap-3 sm:gap-4 px-8 sm:px-12 py-4 sm:py-6 bg-accent text-bg text-base sm:text-xl font-bold rounded-xl hover:bg-accent-dim transition-all duration-300 glow-accent"
+          class="btn-primary inline-flex items-center gap-3 px-10 py-5 text-sm tracking-wider fade-up fade-up-delay-3"
         >
-          <svg class="w-6 sm:w-8 h-6 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
           </svg>
-          <span class="hidden sm:inline">GITHUB.COM/THEYONECODES</span>
-          <span class="sm:hidden">GITHUB</span>
+          <span>github.com/theyonecodes</span>
         </a>
       </div>
     </section>
 
-    <footer class="py-8 sm:py-12 px-6 border-t border-border/30">
-      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
-          <span class="text-xs sm:text-sm text-muted font-mono">STATUS: OPERATIONAL</span>
+    <footer class="py-12 px-6 border-t border-[#111]">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-1 h-1 bg-[#333] rounded-full"></div>
+          <span class="text-[#444] text-xs tracking-wider">STATUS: OPERATIONAL</span>
         </div>
 
-        <p class="text-xs sm:text-sm text-muted font-mono text-center md:text-left">
-          &copy; 2024 THEYONE_CODES &mdash; ENGINE_TUNED. DEPENDENCIES_DELETED. AUTONOMY_ACHIEVED.
+        <p class="text-[#333] text-xs tracking-wider font-medium">
+          &copy; 2024 THEYONE_CODES
         </p>
 
         <a
           href="https://github.com/theyonecodes"
           target="_blank"
           rel="noopener"
-          class="text-xs sm:text-sm text-accent hover:text-accent-dim transition-colors font-mono"
+          class="text-[#444] text-xs tracking-wider hover:text-[#666] transition-colors duration-500"
         >
           github.com/theyonecodes
         </a>
@@ -248,21 +248,3 @@ import WebGLScene from '../components/WebGLScene.astro';
     </footer>
   </div>
 </Layout>
-
-<script>
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href') as string);
-      target?.scrollIntoView({ behavior: 'smooth' });
-      mobileMenu?.classList.add('hidden');
-    });
-  });
-</script>

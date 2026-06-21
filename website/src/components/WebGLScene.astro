@@ -6,17 +6,16 @@
 <script>
 import * as THREE from 'three';
 
-class WebGLScene {
+class MinimalScene {
   private canvas: HTMLCanvasElement;
   private renderer: THREE.WebGLRenderer;
   private scene: THREE.Scene;
   private camera: THREE.PerspectiveCamera;
   private particles: THREE.Points;
-  private shapes: THREE.Mesh[] = [];
+  private time = 0;
+  private scroll = 0;
   private mouse = { x: 0, y: 0 };
   private targetMouse = { x: 0, y: 0 };
-  private scroll = 0;
-  private time = 0;
   private animationId: number = 0;
 
   constructor() {
@@ -30,52 +29,43 @@ class WebGLScene {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance'
+      antialias: false,
+      powerPreference: 'low-power'
     });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    this.camera.position.z = 30;
+    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera.position.z = 40;
 
     this.createParticles();
-    this.createShapes();
-    this.createLighting();
+    this.createGrid();
     this.bindEvents();
     this.animate();
   }
 
   private createParticles() {
-    const count = 2000;
+    const count = 800;
     const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
-
-    const color1 = new THREE.Color('#00ff88');
-    const color2 = new THREE.Color('#22d3ee');
+    const sizes = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 100;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 100;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
-
-      const mixedColor = Math.random() > 0.5 ? color1 : color2;
-      colors[i * 3] = mixedColor.r;
-      colors[i * 3 + 1] = mixedColor.g;
-      colors[i * 3 + 2] = mixedColor.b;
+      positions[i * 3] = (Math.random() - 0.5) * 80;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 80;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 40;
+      sizes[i] = Math.random() * 1.5 + 0.5;
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
     const material = new THREE.PointsMaterial({
-      size: 0.12,
-      vertexColors: true,
+      size: 0.08,
+      color: 0x444444,
       transparent: true,
-      opacity: 0.6,
-      blending: THREE.AdditiveBlending,
+      opacity: 0.4,
       sizeAttenuation: true
     });
 
@@ -83,60 +73,12 @@ class WebGLScene {
     this.scene.add(this.particles);
   }
 
-  private createShapes() {
-    const geometries = [
-      new THREE.IcosahedronGeometry(1.5, 0),
-      new THREE.OctahedronGeometry(1.5, 0),
-      new THREE.TorusGeometry(1.2, 0.3, 8, 16),
-      new THREE.BoxGeometry(1.5, 1.5, 1.5),
-      new THREE.TetrahedronGeometry(1.5, 0),
-    ];
-
-    const positions = [
-      { x: -25, y: 15, z: -20 },
-      { x: 30, y: -10, z: -15 },
-      { x: -30, y: -20, z: -25 },
-      { x: 25, y: 20, z: -30 },
-      { x: 0, y: 25, z: -20 },
-    ];
-
-    const colors = ['#00ff88', '#22d3ee', '#a855f7', '#00ff88', '#22d3ee'];
-
-    geometries.forEach((geo, i) => {
-      const material = new THREE.MeshBasicMaterial({
-        color: colors[i],
-        wireframe: true,
-        transparent: true,
-        opacity: 0.25
-      });
-
-      const mesh = new THREE.Mesh(geo, material);
-      mesh.position.set(positions[i].x, positions[i].y, positions[i].z);
-      mesh.userData = {
-        originalY: positions[i].y,
-        rotationSpeed: {
-          x: (Math.random() - 0.5) * 0.005,
-          y: (Math.random() - 0.5) * 0.005,
-        },
-        floatOffset: Math.random() * Math.PI * 2
-      };
-
-      this.shapes.push(mesh);
-      this.scene.add(mesh);
-    });
-  }
-
-  private createLighting() {
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
-    this.scene.add(ambientLight);
-
-    const pointLight1 = new THREE.PointLight('#00ff88', 1.5, 100);
-    pointLight1.position.set(0, 0, 20);
-    this.scene.add(pointLight1);
-
-    const pointLight2 = new THREE.PointLight('#a855f7', 1, 100);
-    pointLight2.position.set(-20, 20, 10);
-    this.scene.add(pointLight2);
+  private createGrid() {
+    const gridHelper = new THREE.GridHelper(100, 50, 0x111111, 0x0a0a0a);
+    gridHelper.position.y = -20;
+    gridHelper.material.opacity = 0.3;
+    gridHelper.material.transparent = true;
+    this.scene.add(gridHelper);
   }
 
   private bindEvents() {
@@ -157,8 +99,8 @@ class WebGLScene {
   }
 
   private onMouseMove(e: MouseEvent) {
-    this.targetMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    this.targetMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    this.targetMouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+    this.targetMouse.y = -(e.clientY / window.innerHeight - 0.5) * 2;
   }
 
   private onScroll() {
@@ -167,37 +109,33 @@ class WebGLScene {
 
   private animate() {
     this.animationId = requestAnimationFrame(() => this.animate());
-    this.time += 0.005;
+    this.time += 0.0008;
 
-    this.mouse.x += (this.targetMouse.x - this.mouse.x) * 0.03;
-    this.mouse.y += (this.targetMouse.y - this.mouse.y) * 0.03;
+    this.mouse.x += (this.targetMouse.x - this.mouse.x) * 0.02;
+    this.mouse.y += (this.targetMouse.y - this.mouse.y) * 0.02;
 
-    this.particles.rotation.y += 0.0002;
-    this.particles.rotation.x += 0.0001;
-
-    this.camera.position.x += (this.mouse.x * 3 - this.camera.position.x) * 0.03;
-    this.camera.position.y += (this.mouse.y * 3 - this.camera.position.y) * 0.03;
+    this.camera.position.x = this.mouse.x * 2;
+    this.camera.position.y = this.mouse.y * 2;
     this.camera.lookAt(0, 0, 0);
+    
+    this.camera.position.z = 40 - this.scroll * 15;
 
-    this.camera.position.z = 30 - this.scroll * 10;
+    this.particles.rotation.y = this.time * 0.02;
+    this.particles.rotation.x = this.time * 0.01;
 
-    this.shapes.forEach((shape) => {
-      const { originalY, rotationSpeed, floatOffset } = shape.userData;
-      shape.rotation.x += rotationSpeed.x;
-      shape.rotation.y += rotationSpeed.y;
-      shape.position.y = originalY + Math.sin(this.time + floatOffset) * 2;
-    });
+    const positions = this.particles.geometry.attributes.position.array as Float32Array;
+    for (let i = 0; i < positions.length; i += 3) {
+      positions[i + 1] += Math.sin(this.time * 0.5 + i * 0.01) * 0.003;
+    }
+    this.particles.geometry.attributes.position.needsUpdate = true;
 
     this.renderer.render(this.scene, this.camera);
   }
 
   public dispose() {
     cancelAnimationFrame(this.animationId);
-    window.removeEventListener('resize', this.onResize);
-    window.removeEventListener('mousemove', this.onMouseMove);
-    window.removeEventListener('scroll', this.onScroll);
   }
 }
 
-new WebGLScene();
+new MinimalScene();
 </script>
