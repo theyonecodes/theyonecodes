@@ -1,12 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://theyonecodes.github.io',
-  base: '/theyonecodes/',
+  base: '/theyonecodes',
   vite: {
     plugins: [tailwindcss()]
   }

@@ -8,19 +8,45 @@ import WebGLScene from '../components/WebGLScene.astro';
 
   <div class="scanline"></div>
 
+  <nav class="fixed top-0 left-0 right-0 z-50 glass py-4 px-6">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#" class="text-xl font-bold tracking-tight">
+        <span class="text-accent">//</span> theyone
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#manifesto" class="text-muted hover:text-accent transition-colors duration-300">Manifesto</a>
+        <a href="#focus" class="text-muted hover:text-accent transition-colors duration-300">Focus</a>
+        <a href="#stack" class="text-muted hover:text-accent transition-colors duration-300">Stack</a>
+        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="text-accent hover:text-accent-dim transition-colors duration-300">GitHub -></a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-muted hover:text-accent transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-border/30 pt-4">
+      <div class="flex flex-col gap-4 text-sm">
+        <a href="#manifesto" class="text-muted hover:text-accent transition-colors duration-300">Manifesto</a>
+        <a href="#focus" class="text-muted hover:text-accent transition-colors duration-300">Focus</a>
+        <a href="#stack" class="text-muted hover:text-accent transition-colors duration-300">Stack</a>
+        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="text-accent hover:text-accent-dim transition-colors duration-300">GitHub -></a>
+      </div>
+    </div>
+  </nav>
+
   <div class="content-wrapper">
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative px-6">
+    <section class="min-h-screen flex items-center justify-center relative px-6 pt-20">
       <div class="max-w-5xl mx-auto text-center">
-        <div class="terminal-line inline-block text-accent text-sm mb-8 opacity-70">
+        <div class="terminal-line inline-block text-accent text-sm mb-8 opacity-70 reveal">
           <span class="text-muted">const</span> identity <span class="text-muted">=</span> <span class="text-purple-400">'TheyOne'</span>;
         </div>
 
-        <h1 class="text-6xl md:text-9xl font-black tracking-tighter mb-8 gradient-text glow-text">
+        <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 shimmer-text">
           THEYONE<br/>CODES
         </h1>
 
-        <div class="flex items-center justify-center gap-2 text-xl md:text-2xl font-mono text-muted mb-12">
+        <div class="flex items-center justify-center gap-2 text-lg sm:text-xl md:text-2xl font-mono text-muted mb-12 reveal reveal-delay-1">
           <span class="text-accent">$</span>
           <span class="text-text">zero_waste</span>
           <span class="text-purple-400">.</span>
@@ -30,15 +56,17 @@ import WebGLScene from '../components/WebGLScene.astro';
           <span class="text-accent">()</span>
         </div>
 
-        <p class="text-lg text-muted max-w-2xl mx-auto mb-16 leading-relaxed">
+        <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto mb-16 leading-relaxed reveal reveal-delay-2">
           Engineering autonomous execution systems since day one.<br/>
           <span class="text-accent">No vendor lock-in.</span> <span class="text-muted">No third-party dependencies.</span> <span class="text-purple-400">No compromises.</span>
         </p>
 
-        <div class="flex items-center justify-center gap-6 flex-wrap">
+        <div class="flex items-center justify-center gap-4 sm:gap-6 flex-wrap reveal reveal-delay-3">
           <a
             href="https://github.com/theyonecodes"
-            class="group px-8 py-4 bg-accent text-bg font-bold rounded-lg hover:bg-accent-dim transition-all duration-300 flex items-center gap-3"
+            target="_blank"
+            rel="noopener"
+            class="group px-6 sm:px-8 py-3 sm:py-4 bg-accent text-bg font-bold rounded-lg hover:bg-accent-dim transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
@@ -47,7 +75,7 @@ import WebGLScene from '../components/WebGLScene.astro';
           </a>
           <a
             href="#manifesto"
-            class="px-8 py-4 border border-border text-muted font-semibold rounded-lg hover:border-accent hover:text-accent transition-all duration-300"
+            class="px-6 sm:px-8 py-3 sm:py-4 border border-border text-muted font-semibold rounded-lg hover:border-accent hover:text-accent transition-all duration-300 text-sm sm:text-base"
           >
             Read Manifesto ->
           </a>
@@ -61,168 +89,105 @@ import WebGLScene from '../components/WebGLScene.astro';
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-32 px-6 border-t border-border/30">
+    <section class="py-20 sm:py-32 px-6 border-t border-border/30 reveal">
       <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div class="text-center">
-            <div class="stat-number">42</div>
-            <div class="text-muted text-sm mt-2 font-mono">repos_public_private</div>
-          </div>
-          <div class="text-center">
-            <div class="stat-number">0</div>
-            <div class="text-muted text-sm mt-2 font-mono">third_party_deps_owned</div>
-          </div>
-          <div class="text-center">
-            <div class="stat-number">100</div>
-            <div class="text-muted text-sm mt-2 font-mono">percent_operational_autonomy</div>
-          </div>
-          <div class="text-center">
-            <div class="stat-number">∞</div>
-            <div class="text-muted text-sm mt-2 font-mono">zero_waste_lines</div>
-          </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          {[
+            { num: '42', label: 'repos_public_private' },
+            { num: '0', label: 'third_party_deps_owned' },
+            { num: '100', label: 'percent_operational_autonomy' },
+            { num: '∞', label: 'zero_waste_lines' }
+          ].map((stat, i) => (
+            <div class={`text-center reveal reveal-delay-${i + 1}`}>
+              <div class="stat-number">{stat.num}</div>
+              <div class="text-muted text-xs sm:text-sm mt-2 font-mono">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Manifesto Section -->
-    <section id="manifesto" class="py-32 px-6 border-t border-border/30">
+    <section id="manifesto" class="py-20 sm:py-32 px-6 border-t border-border/30 reveal">
       <div class="max-w-4xl mx-auto">
         <div class="terminal-line text-accent text-sm mb-6">
           <span class="text-purple-400">//</span> <span class="text-muted">the_four_pillars.src</span>
         </div>
 
-        <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-16 gradient-text glow-text">
+        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-12 sm:mb-16 shimmer-text">
           THE MANIFESTO
         </h2>
 
-        <div class="space-y-12">
-          <div class="card-glow rounded-2xl p-8">
-            <div class="flex items-start gap-6">
-              <span class="text-4xl">⚡</span>
-              <div>
-                <h3 class="text-2xl font-bold mb-3 text-accent">Zero Waste</h3>
-                <p class="text-muted leading-relaxed">
-                  Every line of code earns its place. No bloat, no borrowed abstractions. If I didn't write it, I own it.
-                  Dependencies are liabilities. The less I depend on, the more I control.
-                </p>
+        <div class="space-y-6 sm:space-y-12">
+          {[
+            { icon: '⚡', title: 'Zero Waste', color: 'text-accent', desc: 'Every line of code earns its place. No bloat, no borrowed abstractions. If I didn\'t write it, I own it. Dependencies are liabilities. The less I depend on, the more I control.' },
+            { icon: '🚀', title: 'Maximum Speed', color: 'text-cyan-400', desc: 'Startup time is a feature. Latency is a bug. Performance is non-negotiable. A system that wastes resources is a system I don\'t trust. Lean code is fast code. Fast code is sovereign code.' },
+            { icon: '🔐', title: 'Digital Sovereignty', color: 'text-purple-400', desc: 'Tools run on my hardware. On my terms. No telemetry. No accounts. No cloud dependency. My data stays on my machine. My tools stay under my control.' },
+            { icon: '⚙️', title: 'Autonomous Execution', color: 'text-green-400', desc: 'Once built, the system runs. No prompts. No confirmations. No hand-holding. Operational from day one. Autonomous by design.' }
+          ].map((pillar, i) => (
+            <div class={`card-glow rounded-2xl p-6 sm:p-8 reveal reveal-delay-${(i % 4) + 1}`}>
+              <div class="flex items-start gap-4 sm:gap-6">
+                <span class="text-3xl sm:text-4xl">{pillar.icon}</span>
+                <div>
+                  <h3 class={`text-xl sm:text-2xl font-bold mb-3 ${pillar.color}`}>{pillar.title}</h3>
+                  <p class="text-muted text-sm sm:text-base leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="card-glow rounded-2xl p-8">
-            <div class="flex items-start gap-6">
-              <span class="text-4xl">🚀</span>
-              <div>
-                <h3 class="text-2xl font-bold mb-3 text-cyan-400">Maximum Speed</h3>
-                <p class="text-muted leading-relaxed">
-                  Startup time is a feature. Latency is a bug. Performance is non-negotiable. A system that wastes
-                  resources is a system I don't trust. Lean code is fast code. Fast code is sovereign code.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-glow rounded-2xl p-8">
-            <div class="flex items-start gap-6">
-              <span class="text-4xl">🔐</span>
-              <div>
-                <h3 class="text-2xl font-bold mb-3 text-purple-400">Digital Sovereignty</h3>
-                <p class="text-muted leading-relaxed">
-                  Tools run on my hardware. On my terms. No telemetry. No accounts. No cloud dependency.
-                  My data stays on my machine. My tools stay under my control.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-glow rounded-2xl p-8">
-            <div class="flex items-start gap-6">
-              <span class="text-4xl">⚙️</span>
-              <div>
-                <h3 class="text-2xl font-bold mb-3 text-green-400">Autonomous Execution</h3>
-                <p class="text-muted leading-relaxed">
-                  Once built, the system runs. No prompts. No confirmations. No hand-holding.
-                  Operational from day one. Autonomous by design.
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Focus Areas -->
-    <section class="py-32 px-6 border-t border-border/30 bg-surface/20">
+    <section id="focus" class="py-20 sm:py-32 px-6 border-t border-border/30 bg-surface/20 reveal">
       <div class="max-w-6xl mx-auto">
         <div class="terminal-line text-accent text-sm mb-6">
           <span class="text-purple-400">//</span> <span class="text-muted">focus_areas.config</span>
         </div>
 
-        <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-16 gradient-text-cyan glow-text">
+        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-12 sm:mb-16 gradient-text-cyan">
           FOCUS AREAS
         </h2>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="card-glow rounded-2xl p-8">
-            <div class="text-accent text-xs font-mono mb-4">01</div>
-            <h3 class="text-xl font-bold mb-4">System Optimization</h3>
-            <p class="text-muted text-sm leading-relaxed mb-6">
-              Linux and Windows tools that make systems leaner. Kernel tuning, process management,
-              zero-overhead monitoring.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full">Linux</span>
-              <span class="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full">Bash</span>
-              <span class="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full">Rust</span>
-              <span class="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full">Python</span>
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+          {[
+            { num: '01', title: 'System Optimization', desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.', tags: ['Linux', 'Bash', 'Rust', 'Python'], tagColor: 'text-accent' },
+            { num: '02', title: 'Security Auditing', desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required. Security that respects your sovereignty.', tags: ['Auditing', 'Offline', 'Privacy'], tagColor: 'text-cyan-400' },
+            { num: '03', title: 'Developer Productivity', desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.', tags: ['CLI', 'API-first', 'Zero-deps'], tagColor: 'text-purple-400' }
+          ].map((area, i) => (
+            <div class={`card-glow rounded-2xl p-6 sm:p-8 reveal reveal-delay-${i + 1}`}>
+              <div class={`${i === 0 ? 'text-accent' : i === 1 ? 'text-cyan-400' : 'text-purple-400'} text-xs font-mono mb-4`}>{area.num}</div>
+              <h3 class="text-lg sm:text-xl font-bold mb-4">{area.title}</h3>
+              <p class="text-muted text-sm leading-relaxed mb-6">
+                {area.desc}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {area.tags.map(tag => (
+                  <span class={`px-3 py-1 text-xs bg-current/10 rounded-full ${area.tagColor}`}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-
-          <div class="card-glow rounded-2xl p-8">
-            <div class="text-cyan-400 text-xs font-mono mb-4">02</div>
-            <h3 class="text-xl font-bold mb-4">Security Auditing</h3>
-            <p class="text-muted text-sm leading-relaxed mb-6">
-              Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.
-              Security that respects your sovereignty.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 text-xs bg-cyan-400/10 text-cyan-400 rounded-full">Auditing</span>
-              <span class="px-3 py-1 text-xs bg-cyan-400/10 text-cyan-400 rounded-full">Offline</span>
-              <span class="px-3 py-1 text-xs bg-cyan-400/10 text-cyan-400 rounded-full">Privacy</span>
-            </div>
-          </div>
-
-          <div class="card-glow rounded-2xl p-8">
-            <div class="text-purple-400 text-xs font-mono mb-4">03</div>
-            <h3 class="text-xl font-bold mb-4">Developer Productivity</h3>
-            <p class="text-muted text-sm leading-relaxed mb-6">
-              Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 text-xs bg-purple-400/10 text-purple-400 rounded-full">CLI</span>
-              <span class="px-3 py-1 text-xs bg-purple-400/10 text-purple-400 rounded-full">API-first</span>
-              <span class="px-3 py-1 text-xs bg-purple-400/10 text-purple-400 rounded-full">Zero-deps</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Tech Stack -->
-    <section class="py-32 px-6 border-t border-border/30">
+    <section id="stack" class="py-20 sm:py-32 px-6 border-t border-border/30 reveal">
       <div class="max-w-6xl mx-auto">
         <div class="terminal-line text-accent text-sm mb-6">
           <span class="text-purple-400">//</span> <span class="text-muted">tech_stack.json</span>
         </div>
 
-        <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-16 gradient-text glow-text">
+        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-12 sm:mb-16 shimmer-text">
           TECH STACK
         </h2>
 
-        <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
-          {['Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'].map((tech) => (
-            <div class="card-glow rounded-xl p-6 text-center font-bold">
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 sm:gap-4">
+          {['Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'].map((tech, i) => (
+            <div class={`card-glow rounded-xl p-4 sm:p-6 text-center font-bold text-sm sm:text-base reveal reveal-delay-${(i % 4) + 1}`}>
               {tech}
             </div>
           ))}
@@ -230,49 +195,52 @@ import WebGLScene from '../components/WebGLScene.astro';
       </div>
     </section>
 
-    <!-- Contact / CTA -->
-    <section class="min-h-[70vh] flex items-center justify-center px-6 border-t border-border/30">
+    <section class="min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center px-6 border-t border-border/30 reveal">
       <div class="max-w-3xl mx-auto text-center">
         <div class="terminal-line text-accent text-sm mb-6 justify-center">
           <span class="text-purple-400">//</span> <span class="text-muted">contact.init</span>
         </div>
 
-        <h2 class="text-5xl md:text-7xl font-black tracking-tight mb-8 gradient-text glow-text">
+        <h2 class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 sm:mb-8 shimmer-text">
           LET'S BUILD
         </h2>
 
-        <p class="text-xl text-muted mb-12">
+        <p class="text-lg sm:text-xl text-muted mb-10 sm:mb-12">
           I don't do collaborations.<br/>
           <span class="text-accent">I build alone and ship.</span>
         </p>
 
         <a
           href="https://github.com/theyonecodes"
-          class="inline-flex items-center gap-4 px-12 py-6 bg-accent text-bg text-xl font-bold rounded-xl hover:bg-accent-dim transition-all duration-300 glow-accent"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-3 sm:gap-4 px-8 sm:px-12 py-4 sm:py-6 bg-accent text-bg text-base sm:text-xl font-bold rounded-xl hover:bg-accent-dim transition-all duration-300 glow-accent"
         >
-          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 sm:w-8 h-6 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
           </svg>
-          GITHUB.COM/THEYONECODES
+          <span class="hidden sm:inline">GITHUB.COM/THEYONECODES</span>
+          <span class="sm:hidden">GITHUB</span>
         </a>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-border/30">
-      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer class="py-8 sm:py-12 px-6 border-t border-border/30">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
-          <span class="text-sm text-muted font-mono">STATUS: OPERATIONAL</span>
+          <span class="text-xs sm:text-sm text-muted font-mono">STATUS: OPERATIONAL</span>
         </div>
 
-        <p class="text-sm text-muted font-mono">
+        <p class="text-xs sm:text-sm text-muted font-mono text-center md:text-left">
           &copy; 2024 THEYONE_CODES &mdash; ENGINE_TUNED. DEPENDENCIES_DELETED. AUTONOMY_ACHIEVED.
         </p>
 
         <a
           href="https://github.com/theyonecodes"
-          class="text-sm text-accent hover:text-accent-dim transition-colors font-mono"
+          target="_blank"
+          rel="noopener"
+          class="text-xs sm:text-sm text-accent hover:text-accent-dim transition-colors font-mono"
         >
           github.com/theyonecodes
         </a>
@@ -280,3 +248,21 @@ import WebGLScene from '../components/WebGLScene.astro';
     </footer>
   </div>
 </Layout>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href') as string);
+      target?.scrollIntoView({ behavior: 'smooth' });
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

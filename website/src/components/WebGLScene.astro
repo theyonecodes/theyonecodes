@@ -5,7 +5,6 @@
 
 <script>
 import * as THREE from 'three';
-import gsap from 'gsap';
 
 class WebGLScene {
   private canvas: HTMLCanvasElement;
@@ -15,18 +14,26 @@ class WebGLScene {
   private particles: THREE.Points;
   private shapes: THREE.Mesh[] = [];
   private mouse = { x: 0, y: 0 };
+  private targetMouse = { x: 0, y: 0 };
   private scroll = 0;
   private time = 0;
+  private animationId: number = 0;
 
   constructor() {
     this.canvas = document.getElementById('webgl-canvas') as HTMLCanvasElement;
+    
+    if (window.innerWidth < 768) {
+      this.canvas.style.display = 'none';
+      return;
+    }
+    
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
       antialias: true,
       powerPreference: 'high-performance'
     });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
     this.scene = new THREE.Scene();
@@ -41,10 +48,9 @@ class WebGLScene {
   }
 
   private createParticles() {
-    const count = 3000;
+    const count = 2000;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
-    const sizes = new Float32Array(count);
 
     const color1 = new THREE.Color('#00ff88');
     const color2 = new THREE.Color('#22d3ee');
@@ -58,20 +64,17 @@ class WebGLScene {
       colors[i * 3] = mixedColor.r;
       colors[i * 3 + 1] = mixedColor.g;
       colors[i * 3 + 2] = mixedColor.b;
-
-      sizes[i] = Math.random() * 2 + 0.5;
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
     const material = new THREE.PointsMaterial({
-      size: 0.15,
+      size: 0.12,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.6,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true
     });
@@ -82,11 +85,11 @@ class WebGLScene {
 
   private createShapes() {
     const geometries = [
-      new THREE.IcosahedronGeometry(2, 0),
-      new THREE.OctahedronGeometry(2, 0),
-      new THREE.TorusGeometry(1.5, 0.4, 8, 16),
-      new THREE.BoxGeometry(2, 2, 2),
-      new THREE.TetrahedronGeometry(2, 0),
+      new THREE.IcosahedronGeometry(1.5, 0),
+      new THREE.OctahedronGeometry(1.5, 0),
+      new THREE.TorusGeometry(1.2, 0.3, 8, 16),
+      new THREE.BoxGeometry(1.5, 1.5, 1.5),
+      new THREE.TetrahedronGeometry(1.5, 0),
     ];
 
     const positions = [
@@ -104,7 +107,7 @@ class WebGLScene {
         color: colors[i],
         wireframe: true,
         transparent: true,
-        opacity: 0.3
+        opacity: 0.25
       });
 
       const mesh = new THREE.Mesh(geo, material);
@@ -112,8 +115,8 @@ class WebGLScene {
       mesh.userData = {
         originalY: positions[i].y,
         rotationSpeed: {
-          x: (Math.random() - 0.5) * 0.01,
-          y: (Math.random() - 0.5) * 0.01,
+          x: (Math.random() - 0.5) * 0.005,
+          y: (Math.random() - 0.5) * 0.005,
         },
         floatOffset: Math.random() * Math.PI * 2
       };
@@ -124,14 +127,14 @@ class WebGLScene {
   }
 
   private createLighting() {
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
     this.scene.add(ambientLight);
 
-    const pointLight1 = new THREE.PointLight('#00ff88', 2, 100);
+    const pointLight1 = new THREE.PointLight('#00ff88', 1.5, 100);
     pointLight1.position.set(0, 0, 20);
     this.scene.add(pointLight1);
 
-    const pointLight2 = new THREE.PointLight('#a855f7', 1.5, 100);
+    const pointLight2 = new THREE.PointLight('#a855f7', 1, 100);
     pointLight2.position.set(-20, 20, 10);
     this.scene.add(pointLight2);
   }
@@ -143,14 +146,19 @@ class WebGLScene {
   }
 
   private onResize() {
+    if (window.innerWidth < 768) {
+      this.canvas.style.display = 'none';
+      return;
+    }
+    this.canvas.style.display = 'block';
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
   private onMouseMove(e: MouseEvent) {
-    this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    this.targetMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    this.targetMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
   }
 
   private onScroll() {
@@ -158,37 +166,36 @@ class WebGLScene {
   }
 
   private animate() {
-    requestAnimationFrame(() => this.animate());
-    this.time += 0.01;
+    this.animationId = requestAnimationFrame(() => this.animate());
+    this.time += 0.005;
 
-    // Rotate particles
-    this.particles.rotation.y += 0.0003;
+    this.mouse.x += (this.targetMouse.x - this.mouse.x) * 0.03;
+    this.mouse.y += (this.targetMouse.y - this.mouse.y) * 0.03;
+
+    this.particles.rotation.y += 0.0002;
     this.particles.rotation.x += 0.0001;
 
-    // Camera follows mouse slightly
-    this.camera.position.x += (this.mouse.x * 5 - this.camera.position.x) * 0.05;
-    this.camera.position.y += (this.mouse.y * 5 - this.camera.position.y) * 0.05;
+    this.camera.position.x += (this.mouse.x * 3 - this.camera.position.x) * 0.03;
+    this.camera.position.y += (this.mouse.y * 3 - this.camera.position.y) * 0.03;
     this.camera.lookAt(0, 0, 0);
 
-    // Camera moves based on scroll
-    this.camera.position.z = 30 - this.scroll * 15;
+    this.camera.position.z = 30 - this.scroll * 10;
 
-    // Animate shapes
     this.shapes.forEach((shape) => {
       const { originalY, rotationSpeed, floatOffset } = shape.userData;
       shape.rotation.x += rotationSpeed.x;
       shape.rotation.y += rotationSpeed.y;
-      shape.position.y = originalY + Math.sin(this.time + floatOffset) * 3;
+      shape.position.y = originalY + Math.sin(this.time + floatOffset) * 2;
     });
 
-    // Animate particle positions based on scroll
-    const positions = this.particles.geometry.attributes.position.array as Float32Array;
-    for (let i = 0; i < positions.length; i += 3) {
-      positions[i + 1] += Math.sin(this.time + i) * 0.01;
-    }
-    this.particles.geometry.attributes.position.needsUpdate = true;
-
     this.renderer.render(this.scene, this.camera);
+  }
+
+  public dispose() {
+    cancelAnimationFrame(this.animationId);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('mousemove', this.onMouseMove);
+    window.removeEventListener('scroll', this.onScroll);
   }
 }
 

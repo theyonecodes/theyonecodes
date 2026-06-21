@@ -13,21 +13,27 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="index, follow" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://theyonecodes.github.io/theyonecodes/" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/theyonecodes/theyonecodes/main/assets/branding/hero.svg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/theyonecodes/theyonecodes/main/assets/branding/hero.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://theyonecodes.github.io/theyonecodes/" />
     <title>{title}</title>
     <style is:global>
       body {
@@ -36,7 +42,45 @@ const {
       }
     </style>
   </head>
-  <body class="min-h-screen bg-black text-white antialiased">
+  <body class="min-h-screen bg-black text-white antialiased overflow-x-hidden">
+    <div id="cursor-dot" class="cursor-dot"></div>
+    <div id="cursor-glow" class="cursor-glow"></div>
     <slot />
   </body>
 </html>
+
+<script>
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorGlow = document.getElementById('cursor-glow');
+  
+  if (cursorDot && cursorGlow) {
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+    });
+    
+    function animateCursor() {
+      glowX += (mouseX - glowX) * 0.1;
+      glowY += (mouseY - glowY) * 0.1;
+      cursorGlow.style.left = glowX + 'px';
+      cursorGlow.style.top = glowY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
