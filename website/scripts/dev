@@ -20,9 +20,12 @@ done
 URL="http://localhost:4321"
 echo "[dev] $URL"
 
-# Launch Chrome (detached)
-/opt/google/chrome/chrome "$URL" &>/dev/null &
-disown
+# Launch browser if available
+if command -v xdg-open &>/dev/null; then
+  xdg-open "$URL" &>/dev/null &
+elif command -v open &>/dev/null; then
+  open "$URL" &>/dev/null &
+fi
 
 echo "[dev] Press Ctrl+C to stop"
 trap "kill $ASTRO_PID 2>/dev/null" EXIT
