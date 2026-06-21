@@ -1,0 +1,23 @@
+---
+const techStack = [
+  'Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'
+];
+---
+
+<section id="stack" class="py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-20">
+      <span class="text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-4 block">Capabilities</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Tech Stack</h2>
+      <p class="text-muted text-lg max-w-xl mx-auto">Languages and tools I work with daily.</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      {techStack.map((tech) => (
+        <div class="px-6 py-4 rounded-xl border border-border bg-surface/50 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 font-semibold">
+          {tech}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

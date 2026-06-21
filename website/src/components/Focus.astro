@@ -1,0 +1,46 @@
+---
+const focusAreas = [
+  {
+    title: 'System Optimization',
+    description: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.',
+    tags: ['Linux', 'Bash', 'Rust', 'Python'],
+  },
+  {
+    title: 'Security Auditing',
+    description: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.',
+    tags: ['Auditing', 'Offline', 'Privacy', 'Scoring'],
+  },
+  {
+    title: 'Developer Productivity',
+    description: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.',
+    tags: ['CLI', 'API-first', 'Zero-deps', 'Keyboard-driven'],
+  },
+];
+---
+
+<section id="focus" class="py-32 px-6 bg-surface/30">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-20">
+      <span class="text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-4 block">What I Build</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Focus Areas</h2>
+      <p class="text-muted text-lg max-w-xl mx-auto">Capabilities that compound. Tools that last.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {focusAreas.map((area) => (
+        <div class="relative rounded-2xl p-8 bg-gradient-to-br from-cyan-500/5 to-transparent border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
+          <h3 class="text-xl font-bold mb-4">{area.title}</h3>
+          <p class="text-muted mb-6 leading-relaxed">{area.description}</p>
+
+          <div class="flex flex-wrap gap-2">
+            {area.tags.map((tag) => (
+              <span class="px-3 py-1 text-xs font-medium rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
