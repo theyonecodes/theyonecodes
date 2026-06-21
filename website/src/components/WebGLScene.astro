@@ -6,7 +6,7 @@
 <script>
 import * as THREE from 'three';
 
-class TerminalMatrix {
+class MinimalScene {
   private canvas: HTMLCanvasElement;
   private renderer: THREE.WebGLRenderer;
   private scene: THREE.Scene;
@@ -38,38 +38,31 @@ class TerminalMatrix {
     this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
     this.camera.position.z = 50;
 
-    this.createMatrix();
+    this.createParticles();
     this.createGrid();
     this.bindEvents();
     this.animate();
   }
 
-  private createMatrix() {
-    const count = 1200;
+  private createParticles() {
+    const count = 600;
     const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
       positions[i3] = (Math.random() - 0.5) * 100;
       positions[i3 + 1] = (Math.random() - 0.5) * 100;
-      positions[i3 + 2] = (Math.random() - 0.5) * 50;
-
-      const brightness = Math.random() * 0.3 + 0.1;
-      colors[i3] = brightness * 0.9;
-      colors[i3 + 1] = brightness;
-      colors[i3 + 2] = brightness * 0.8;
+      positions[i3 + 2] = (Math.random() - 0.5) * 30;
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: 0.1,
-      vertexColors: true,
+      size: 0.06,
+      color: 0x333333,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.5,
       sizeAttenuation: true
     });
 
@@ -78,8 +71,8 @@ class TerminalMatrix {
   }
 
   private createGrid() {
-    const gridHelper = new THREE.GridHelper(120, 60, 0x0a0a0a, 0x080808);
-    (gridHelper.material as THREE.LineBasicMaterial).opacity = 0.4;
+    const gridHelper = new THREE.GridHelper(100, 50, 0x0a0a0a, 0x080808);
+    (gridHelper.material as THREE.LineBasicMaterial).opacity = 0.25;
     (gridHelper.material as THREE.LineBasicMaterial).transparent = true;
     this.scene.add(gridHelper);
   }
@@ -112,29 +105,30 @@ class TerminalMatrix {
 
   private animate() {
     this.animationId = requestAnimationFrame(() => this.animate());
-    this.time += 0.003;
+    this.time += 0.002;
 
-    this.camera.position.x += (this.mouse.x * 3 - this.camera.position.x) * 0.02;
-    this.camera.position.y += (this.mouse.y * 3 - this.camera.position.y) * 0.02;
+    this.camera.position.x = this.mouse.x * 1.5;
+    this.camera.position.y = this.mouse.y * 1.5;
     this.camera.lookAt(0, 0, 0);
     
-    this.camera.position.z = 50 - this.scroll * 20;
-    this.camera.rotation.z = this.scroll * 0.1;
+    this.camera.position.z = 50 - this.scroll * 12;
 
-    this.particles.rotation.y = this.time * 0.01;
-    
+    this.particles.rotation.y = this.time * 0.05;
+
     const positions = this.particles.geometry.attributes.position.array as Float32Array;
     for (let i = 0; i < positions.length; i += 3) {
-      positions[i + 1] -= 0.01;
-      if (positions[i + 1] < -50) {
-        positions[i + 1] = 50;
-      }
+      positions[i + 1] -= 0.005;
+      if (positions[i + 1] < -50) positions[i + 1] = 50;
     }
     this.particles.geometry.attributes.position.needsUpdate = true;
 
     this.renderer.render(this.scene, this.camera);
   }
+
+  public dispose() {
+    cancelAnimationFrame(this.animationId);
+  }
 }
 
-new TerminalMatrix();
+new MinimalScene();
 </script>
