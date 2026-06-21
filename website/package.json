@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "bash scripts/dev",
     "build": "astro build",
+    "build:ci": "astro build --base=/theyonecodes",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src --ext .ts,.tsx,.astro",
@@ -32,5 +33,8 @@
     "eslint": "^9.15.0",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }

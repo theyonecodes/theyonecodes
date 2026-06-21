@@ -33,7 +33,7 @@ jobs:
         working-directory: website
 
       - name: Build
-        run: npm run build
+        run: npm run build:ci
         working-directory: website
 
       - name: Upload Pages artifact
