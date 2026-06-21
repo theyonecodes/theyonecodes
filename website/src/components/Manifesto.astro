@@ -1,0 +1,39 @@
+---
+const principles = [
+  { id: '01', title: 'Zero Waste', desc: 'Every line of code earns its place. No bloat, no borrowed abstractions. If I didn\'t write it, I own it. Dependencies are liabilities.' },
+  { id: '02', title: 'Maximum Speed', desc: 'Startup time is a feature. Latency is a bug. Performance is non-negotiable. Lean code is fast code. Fast code is sovereign code.' },
+  { id: '03', title: 'Digital Sovereignty', desc: 'Tools run on my hardware. On my terms. No telemetry. No accounts. No cloud dependency. My data stays on my machine.' },
+  { id: '04', title: 'Autonomous Execution', desc: 'Once built, the system runs. No prompts. No confirmations. No hand-holding. Operational from day one. Autonomous by design.' },
+];
+---
+
+<section id="manifesto" class="section">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-16 fade-up">
+      <div>
+        <span class="section-label">manifesto.src</span>
+        <h2 class="section-title">
+          <span class="char-reveal">
+            <span class="char gradient-text-cyan">T</span><span class="char gradient-text-cyan">h</span><span class="char gradient-text-cyan">e</span>
+            <span class="char gradient-text-cyan"> </span>
+            <span class="char gradient-text-cyan">M</span><span class="char gradient-text-cyan">a</span><span class="char gradient-text-cyan">n</span><span class="char gradient-text-cyan">i</span><span class="char gradient-text-cyan">f</span><span class="char gradient-text-cyan">e</span><span class="char gradient-text-cyan">s</span><span class="char gradient-text-cyan">t</span><span class="char gradient-text-cyan">o</span>
+          </span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="divider mb-16"></div>
+
+    <div class="grid md:grid-cols-2 gap-px bg-[var(--color-surface)]">
+      {principles.map((p, i) => (
+        <div class="card p-10 md:p-12 fade-up">
+          <div class="flex items-start gap-6 mb-6">
+            <span class="card-number">{p.id}</span>
+            <h3 class="text-lg font-bold text-[var(--color-text)]">{p.title}</h3>
+          </div>
+          <p class="card-desc">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

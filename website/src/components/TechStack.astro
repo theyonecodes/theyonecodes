@@ -1,22 +1,32 @@
 ---
-const techStack = [
-  'Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'
-];
+const stack = ['Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'];
 ---
 
-<section id="stack" class="py-32 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-20">
-      <span class="text-xs font-semibold tracking-[0.3em] uppercase text-accent mb-4 block">Capabilities</span>
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Tech Stack</h2>
-      <p class="text-muted text-lg max-w-xl mx-auto">Languages and tools I work with daily.</p>
+<section id="stack" class="section">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-16 fade-up">
+      <div>
+        <span class="section-label">tech_stack.json</span>
+        <h2 class="section-title">
+          <span class="char-reveal">
+            <span class="char gradient-text-cyan">T</span><span class="char gradient-text-cyan">e</span><span class="char gradient-text-cyan">c</span><span class="char gradient-text-cyan">h</span>
+            <span class="char gradient-text-cyan"> </span>
+            <span class="char gradient-text-cyan">S</span><span class="char gradient-text-cyan">t</span><span class="char gradient-text-cyan">a</span><span class="char gradient-text-cyan">c</span><span class="char gradient-text-cyan">k</span>
+          </span>
+        </h2>
+      </div>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-4">
-      {techStack.map((tech) => (
-        <div class="px-6 py-4 rounded-xl border border-border bg-surface/50 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 font-semibold">
-          {tech}
-        </div>
+    <div class="divider mb-16"></div>
+
+    <div class="flex flex-wrap gap-2 fade-up">
+      {stack.map((s, i) => (
+        <span
+          class="inline-flex text-[0.6rem] tracking-[0.15em] text-[#555] px-5 py-3 border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
+          style={{ transitionDelay: `${i * 0.05}s` }}
+        >
+          {s}
+        </span>
       ))}
     </div>
   </div>

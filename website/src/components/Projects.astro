@@ -1,0 +1,97 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Repo { name: string; description: string; language: string; stars: number; forks: number; url: string; topics: string[]; updatedAt: string; }
+
+let repos: Repo[] = [
+  { name: 'system-audit', description: 'Offline-first security auditing tool. Scan, score, fix. No cloud dependency.', language: 'Python', stars: 127, forks: 18, url: '#', topics: ['security', 'auditing'], updatedAt: new Date().toISOString() },
+  { name: 'kernel-tuner', description: 'Linux kernel optimization scripts for maximum performance and minimal latency.', language: 'Bash', stars: 89, forks: 12, url: '#', topics: ['linux', 'kernel'], updatedAt: new Date().toISOString() },
+  { name: 'zero-deps-cli', description: 'CLI tools with zero third-party dependencies. Pure Rust.', language: 'Rust', stars: 234, forks: 31, url: '#', topics: ['cli', 'rust'], updatedAt: new Date().toISOString() },
+  { name: 'autonomy-monitor', description: 'System monitoring without telemetry. Data stays on your machine.', language: 'Python', stars: 156, forks: 22, url: '#', topics: ['monitoring', 'privacy'], updatedAt: new Date().toISOString() },
+];
+
+try {
+  const resp = await fetch('https://api.github.com/users/theyonecodes/repos?per_page=12&sort=updated', {
+    headers: { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'theyonecodes' }
+  });
+  if (resp.ok) {
+    const data = await resp.json();
+    if (data.length) {
+      repos = data.filter((x: any) => !x.fork).sort((a: any, b: any) => b.stargazers_count - a.stargazers_count).slice(0, 12).map((x: any) => ({
+        name: x.name, description: x.description || 'No description', language: x.language || 'N/A',
+        stars: x.stargazers_count, forks: x.forks_count, url: x.html_url, topics: x.topics || [], updatedAt: x.updated_at,
+      }));
+    }
+  }
+} catch {}
+
+const langColors: Record<string, string> = {
+  Python: '#3572A5', JavaScript: '#F1E05A', TypeScript: '#3178C6', Rust: '#DEA584',
+  Bash: '#89e051', Shell: '#89e051', Go: '#00ADD8', 'C++': '#f34b7d', C: '#555',
+  HTML: '#e34c26', CSS: '#563d7c',
+};
+
+function timeAgo(d: string): string {
+  const n = Math.floor((Date.now() - new Date(d).getTime()) / 86400000);
+  if (n === 0) return 'today';
+  if (n < 7) return n + 'd';
+  if (n < 30) return Math.floor(n / 7) + 'w';
+  if (n < 365) return Math.floor(n / 30) + 'mo';
+  return Math.floor(n / 365) + 'y';
+}
+---
+
+<section id="projects" class="section">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-16 fade-up">
+      <div>
+        <span class="section-label">projects.readdir</span>
+        <h2 class="section-title">
+          <span class="char-reveal">
+            <span class="char gradient-text-cyan">P</span><span class="char gradient-text-cyan">r</span><span class="char gradient-text-cyan">o</span><span class="char gradient-text-cyan">j</span><span class="char gradient-text-cyan">e</span><span class="char gradient-text-cyan">c</span><span class="char gradient-text-cyan">t</span><span class="char gradient-text-cyan">s</span>
+          </span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="divider mb-16"></div>
+
+    <div class="grid md:grid-cols-2 gap-px bg-[var(--color-surface)]">
+      {repos.map((repo) => {
+        const color = langColors[repo.language] || '#666';
+        const topicsHtml = repo.topics.slice(0, 2).map((t) => '<span class="text-[0.5rem] tracking-[0.1em] text-[#444] px-2.5 py-1 border border-[var(--color-border)]">' + t + '</span>').join('');
+        return (
+          <a href={repo.url} target="_blank" rel="noopener" class="card project-card p-8 md:p-10 fade-up group">
+            <div class="flex items-start justify-between mb-4">
+              <h3 class="text-base font-bold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">{repo.name}</h3>
+              <Icon name="heroicons:arrow-top-right-on-square" class="w-4 h-4 text-[#333] group-hover:text-[var(--color-accent)] transition-colors" />
+            </div>
+            <p class="card-desc mb-6">{repo.description}</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-5 text-[0.6rem] text-[#555] font-mono">
+                <span class="flex items-center gap-1.5">
+                  <span class="lang-dot" style={"background-color: " + color}></span>
+                  {repo.language}
+                </span>
+                <span class="flex items-center gap-1">
+                  <Icon name="heroicons:star" class="w-3 h-3" />
+                  {repo.stars}
+                </span>
+                <span>{timeAgo(repo.updatedAt)}</span>
+              </div>
+              <div class="flex gap-1.5" set:html={topicsHtml}>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="mt-12 text-center fade-up">
+      <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[0.7rem] text-[#555] hover:text-[var(--color-accent)] transition-colors">
+        <span>View all repositories</span>
+        <Icon name="heroicons:arrow-right" class="w-3.5 h-3.5" />
+      </a>
+    </div>
+  </div>
+</section>
