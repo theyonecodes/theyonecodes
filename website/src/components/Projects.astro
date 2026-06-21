@@ -62,7 +62,7 @@ function timeAgo(d: string): string {
     if (!res.ok) throw new Error('API error');
     const data = await res.json();
     const repos = data
-      .filter((x: any) => !x.fork)
+      .filter((x: any) => !x.fork && x.name !== 'theyonecodes')
       .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
       .slice(0, 12);
 
