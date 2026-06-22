@@ -25,4 +25,4 @@ npm-debug.log*
 .cache/
 
 # Astro build artifacts
-.astro/
+.astro/www_floema_com.html
