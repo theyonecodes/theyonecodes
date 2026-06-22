@@ -7,7 +7,7 @@ interface Props {
 }
 
 const {
-  title = 'TheyOne Codes — Zero waste. Maximum speed. Autonomy.',
+  title = 'TheyOne Codes — Autonomous Execution Systems',
   description = 'Building autonomous execution systems. No vendor lock-in, no third-party dependencies, no compromises.',
 } = Astro.props;
 ---
@@ -22,74 +22,20 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://theyonecodes.github.io/theyonecodes/og.png" />
+    <meta property="og:url" content="https://theyonecodes.github.io/theyonecodes" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <title>{title}</title>
-    <script type="application/ld+json">
-      { "@context": "https://schema.org", "@type": "WebSite", "name": "TheyOne Codes", "url": "https://theyonecodes.github.io/theyonecodes/", "description": "Zero waste. Maximum speed. Autonomy.", "author": { "@type": "Person", "name": "TheyOne", "url": "https://github.com/theyonecodes" }, "sameAs": ["https://github.com/theyonecodes"] }
-    </script>
   </head>
   <body>
-    <a href="#main" class="fixed -top-10 left-1/2 -translate-x-1/2 z-[9999] bg-accent text-bg px-4 py-2 text-sm font-semibold rounded-b-lg transition-all focus:top-0">Skip to content</a>
-    <div class="custom-cursor" id="cursor"></div>
-    <div class="scroll-progress" id="scroll-progress"></div>
-    <div class="noise-overlay"></div>
-    <div class="scanline-overlay"></div>
+    <div class="grain-overlay"></div>
     <slot />
   </body>
 </html>
-
-<script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  if (cursor) {
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor?.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => cursor?.classList.remove('hovering'));
-    });
-  }
-
-  // Scroll progress
-  const progress = document.getElementById('scroll-progress');
-  if (progress) {
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = (window.scrollY / h * 100) + '%';
-    });
-  }
-
-  // Character reveal observer
-  const charObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.char').forEach((char, i) => {
-          setTimeout(() => char.classList.add('show'), i * 30);
-        });
-        charObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.char-reveal').forEach(el => charObserver.observe(el));
-
-  // Fade-up observer
-  const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '-10% 0px' });
-
-  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-</script>

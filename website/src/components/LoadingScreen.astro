@@ -1,0 +1,38 @@
+<div id="loading-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-[#030303]">
+  <div class="text-center">
+    <div class="mb-8">
+      <svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="28" stroke="#00ff88" stroke-width="1" stroke-dasharray="176" stroke-dashoffset="176" id="loading-ring" />
+        <circle cx="32" cy="32" r="28" stroke="#1a1a1a" stroke-width="1" />
+      </svg>
+    </div>
+    <p class="text-mono text-xs text-[var(--color-text-3)] tracking-widest uppercase" id="loading-text">Initializing</p>
+  </div>
+</div>
+
+<script>
+import { initLoadingScreen } from '../scripts/loading'
+
+const container = document.getElementById('loading-screen')
+if (container) {
+  document.body.style.overflow = 'hidden'
+
+  const ring = document.getElementById('loading-ring')
+  if (ring) {
+    ring.style.transition = 'stroke-dashoffset 1.5s ease-in-out'
+    requestAnimationFrame(() => {
+      ring.style.strokeDashoffset = '0'
+    })
+  }
+
+  const texts = ['Initializing', 'Loading', 'Almost Ready']
+  const textEl = document.getElementById('loading-text')
+  if (textEl) {
+    texts.forEach((t, i) => {
+      setTimeout(() => { textEl.textContent = t }, i * 500)
+    })
+  }
+
+  initLoadingScreen(container)
+}
+</script>

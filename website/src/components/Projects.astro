@@ -1,35 +1,25 @@
----
-import { Icon } from 'astro-icon/components';
----
-
-<section id="projects" class="section">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex items-end justify-between mb-16 fade-up">
-      <div>
-        <span class="section-label">projects.readdir</span>
-        <h2 class="section-title">
-          <span class="char-reveal">
-            <span class="char gradient-text-cyan">P</span><span class="char gradient-text-cyan">r</span><span class="char gradient-text-cyan">o</span><span class="char gradient-text-cyan">j</span><span class="char gradient-text-cyan">e</span><span class="char gradient-text-cyan">c</span><span class="char gradient-text-cyan">t</span><span class="char gradient-text-cyan">s</span>
-          </span>
-        </h2>
-      </div>
+<section id="projects" class="section-padding relative">
+  <div class="section-container">
+    <div class="max-w-3xl mb-16">
+      <span class="section-label">Projects</span>
+      <h2 class="section-title">
+        <span class="block">Public Repos</span>
+      </h2>
     </div>
 
-    <div class="divider mb-16"></div>
-
-    <div id="projects-grid" class="grid md:grid-cols-2 gap-px bg-[var(--color-surface)]">
+    <div id="projects-grid" class="grid md:grid-cols-2 gap-px bg-[var(--color-border)]">
       <div class="col-span-full flex justify-center py-20">
-        <div class="flex items-center gap-3 text-[0.65rem] text-[#555]">
+        <div class="flex items-center gap-3 text-xs text-[var(--color-text-3)] font-mono">
           <span class="w-4 h-4 border border-[var(--color-accent)] border-t-transparent rounded-full animate-spin"></span>
           <span>Fetching repositories...</span>
         </div>
       </div>
     </div>
 
-    <div class="mt-12 text-center fade-up">
-      <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[0.7rem] text-[#555] hover:text-[var(--color-accent)] transition-colors">
+    <div class="mt-14 text-center">
+      <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="btn" data-cursor>
         <span>View all repositories</span>
-        <Icon name="heroicons:arrow-right" class="w-3.5 h-3.5" />
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
     </div>
   </div>
@@ -40,52 +30,52 @@ const colors: Record<string, string> = {
   Python: '#3572A5', JavaScript: '#F1E05A', TypeScript: '#3178C6', Rust: '#DEA584',
   Bash: '#89e051', Shell: '#89e051', Go: '#00ADD8', 'C++': '#f34b7d', C: '#555',
   HTML: '#e34c26', CSS: '#563d7c',
-};
-
-function timeAgo(d: string): string {
-  const n = Math.floor((Date.now() - new Date(d).getTime()) / 86400000);
-  if (n === 0) return 'today';
-  if (n < 7) return n + 'd';
-  if (n < 30) return Math.floor(n / 7) + 'w';
-  if (n < 365) return Math.floor(n / 30) + 'mo';
-  return Math.floor(n / 365) + 'y';
 }
 
-(async () => {
-  const grid = document.getElementById('projects-grid');
-  if (!grid) return;
+function timeAgo(d: string): string {
+  const n = Math.floor((Date.now() - new Date(d).getTime()) / 86400000)
+  if (n === 0) return 'today'
+  if (n < 7) return n + 'd'
+  if (n < 30) return Math.floor(n / 7) + 'w'
+  if (n < 365) return Math.floor(n / 30) + 'mo'
+  return Math.floor(n / 365) + 'y'
+}
+
+;(async () => {
+  const grid = document.getElementById('projects-grid')
+  if (!grid) return
 
   try {
     const res = await fetch('https://api.github.com/users/theyonecodes/repos?per_page=12&sort=updated', {
       headers: { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'theyonecodes' }
-    });
-    if (!res.ok) throw new Error('API error');
-    const data = await res.json();
+    })
+    if (!res.ok) throw new Error('API error')
+    const data = await res.json()
     const repos = data
       .filter((x: any) => !x.fork && x.name !== 'theyonecodes')
       .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
-      .slice(0, 12);
+      .slice(0, 12)
 
     if (!repos.length) {
-      grid.innerHTML = '<div class="col-span-full text-center py-20 text-[0.7rem] text-[#555]">No public repositories.</div>';
-      return;
+      grid.innerHTML = '<div class="col-span-full text-center py-20 text-xs text-[var(--color-text-3)]">No public repositories.</div>'
+      return
     }
 
     grid.innerHTML = repos.map((r: any) => {
-      const color = colors[r.language] || '#666';
+      const color = colors[r.language] || '#666'
       const topics = (r.topics || []).slice(0, 2).map((t: string) =>
-        '<span class="text-[0.5rem] tracking-[0.1em] text-[#444] px-2.5 py-1 border border-[var(--color-border)]">' + t + '</span>'
-      ).join('');
-      return '<a href="' + r.html_url + '" target="_blank" rel="noopener" class="card project-card p-8 md:p-10 fade-up group">' +
-        '<div class="flex items-start justify-between mb-4">' +
-          '<h3 class="text-base font-bold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">' + r.name + '</h3>' +
-          '<svg class="w-4 h-4 text-[#333] group-hover:text-[var(--color-accent)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>' +
+        '<span class="tag">' + t + '</span>'
+      ).join('')
+      return '<a href="' + r.html_url + '" target="_blank" rel="noopener" class="card p-8 md:p-10 block project-card" data-cursor>' +
+        '<div class="flex items-start justify-between gap-4 mb-4">' +
+          '<h3 class="text-lg font-semibold text-display">' + r.name + '</h3>' +
+          '<svg class="w-4 h-4 text-[var(--color-text-3)] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>' +
         '</div>' +
-        '<p class="card-desc mb-6">' + (r.description || '') + '</p>' +
+        '<p class="text-body text-sm mb-6">' + (r.description || '') + '</p>' +
         '<div class="flex items-center justify-between">' +
-          '<div class="flex items-center gap-5 text-[0.6rem] text-[#555] font-mono">' +
+          '<div class="flex items-center gap-5 text-xs text-[var(--color-text-3)] text-mono">' +
             '<span class="flex items-center gap-1.5">' +
-              '<span class="lang-dot" style="background-color:' + color + '"></span>' +
+              '<span class="w-2 h-2 rounded-full" style="background-color:' + color + '"></span>' +
               (r.language || 'N/A') +
             '</span>' +
             '<span class="flex items-center gap-1">' +
@@ -96,16 +86,33 @@ function timeAgo(d: string): string {
           '</div>' +
           '<div class="flex gap-1.5">' + topics + '</div>' +
         '</div>' +
-      '</a>';
-    }).join('');
+      '</a>'
+    }).join('')
 
-    requestAnimationFrame(() => {
-      document.querySelectorAll('#projects-grid .fade-up').forEach((el) => {
-        setTimeout(() => el.classList.add('visible'), 50);
-      });
-    });
+    import('gsap').then(({ default: gsap }) => {
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        gsap.registerPlugin(ScrollTrigger)
+        document.querySelectorAll('.project-card').forEach((el, i) => {
+          gsap.fromTo(el, {
+            opacity: 0,
+            y: 40,
+          }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: i * 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          })
+        })
+      })
+    })
   } catch {
-    grid.innerHTML = '<div class="col-span-full text-center py-20 text-[0.7rem] text-[#555]">Could not load repositories.</div>';
+    grid.innerHTML = '<div class="col-span-full text-center py-20 text-xs text-[var(--color-text-3)]">Could not load repositories.</div>'
   }
-})();
+})()
 </script>

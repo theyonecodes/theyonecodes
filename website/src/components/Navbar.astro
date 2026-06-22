@@ -1,55 +1,74 @@
----
-const items = [
-  { href: '#manifesto', label: 'Manifesto' },
-  { href: '#focus', label: 'Focus' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#stack', label: 'Stack' },
-  { href: '/blog', label: 'Writing' },
-  { href: 'https://github.com/theyonecodes', label: 'GitHub' },
-];
----
-
-<nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-[rgba(255,255,255,0.03)]">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-    <a href="/" class="text-[0.6rem] font-semibold tracking-[0.4em] text-[#555] hover:text-[var(--color-accent)] transition-colors duration-300 uppercase">
+<nav class="navbar fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+  <div class="section-container flex items-center justify-between h-20">
+    <a href="/" class="text-sm font-semibold tracking-tight text-white hover:text-[var(--color-accent)] transition-colors" data-cursor>
       TheyOne
     </a>
-
     <div class="hidden md:flex items-center gap-10">
-      {items.map(item => (
-        <a
-          href={item.href}
-          class="text-[0.65rem] font-medium tracking-[0.05em] text-[#555] hover:text-[var(--color-accent)] transition-colors duration-200 uppercase"
-        >
-          {item.label}
-        </a>
-      ))}
-    </div>
-
-    <div class="flex items-center gap-4">
-      <button
-        class="hidden md:flex items-center gap-2 px-3 py-1.5 text-[0.55rem] text-[#444] bg-[var(--color-surface)] border border-[var(--color-border)] rounded hover:border-[#333] transition-colors"
-        onclick="document.getElementById('palette')?.classList.toggle('active'); document.getElementById('palette-input')?.focus()"
-      >
-        Search<kbd class="px-1 py-0.5 text-[0.5rem] font-mono bg-[#111] rounded">⌘K</kbd>
-      </button>
-      <div class="flex items-center gap-2">
-        <div class="status-dot"></div>
-        <span class="text-[0.5rem] tracking-[0.25em] text-[#333] uppercase hidden sm:block">Operational</span>
-      </div>
+      <a href="#manifesto" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Manifesto</a>
+      <a href="#focus" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Focus</a>
+      <a href="#projects" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Projects</a>
+      <a href="#contact" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Contact</a>
     </div>
   </div>
 </nav>
 
+<div class="scroll-indicator fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-3">
+  {['hero', 'manifesto', 'focus', 'projects', 'contact'].map((id, i) => (
+    <a href={`#${id}`} class="scroll-dot w-[2px] h-8 bg-white/10 hover:bg-[var(--color-accent)] transition-colors" data-section={id}></a>
+  ))}
+</div>
+
 <script>
-  const palette = document.getElementById('palette');
-  document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      palette?.classList.toggle('active');
-      if (palette?.classList.contains('active')) {
-        setTimeout(() => document.getElementById('palette-input')?.focus(), 50);
-      }
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const navbar = document.querySelector('.navbar') as HTMLElement
+if (navbar) {
+  let lastScroll = 0
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY
+    if (current > lastScroll && current > 100) {
+      gsap.to(navbar, { y: '-100%', duration: 0.4, ease: 'power2.inOut' })
+    } else {
+      gsap.to(navbar, { y: '0%', duration: 0.4, ease: 'power2.inOut' })
     }
-  });
+    lastScroll = current
+  })
+}
+
+const dots = document.querySelectorAll('.scroll-dot')
+const sections = ['hero', 'manifesto', 'focus', 'projects', 'contact']
+
+sections.forEach((id) => {
+  const el = document.getElementById(id)
+  if (!el) return
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top center',
+    end: 'bottom center',
+    onEnter: () => updateDots(id),
+    onEnterBack: () => updateDots(id),
+  })
+})
+
+function updateDots(active: string) {
+  dots.forEach((dot) => {
+    const el = dot as HTMLElement
+    if (el.dataset.section === active) {
+      el.style.background = 'var(--color-accent)'
+      el.style.opacity = '1'
+    } else {
+      el.style.background = 'rgba(255,255,255,0.1)'
+      el.style.opacity = '0.3'
+    }
+  })
+}
 </script>
+
+<style>
+  .navbar {
+    will-change: transform;
+  }
+</style>

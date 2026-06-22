@@ -1,33 +1,39 @@
----
-const stack = ['Python', 'JavaScript', 'Rust', 'Bash', 'Arch Linux', 'Docker', 'Electron', 'React', 'Flask'];
----
-
-<section id="stack" class="section">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex items-end justify-between mb-16 fade-up">
-      <div>
-        <span class="section-label">tech_stack.json</span>
-        <h2 class="section-title">
-          <span class="char-reveal">
-            <span class="char gradient-text-cyan">T</span><span class="char gradient-text-cyan">e</span><span class="char gradient-text-cyan">c</span><span class="char gradient-text-cyan">h</span>
-            <span class="char gradient-text-cyan"> </span>
-            <span class="char gradient-text-cyan">S</span><span class="char gradient-text-cyan">t</span><span class="char gradient-text-cyan">a</span><span class="char gradient-text-cyan">c</span><span class="char gradient-text-cyan">k</span>
-          </span>
-        </h2>
-      </div>
+<section id="stack" class="section-padding relative">
+  <div class="section-container">
+    <div class="max-w-3xl mb-16">
+      <span class="section-label">Tech Stack</span>
+      <h2 class="section-title">
+        <span class="block">Tools & Languages</span>
+      </h2>
     </div>
 
-    <div class="divider mb-16"></div>
-
-    <div class="flex flex-wrap gap-2 fade-up">
-      {stack.map((s, i) => (
-        <span
-          class="inline-flex text-[0.6rem] tracking-[0.15em] text-[#555] px-5 py-3 border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
-          style={{ transitionDelay: `${i * 0.05}s` }}
-        >
-          {s}
-        </span>
+    <div class="flex flex-wrap gap-2">
+      {['Python', 'Rust', 'TypeScript', 'Bash', 'Go', 'Linux', 'Git', 'Docker', 'WebGL', 'Astro'].map(t => (
+        <span class="tag stack-tag">{t}</span>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.fromTo('.stack-tag', {
+  opacity: 0,
+  scale: 0.8,
+}, {
+  opacity: 1,
+  scale: 1,
+  duration: 0.4,
+  stagger: 0.04,
+  ease: 'back.out(1.7)',
+  scrollTrigger: {
+    trigger: '#stack',
+    start: 'top 85%',
+    toggleActions: 'play none none reverse',
+  },
+})
+</script>

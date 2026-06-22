@@ -1,49 +1,60 @@
----
-import { Icon } from 'astro-icon/components';
-
-const areas = [
-  { id: '01', title: 'System Optimization', desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.', tags: ['Linux', 'Rust', 'Bash', 'Python', 'Windows'], period: '2024—' },
-  { id: '02', title: 'Security Auditing', desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.', tags: ['Auditing', 'Offline', 'Privacy'], period: '2024—' },
-  { id: '03', title: 'Developer Productivity', desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.', tags: ['CLI', 'API-first', 'Zero-deps'], period: '2023—' },
-];
----
-
-<section id="focus" class="section">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex items-end justify-between mb-16 fade-up">
-      <div>
-        <span class="section-label">focus_areas.config</span>
-        <h2 class="section-title">
-          <span class="char-reveal">
-            <span class="char gradient-text-cyan">F</span><span class="char gradient-text-cyan">o</span><span class="char gradient-text-cyan">c</span><span class="char gradient-text-cyan">u</span><span class="char gradient-text-cyan">s</span>
-            <span class="char gradient-text-cyan"> </span>
-            <span class="char gradient-text-cyan">A</span><span class="char gradient-text-cyan">r</span><span class="char gradient-text-cyan">e</span><span class="char gradient-text-cyan">a</span><span class="char gradient-text-cyan">s</span>
-          </span>
-        </h2>
-      </div>
+<section id="focus" class="section-padding relative">
+  <div class="section-container">
+    <div class="max-w-3xl mb-16">
+      <span class="section-label">Focus Areas</span>
+      <h2 class="section-title">
+        <span class="block">What I Build</span>
+      </h2>
     </div>
 
-    <div class="divider mb-16"></div>
-
-    <div class="space-y-px bg-[var(--color-surface)]">
-      {areas.map((a, i) => (
-        <div class="card p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12 fade-up group">
-          <div class="flex items-center gap-6 md:w-32 md:flex-col md:items-start">
-            <span class="card-number">{a.id}</span>
-            <span class="text-[0.55rem] tracking-[0.2em] text-[#333]">{a.period}</span>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-base md:text-lg font-bold mb-3 text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors duration-300">{a.title}</h3>
-            <p class="card-desc mb-6">{a.desc}</p>
-            <div class="flex flex-wrap gap-2">
-              {a.tags.map(t => <span class="card-tag">{t}</span>)}
+    <div class="space-y-px bg-[var(--color-border)]">
+      {[
+        { id: '01', title: 'System Optimization', desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.', tags: ['Linux', 'Rust', 'Bash', 'Python', 'Windows'], period: '2024—' },
+        { id: '02', title: 'Security Auditing', desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.', tags: ['Auditing', 'Offline', 'Privacy'], period: '2024—' },
+        { id: '03', title: 'Developer Productivity', desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.', tags: ['CLI', 'API-first', 'Zero-deps'], period: '2023—' },
+      ].map(a => (
+        <div class="card p-8 md:p-12 focus-card" data-index={a.id}>
+          <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
+            <div class="flex items-center gap-4 md:w-32 md:flex-col md:items-start md:gap-2">
+              <span class="text-mono text-xs text-[var(--color-accent)]">{a.id}</span>
+              <span class="text-mono text-[10px] text-[var(--color-text-3)]">{a.period}</span>
             </div>
-          </div>
-          <div class="hidden md:block md:pl-12 opacity-20 group-hover:opacity-100 transition-opacity duration-300">
-            <Icon name="heroicons:arrow-right" class="w-5 h-5 text-[var(--color-accent)]" />
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-display mb-3">{a.title}</h3>
+              <p class="text-body text-sm mb-6">{a.desc}</p>
+              <div class="flex flex-wrap gap-2">
+                {a.tags.map(t => <span class="tag">{t}</span>)}
+              </div>
+            </div>
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+document.querySelectorAll('.focus-card').forEach((el, i) => {
+  gsap.fromTo(el, {
+    opacity: 0,
+    x: -30,
+  }, {
+    opacity: 1,
+    x: 0,
+    duration: 0.8,
+    delay: i * 0.15,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%',
+      end: 'top 35%',
+      toggleActions: 'play none none reverse',
+    },
+  })
+})
+</script>
