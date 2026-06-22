@@ -1,95 +1,95 @@
-<div id="loading-screen" style="position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:#030303;clip-path:circle(150% at 50% 50%)">
-  <div style="text-align:center">
-    <div style="margin-bottom:2rem">
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto">
-        <circle cx="32" cy="32" r="28" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="176" stroke-dashoffset="176" id="loading-ring"/>
-        <circle cx="32" cy="32" r="28" stroke="#1a1a1a" stroke-width="1"/>
-      </svg>
-    </div>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#3A3630;letter-spacing:0.2em;text-transform:uppercase;height:1.2em" id="loading-text"></p>
+---
+---
+
+<div id="loading-screen">
+  <div class="ascii-text-container">
+    <canvas id="ascii-canvas"></canvas>
   </div>
 </div>
 
-<script is:inline>
-(function(){
-  var el = document.getElementById('loading-screen');
-  if (!el) return;
-  document.body.style.overflow = 'hidden';
+<script>
+  const canvas = document.getElementById('ascii-canvas') as HTMLCanvasElement
+  const ctx = canvas?.getContext('2d')
+  const loadingScreen = document.getElementById('loading-screen')
 
-  var GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
-  var TARGET1 = 'Initializing system...';
-  var TARGET2 = 'Loading modules...';
-  var textEl = document.getElementById('loading-text');
+  if (canvas && ctx) {
+    const resize = () => {
+      canvas.width = window.innerWidth * window.devicePixelRatio
+      canvas.height = window.innerHeight * window.devicePixelRatio
+      canvas.style.width = window.innerWidth + 'px'
+      canvas.style.height = window.innerHeight + 'px'
+      ctx?.scale(window.devicePixelRatio, window.devicePixelRatio)
+    }
+    resize()
+    window.addEventListener('resize', resize)
 
-  function scrambleReveal(target, startDelay, charDelay) {
-    if (!textEl) return;
-    var chars = target.split('');
-    var spans = [];
-    textEl.innerHTML = '';
-    for (var i = 0; i < chars.length; i++) {
-      var span = document.createElement('span');
-      span.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-      span.style.opacity = '0';
-      textEl.appendChild(span);
-      spans.push(span);
-    }
-    for (var j = 0; j < spans.length; j++) {
-      (function(idx) {
-        setTimeout(function() {
-          spans[idx].textContent = chars[idx];
-          spans[idx].style.opacity = '1';
-          spans[idx].style.transition = 'opacity 0.1s';
-        }, startDelay + idx * charDelay);
-      })(j);
-    }
-  }
+    const asciiChars = '█▓▒░@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,"^`\'. '
+    const text = 'theyone'
+    let time = 0
+    let loaded = false
 
-  function scrambleReplace(target, startDelay, charDelay) {
-    if (!textEl) return;
-    var existing = textEl.querySelectorAll('span');
-    var chars = target.split('');
-    var newSpans = [];
-    for (var i = 0; i < chars.length; i++) {
-      var span = document.createElement('span');
-      span.textContent = existing[i] ? existing[i].textContent : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-      span.style.opacity = '1';
-      textEl.appendChild(span);
-      newSpans.push(span);
-    }
-    textEl.innerHTML = '';
-    for (var k = 0; k < newSpans.length; k++) textEl.appendChild(newSpans[k]);
-    for (var j = 0; j < chars.length; j++) {
-      (function(idx) {
-        setTimeout(function() {
-          if (newSpans[idx]) {
-            newSpans[idx].textContent = chars[idx];
+    function draw() {
+      if (!ctx) return
+      
+      ctx.fillStyle = '#000'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      
+      ctx.fillStyle = '#fff'
+      ctx.font = '10px "IBM Plex Mono", monospace'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      const fontSize = Math.min(window.innerWidth, window.innerHeight) * 0.15
+
+      // Draw ASCII art sphere/shape
+      const radius = Math.min(window.innerWidth, window.innerHeight) * 0.2
+      const chars: string[] = []
+      
+      for (let y = -radius; y <= radius; y += 8) {
+        let line = ''
+        for (let x = -radius; x <= radius; x += 4) {
+          const dist = Math.sqrt(x * x + y * y)
+          if (dist <= radius) {
+            const noise = Math.sin((x + time * 20) * 0.05) * Math.cos((y + time * 20) * 0.05)
+            const charIndex = Math.floor((noise + 1) / 2 * (asciiChars.length - 1))
+            line += asciiChars[Math.max(0, Math.min(asciiChars.length - 1, charIndex))]
+          } else {
+            line += ' '
           }
-        }, startDelay + idx * charDelay);
-      })(j);
+        }
+        chars.push(line)
+      }
+
+      const asciiText = chars.join('\n')
+      const lines = asciiText.split('\n')
+      
+      ctx.font = `${Math.max(8, fontSize / 20)}px "IBM Plex Mono", monospace`
+      lines.forEach((line, i) => {
+        ctx.fillText(line, centerX, centerY - (lines.length * 4) + i * 8)
+      })
+
+      time += 0.02
+
+      if (!loaded && time > 100) {
+        loaded = true
+        loadingScreen?.style.setProperty('opacity', '0')
+        loadingScreen?.style.setProperty('pointer-events', 'none')
+        setTimeout(() => {
+          window.dispatchEvent(new Event('loading-complete'))
+        }, 600)
+      } else {
+        requestAnimationFrame(draw)
+      }
     }
+
+    draw()
+  } else {
+    setTimeout(() => {
+      loadingScreen?.style.setProperty('opacity', '0')
+      loadingScreen?.style.setProperty('pointer-events', 'none')
+      window.dispatchEvent(new Event('loading-complete'))
+    }, 2000)
   }
-
-  var ring = document.getElementById('loading-ring');
-  if (ring) {
-    setTimeout(function() {
-      ring.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
-      ring.style.strokeDashoffset = '0';
-    }, 50);
-  }
-
-  scrambleReveal(TARGET1, 200, 40);
-
-  setTimeout(function() {
-    scrambleReplace(TARGET2, 0, 35);
-  }, 900);
-
-  setTimeout(function() {
-    el.style.transition = 'clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1)';
-    el.style.clipPath = 'circle(0% at 50% 50%)';
-    setTimeout(function() {
-      el.style.display = 'none';
-      document.body.style.overflow = '';
-    }, 850);
-  }, 2000);
-})();
 </script>

@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'TheyOne Codes — Autonomous Execution Systems',
-  description = 'Building autonomous execution systems. Zero dependencies. Zero compromises. Every tool runs on my hardware, on my terms.',
+  title = 'TheyOne Codes',
+  description = 'Building autonomous execution systems. Zero dependencies. Zero compromises.',
 } = Astro.props;
 
 const canonicalURL = 'https://theyonecodes.github.io/theyonecodes';
@@ -17,70 +17,25 @@ const canonicalURL = 'https://theyonecodes.github.io/theyonecodes';
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content={description} />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<link rel="canonical" href={canonicalURL} />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonicalURL} />
 
-<!-- Open Graph -->
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://theyonecodes.github.io/theyonecodes/og.png" />
-<meta property="og:url" content={canonicalURL} />
-<meta property="og:site_name" content="TheyOne Codes" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<!-- Resource Hints -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://api.github.com" />
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-<title>{title}</title>
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "TheyOne Codes",
-  "url": canonicalURL,
-  "description": description,
-  "sameAs": [
-    "https://github.com/theyonecodes"
-  ],
-  "jobTitle": "Systems Developer",
-  "knowsAbout": ["Python", "Rust", "TypeScript", "Bash", "Go", "Linux", "WebGL"],
-})} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
 </head>
-<body class="bg-[#050505]">
-
-<a href="#hero" class="skip-to-content">Skip to content</a>
-
-<!-- SVG Noise Filter -->
-<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-  <defs>
-    <filter id="noise-filter">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-      <feBlend in="SourceGraphic" in2="n" mode="overlay"/>
-    </filter>
-  </defs>
-</svg>
-
-<!-- Grain Overlay -->
-<div id="grain-overlay" aria-hidden="true"></div>
-
-<slot />
+<body>
+  <slot />
 </body>
 </html>
