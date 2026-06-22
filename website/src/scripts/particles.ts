@@ -24,18 +24,18 @@ export class ParticleBackground {
   }
 
   private createParticles() {
-    const count = Math.min(Math.floor((this.width * this.height) / 12000), 200)
+    const count = Math.min(Math.floor((this.width * this.height) / 15000), 150)
     this.particles = []
 
     for (let i = 0; i < count; i++) {
       this.particles.push({
         x: Math.random() * this.width,
         y: Math.random() * this.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
-        color: Math.random() > 0.7 ? '#22D3EE' : Math.random() > 0.5 ? '#F5CA40' : '#E8E0D0',
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: Math.random() * 1.2 + 0.3,
+        opacity: Math.random() * 0.35 + 0.05,
+        color: Math.random() > 0.6 ? '#8B5CF6' : Math.random() > 0.4 ? '#A78BFA' : '#E8E4DD',
       })
     }
   }
@@ -69,10 +69,10 @@ export class ParticleBackground {
       const dy = this.mouse.y - p.y
       const dist = Math.sqrt(dx * dx + dy * dy)
 
-      if (dist < 150) {
-        const force = (150 - dist) / 150
-        p.vx -= (dx / dist) * force * 0.02
-        p.vy -= (dy / dist) * force * 0.02
+      if (dist < 120) {
+        const force = (120 - dist) / 120
+        p.vx -= (dx / dist) * force * 0.015
+        p.vy -= (dy / dist) * force * 0.015
       }
 
       p.vx *= 0.99
@@ -95,11 +95,11 @@ export class ParticleBackground {
         const dy = a.y - b.y
         const dist = Math.sqrt(dx * dx + dy * dy)
 
-        if (dist < 100) {
+        if (dist < 90) {
           this.ctx.beginPath()
           this.ctx.moveTo(a.x, a.y)
           this.ctx.lineTo(b.x, b.y)
-          this.ctx.strokeStyle = `rgba(34, 211, 238, ${0.03 * (1 - dist / 100)})`
+          this.ctx.strokeStyle = `rgba(139, 92, 246, ${0.025 * (1 - dist / 90)})`
           this.ctx.lineWidth = 0.5
           this.ctx.stroke()
         }

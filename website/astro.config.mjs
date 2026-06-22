@@ -4,7 +4,6 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import sentry from '@sentry/astro';
-import spotlightjs from '@spotlightjs/astro';
 import compress from 'astro-compress';
 import icon from 'astro-icon';
 
@@ -16,5 +15,9 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [sentry({ telemetry: false }), spotlightjs(), compress(), icon()]
+  integrations: [
+    sentry({ telemetry: false }),
+    compress(),
+    icon(),
+  ],
 });

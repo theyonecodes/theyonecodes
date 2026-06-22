@@ -1,38 +1,95 @@
-<div id="loading-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-[#030303]">
-  <div class="text-center">
-    <div class="mb-8">
-      <svg class="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="32" r="28" stroke="#00ff88" stroke-width="1" stroke-dasharray="176" stroke-dashoffset="176" id="loading-ring" />
-        <circle cx="32" cy="32" r="28" stroke="#1a1a1a" stroke-width="1" />
+<div id="loading-screen" style="position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:#030303;clip-path:circle(150% at 50% 50%)">
+  <div style="text-align:center">
+    <div style="margin-bottom:2rem">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto">
+        <circle cx="32" cy="32" r="28" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="176" stroke-dashoffset="176" id="loading-ring"/>
+        <circle cx="32" cy="32" r="28" stroke="#1a1a1a" stroke-width="1"/>
       </svg>
     </div>
-    <p class="text-mono text-xs text-[var(--color-text-3)] tracking-widest uppercase" id="loading-text">Initializing</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#3A3630;letter-spacing:0.2em;text-transform:uppercase;height:1.2em" id="loading-text"></p>
   </div>
 </div>
 
-<script>
-import { initLoadingScreen } from '../scripts/loading'
+<script is:inline>
+(function(){
+  var el = document.getElementById('loading-screen');
+  if (!el) return;
+  document.body.style.overflow = 'hidden';
 
-const container = document.getElementById('loading-screen')
-if (container) {
-  document.body.style.overflow = 'hidden'
+  var GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
+  var TARGET1 = 'Initializing system...';
+  var TARGET2 = 'Loading modules...';
+  var textEl = document.getElementById('loading-text');
 
-  const ring = document.getElementById('loading-ring')
+  function scrambleReveal(target, startDelay, charDelay) {
+    if (!textEl) return;
+    var chars = target.split('');
+    var spans = [];
+    textEl.innerHTML = '';
+    for (var i = 0; i < chars.length; i++) {
+      var span = document.createElement('span');
+      span.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      span.style.opacity = '0';
+      textEl.appendChild(span);
+      spans.push(span);
+    }
+    for (var j = 0; j < spans.length; j++) {
+      (function(idx) {
+        setTimeout(function() {
+          spans[idx].textContent = chars[idx];
+          spans[idx].style.opacity = '1';
+          spans[idx].style.transition = 'opacity 0.1s';
+        }, startDelay + idx * charDelay);
+      })(j);
+    }
+  }
+
+  function scrambleReplace(target, startDelay, charDelay) {
+    if (!textEl) return;
+    var existing = textEl.querySelectorAll('span');
+    var chars = target.split('');
+    var newSpans = [];
+    for (var i = 0; i < chars.length; i++) {
+      var span = document.createElement('span');
+      span.textContent = existing[i] ? existing[i].textContent : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      span.style.opacity = '1';
+      textEl.appendChild(span);
+      newSpans.push(span);
+    }
+    textEl.innerHTML = '';
+    for (var k = 0; k < newSpans.length; k++) textEl.appendChild(newSpans[k]);
+    for (var j = 0; j < chars.length; j++) {
+      (function(idx) {
+        setTimeout(function() {
+          if (newSpans[idx]) {
+            newSpans[idx].textContent = chars[idx];
+          }
+        }, startDelay + idx * charDelay);
+      })(j);
+    }
+  }
+
+  var ring = document.getElementById('loading-ring');
   if (ring) {
-    ring.style.transition = 'stroke-dashoffset 1.5s ease-in-out'
-    requestAnimationFrame(() => {
-      ring.style.strokeDashoffset = '0'
-    })
+    setTimeout(function() {
+      ring.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+      ring.style.strokeDashoffset = '0';
+    }, 50);
   }
 
-  const texts = ['Initializing', 'Loading', 'Almost Ready']
-  const textEl = document.getElementById('loading-text')
-  if (textEl) {
-    texts.forEach((t, i) => {
-      setTimeout(() => { textEl.textContent = t }, i * 500)
-    })
-  }
+  scrambleReveal(TARGET1, 200, 40);
 
-  initLoadingScreen(container)
-}
+  setTimeout(function() {
+    scrambleReplace(TARGET2, 0, 35);
+  }, 900);
+
+  setTimeout(function() {
+    el.style.transition = 'clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1)';
+    el.style.clipPath = 'circle(0% at 50% 50%)';
+    setTimeout(function() {
+      el.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 850);
+  }, 2000);
+})();
 </script>

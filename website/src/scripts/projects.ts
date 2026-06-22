@@ -15,16 +15,18 @@ export async function initProjects() {
 
   try {
     const res = await fetch(
-      'https://api.github.com/users/theyonecodes/repos?per_page=12&sort=updated',
+      'https://api.github.com/users/theyonecodes/repos?per_page=30&sort=updated&type=public&_t=' + Date.now(),
       {
         headers: {
           Accept: 'application/vnd.github.v3+json',
-          UserAgent: 'theyonecodes',
         },
       }
     )
-    if (!res.ok) throw new Error('API error')
+    if (!res.ok) throw new Error('API error ' + res.status)
     const data = await res.json()
+
+    if (!Array.isArray(data)) throw new Error('Invalid response')
+
     const repos = data
       .filter(function (x) { return !x.fork && x.name !== 'theyonecodes' })
       .sort(function (a, b) { return b.stargazers_count - a.stargazers_count })
@@ -47,10 +49,12 @@ export async function initProjects() {
       C: '#555',
       HTML: '#e34c26',
       CSS: '#563d7c',
+      PowerShell: '#012456',
+      Batchfile: '#89e051',
     }
 
     grid.innerHTML = repos
-      .map(function (r) {
+      .map(function (r, i) {
         const color = langColors[r.language] || '#666'
         const topics = (r.topics || [])
           .slice(0, 3)
@@ -58,10 +62,10 @@ export async function initProjects() {
           .join('')
 
         return (
-          '<a href="' + r.html_url + '" target="_blank" rel="noopener" class="card p-8 md:p-10 block group project-card reveal">' +
+          '<a href="' + r.html_url + '" target="_blank" rel="noopener" class="card p-8 md:p-10 block group project-card gsap-reveal" style="transition-delay:' + (i * 0.06) + 's">' +
           '<div class="flex items-start justify-between gap-4 mb-4">' +
-          '<h3 class="text-lg font-semibold text-display group-hover:text-[var(--color-accent)] transition-colors duration-300">' + r.name + '</h3>' +
-          '<svg class="w-4 h-4 text-[var(--color-text-3)] shrink-0 group-hover:text-[var(--color-accent)] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>' +
+          '<h3 class="text-lg font-display font-800 group-hover:text-[var(--color-accent)] transition-colors duration-300">' + r.name + '</h3>' +
+          '<svg class="w-4 h-4 text-[var(--color-text-3)] shrink-0 group-hover:text-[var(--color-accent)] transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>' +
           '</div>' +
           '<p class="text-body text-sm mb-6 leading-relaxed">' +
           (r.description || '<em class="text-[var(--color-text-3)]">No description</em>') +
@@ -73,7 +77,7 @@ export async function initProjects() {
           (r.language || 'N/A') +
           '</span>' +
           '<span class="flex items-center gap-1">' +
-          '<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>' +
+          '<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>' +
           r.stargazers_count +
           '</span>' +
           '<span>' + timeAgo(r.updated_at) + '</span>' +
@@ -87,13 +91,13 @@ export async function initProjects() {
 
     if (!prefersReducedMotion()) {
       const cards = document.querySelectorAll('.project-card')
-      cards.forEach(function (el, i) {
-        el.setAttribute('style', 'transition-delay: ' + (i * 0.06) + 's')
+      cards.forEach(function (el) {
         const observer = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
               if (entry.isIntersecting) {
                 entry.target.classList.add('revealed')
+                entry.target.classList.remove('gsap-reveal')
                 observer.unobserve(entry.target)
               }
             })
@@ -104,7 +108,8 @@ export async function initProjects() {
       })
     }
   } catch (err) {
+    console.error('GitHub API error:', err)
     grid.innerHTML =
-      '<div class="col-span-full text-center py-20 text-xs text-[var(--color-text-3)]">Could not load repositories.</div>'
+      '<div class="col-span-full text-center py-20 text-xs text-[var(--color-text-3)]">Could not load repositories. <a href="https://github.com/theyonecodes" target="_blank" class="text-[var(--color-accent)] underline">View on GitHub</a></div>'
   }
 }

@@ -1,27 +1,31 @@
 ---
 ---
 
-<nav class="navbar fixed top-0 left-0 right-0 z-50" id="navbar">
-  <div class="section-container flex items-center justify-between h-16 md:h-20">
-    <a href="/" class="text-sm font-semibold tracking-tight text-white hover:text-[var(--color-accent)] transition-colors duration-300">
-      TheyOne
-    </a>
-    <div class="hidden md:flex items-center gap-8">
-      {['philosophy', 'focus', 'projects', 'contact'].map((id) => (
-        <a
-          href={`#${id}`}
-          class="nav-link text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-white transition-colors duration-300"
-        >
-          {id}
-        </a>
-      ))}
-    </div>
-  </div>
+<!-- Dock Navigation -->
+<nav class="dock-nav" id="dock-nav">
+  <div class="dock-mask" id="dock-mask"></div>
+  <a href="#hero" class="dock-item active" data-section="hero">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
+    <span class="dock-label">Home</span>
+  </a>
+  <a href="#philosophy" class="dock-item" data-section="philosophy">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+    <span class="dock-label">Philosophy</span>
+  </a>
+  <a href="#projects" class="dock-item" data-section="projects">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+    <span class="dock-label">Projects</span>
+  </a>
+  <a href="#contact" class="dock-item" data-section="contact">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    <span class="dock-label">Contact</span>
+  </a>
 </nav>
 
+<!-- Scroll Progress Dots -->
 <div class="scroll-indicator fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-2">
-  {['hero', 'philosophy', 'focus', 'projects', 'contact'].map((id) => (
-    <a href={`#${id}`} class="scroll-dot w-[1px] h-6 bg-white/10 hover:bg-[var(--color-accent)] transition-all duration-300" data-section={id}></a>
+  {['hero', 'philosophy', 'projects', 'contact'].map((id) => (
+    <a href={`#${id}`} class="scroll-dot w-[1px] h-5 bg-white/10 hover:bg-[var(--color-accent)] transition-all duration-300" data-section={id}></a>
   ))}
 </div>
 
@@ -29,31 +33,55 @@
 import { prefersReducedMotion } from '../scripts/utils'
 
 if (!prefersReducedMotion()) {
-  const navbar = document.getElementById('navbar') as HTMLElement
-  if (navbar) {
-    let lastScroll = 0
-    let ticking = false
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const current = window.scrollY
-          if (current > lastScroll && current > 100) {
-            navbar.style.transform = 'translateY(-100%)'
-          } else {
-            navbar.style.transform = 'translateY(0)'
-          }
-          lastScroll = current
-          ticking = false
-        })
-        ticking = true
-      }
-    })
-  }
-
+  const dock = document.getElementById('dock-nav') as HTMLElement
+  const mask = document.getElementById('dock-mask') as HTMLElement
+  const items = document.querySelectorAll('.dock-item')
   const dots = document.querySelectorAll('.scroll-dot')
-  const sections = ['hero', 'philosophy', 'focus', 'projects', 'contact']
+  const sections = ['hero', 'philosophy', 'projects', 'contact']
 
+  let lastScroll = 0
+  let ticking = false
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const current = window.scrollY
+        if (current > 400) {
+          if (current > lastScroll) {
+            dock.classList.add('hidden')
+          } else {
+            dock.classList.remove('hidden')
+          }
+        } else {
+          dock.classList.add('hidden')
+        }
+        lastScroll = current
+        ticking = false
+      })
+      ticking = true
+    }
+  })
+
+  // Initially hidden
+  dock.classList.add('hidden')
+
+  // Mask switcher
+  items.forEach((item) => {
+    const el = item as HTMLElement
+    el.addEventListener('mouseenter', () => {
+      const rect = el.getBoundingClientRect()
+      const dockRect = dock.getBoundingClientRect()
+      mask.style.left = (rect.left - dockRect.left) + 'px'
+      mask.style.width = rect.width + 'px'
+      mask.style.opacity = '1'
+    })
+  })
+
+  dock.addEventListener('mouseleave', () => {
+    mask.style.opacity = '0'
+  })
+
+  // Active section tracking
   sections.forEach((id) => {
     const el = document.getElementById(id)
     if (!el) return
@@ -61,15 +89,24 @@ if (!prefersReducedMotion()) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            updateDots(id)
+            updateActive(id)
           }
         })
       },
-      { rootMargin: '-50% 0px -50% 0px' }
+      { rootMargin: '-40% 0px -40% 0px' }
     ).observe(el)
   })
 
-  function updateDots(active: string) {
+  function updateActive(active: string) {
+    items.forEach((item) => {
+      const el = item as HTMLElement
+      if (el.dataset.section === active) {
+        el.classList.add('active')
+      } else {
+        el.classList.remove('active')
+      }
+    })
+
     dots.forEach((dot) => {
       const el = dot as HTMLElement
       if (el.dataset.section === active) {
@@ -77,18 +114,9 @@ if (!prefersReducedMotion()) {
         el.style.height = '2rem'
       } else {
         el.style.background = 'rgba(255,255,255,0.1)'
-        el.style.height = '1.5rem'
+        el.style.height = '1.25rem'
       }
     })
   }
 }
 </script>
-
-<style>
-  .navbar {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(10, 10, 10, 0.6);
-  }
-</style>

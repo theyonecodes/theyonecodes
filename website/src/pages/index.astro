@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LoadingScreen from '../components/LoadingScreen.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Manifesto from '../components/Manifesto.astro';
@@ -11,6 +12,7 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
+  <LoadingScreen />
   <canvas id="particle-canvas" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
   <Navbar />
   <main>
@@ -26,13 +28,35 @@ import Footer from '../components/Footer.astro';
 
 <script>
 import { ParticleBackground } from '../scripts/particles'
-import { initScrollReveal } from '../scripts/utils'
+import { initGSAPAnimations } from '../scripts/gsap-setup'
+import { CustomCursor } from '../scripts/cursor'
+import { prefersReducedMotion, isCapableDevice } from '../scripts/utils'
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Particle background
   const canvas = document.getElementById('particle-canvas') as HTMLCanvasElement
-  if (canvas) {
+  if (canvas && isCapableDevice()) {
     new ParticleBackground(canvas)
   }
-  initScrollReveal()
+
+  // Custom cursor (desktop only)
+  if (!prefersReducedMotion() && window.innerWidth > 768) {
+    new CustomCursor()
+  }
+
+  // GSAP animations - fire when loading screen finishes
+  const loadingScreen = document.getElementById('loading-screen')
+  if (loadingScreen) {
+    const observer = new MutationObserver(() => {
+      if (loadingScreen.style.display === 'none' || loadingScreen.style.opacity === '0') {
+        observer.disconnect()
+        initGSAPAnimations()
+      }
+    })
+    observer.observe(loadingScreen, { attributes: true, attributeFilter: ['style'] })
+  } else {
+    // No loading screen, init immediately
+    initGSAPAnimations()
+  }
 })
 </script>

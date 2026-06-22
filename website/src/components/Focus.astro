@@ -1,60 +1,72 @@
 ---
+const areas = [
+  {
+    id: '01',
+    title: 'System Optimization',
+    desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.',
+    tags: ['Linux', 'Rust', 'Bash', 'Python', 'Windows'],
+    period: '2024—',
+  },
+  {
+    id: '02',
+    title: 'Security Auditing',
+    desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.',
+    tags: ['Auditing', 'Offline', 'Privacy'],
+    period: '2024—',
+  },
+  {
+    id: '03',
+    title: 'Developer Productivity',
+    desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.',
+    tags: ['CLI', 'API-first', 'Zero-deps'],
+    period: '2023—',
+  },
+]
 ---
 
 <section id="focus" class="section-padding relative">
   <div class="section-container">
-    <div class="max-w-3xl mb-20">
-      <div class="reveal">
+    <div class="max-w-3xl mb-20 md:mb-28">
+      <div class="gsap-reveal">
         <span class="section-label">Focus Areas</span>
       </div>
-      <h2 class="section-title reveal delay-1">
+      <h2 class="section-title gsap-reveal">
         <span class="block">What I Build</span>
       </h2>
     </div>
 
     <div class="space-y-px bg-[var(--color-border)]">
-      {[
-        {
-          id: '01',
-          title: 'System Optimization',
-          desc: 'Linux and Windows tools that make systems leaner. Kernel tuning, process management, zero-overhead monitoring.',
-          tags: ['Linux', 'Rust', 'Bash', 'Python', 'Windows'],
-          period: '2024—',
-        },
-        {
-          id: '02',
-          title: 'Security Auditing',
-          desc: 'Offline-first tools. Scan. Score. Fix. No cloud dependency, no telemetry, no accounts required.',
-          tags: ['Auditing', 'Offline', 'Privacy'],
-          period: '2024—',
-        },
-        {
-          id: '03',
-          title: 'Developer Productivity',
-          desc: 'Zero-server architecture. Keyboard-driven. API-first. Tools that work without build steps or accounts.',
-          tags: ['CLI', 'API-first', 'Zero-deps'],
-          period: '2023—',
-        },
-      ].map((a, i) => (
-        <div class="card p-8 md:p-12 group reveal">
-          <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
-            <div class="flex items-center gap-4 md:w-32 md:flex-col md:items-start md:gap-2 shrink-0">
-              <span class="text-mono text-xs text-[var(--color-accent)]">{a.id}</span>
-              <span class="text-mono text-[10px] text-[var(--color-text-3)]">{a.period}</span>
+      {areas.map((a, i) => {
+        const delayStyle = "transition-delay: " + (i * 0.1) + "s"
+        const cmd = "> build --" + a.title.toLowerCase().replace(/\s/g, '-')
+        return (
+          <div class="card p-8 md:p-12 lg:p-16 group relative overflow-hidden gsap-reveal" style={delayStyle}>
+            <div class="absolute top-8 right-8 md:top-12 md:right-12 code-deco hidden md:block">
+              <span class="text-[var(--color-accent)]">{"> "}</span><span>{cmd.replace("> ", "")}</span>
             </div>
-            <div class="flex-1">
-              <h3 class="text-xl md:text-2xl font-semibold text-display mb-3 group-hover:text-[var(--color-accent)] transition-colors duration-300">{a.title}</h3>
-              <p class="text-body text-sm mb-6 leading-relaxed">{a.desc}</p>
-              <div class="flex flex-wrap gap-2">
-                {a.tags.map((t) => <span class="tag">{t}</span>)}
+            <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
+              <div class="flex items-center gap-4 md:w-32 md:flex-col md:items-start md:gap-2 shrink-0">
+                <span class="text-mono text-xs text-[var(--color-accent)]">{a.id}</span>
+                <span class="text-mono text-[10px] text-[var(--color-text-3)] tracking-wider">{a.period}</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-2xl md:text-3xl lg:text-4xl font-display font-800 mb-4 group-hover:text-[var(--color-accent)] transition-colors duration-300">{a.title}</h3>
+                <p class="text-body text-sm mb-8 leading-relaxed max-w-xl">{a.desc}</p>
+                <div class="flex flex-wrap gap-2">
+                  {a.tags.map((t) => (
+                    <span class="tag">
+                      <span class="text-[var(--color-accent)] mr-1">{"> "}</span>{t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class="hidden md:flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0">
+                <svg class="w-6 h-6 text-[var(--color-text-3)] group-hover:text-[var(--color-accent)] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
               </div>
             </div>
-            <div class="hidden md:flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <svg class="w-5 h-5 text-[var(--color-text-3)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   </div>
 </section>
