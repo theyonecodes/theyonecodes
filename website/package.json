@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "bash scripts/dev",
-    "build": "astro build --outDir ../docs --base=/theyonecodes",
-    "build:ci": "astro build --outDir ../docs --base=/theyonecodes",
+    "build": "astro build",
+    "build:ci": "astro build --base=/theyonecodes",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src --ext .ts,.tsx,.astro",
