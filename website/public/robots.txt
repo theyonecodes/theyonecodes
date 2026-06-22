@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://theyonecodes.github.io/theyonecodes/sitemap.xml

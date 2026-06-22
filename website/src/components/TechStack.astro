@@ -15,7 +15,7 @@ const techs = [
 
 <section id="stack" class="section-padding relative grid-bg">
   <div class="section-container">
-    <div class="max-w-3xl mb-16 md:mb-24">
+    <div class="max-w-3xl mb-20 md:mb-28">
       <div class="gsap-reveal">
         <span class="section-label">Tech Stack</span>
       </div>
@@ -29,10 +29,10 @@ const techs = [
         const cmd = "> " + t.name.toLowerCase()
         const widthStyle = "width: " + t.level + "%"
         return (
-          <div class="bg-[var(--color-surface)] p-6 md:p-8 group relative overflow-hidden gsap-reveal" style={"transition-delay: " + (i * 0.06) + "s"}>
+          <div class="bg-[#111111] p-6 md:p-8 group relative overflow-hidden gsap-reveal" style={"transition-delay: " + (i * 0.06) + "s"}>
             <div class="absolute bottom-0 left-0 h-[2px] bg-[var(--color-accent)] transition-all duration-700 ease-out" style="width: 0%" data-width={widthStyle}></div>
             <div class="relative z-10">
-              <span class="text-mono text-[9px] text-[var(--color-text-3)] tracking-widest block mb-3">{cmd}</span>
+              <span class="text-mono text-[10px] text-[var(--color-text-3)] tracking-widest block mb-3">{cmd}</span>
               <span class="text-lg md:text-xl font-display font-800 group-hover:text-[var(--color-accent)] transition-colors duration-300">{t.name}</span>
             </div>
           </div>
