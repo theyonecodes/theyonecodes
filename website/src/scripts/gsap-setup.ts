@@ -10,7 +10,7 @@ export function initSmoothScroll() {
   if (prefersReducedMotion()) return null
 
   const lenis = new Lenis({
-    duration: 1.0,
+    duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     smoothWheel: true,
@@ -29,7 +29,7 @@ export function initSmoothScroll() {
 export function createMagneticEffect(element: HTMLElement) {
   if (prefersReducedMotion()) return () => {}
 
-  const speed = 0.3
+  const speed = 0.2
 
   const onMouseMove = (e: MouseEvent) => {
     const rect = element.getBoundingClientRect()
@@ -39,7 +39,7 @@ export function createMagneticEffect(element: HTMLElement) {
     gsap.to(element, {
       x: x * speed,
       y: y * speed,
-      duration: 0.4,
+      duration: 0.5,
       ease: 'power2.out',
     })
   }
@@ -48,8 +48,8 @@ export function createMagneticEffect(element: HTMLElement) {
     gsap.to(element, {
       x: 0,
       y: 0,
-      duration: 0.6,
-      ease: 'elastic.out(1, 0.4)',
+      duration: 0.7,
+      ease: 'power3.out',
     })
   }
 
@@ -204,97 +204,35 @@ function initHeroAnimations() {
     })
     splits.push(split)
 
-    // "Building" — standard line mask reveal (slide up)
-    if (i === 0) {
-      gsap.from(split.lines, {
-        yPercent: 110,
-        duration: 1.2,
-        ease: 'power3.out',
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: '#hero',
-          start: 'top 80%',
-          end: 'top 30%',
-          scrub: 1.5,
-        },
-      })
-    }
+    // All lines: clean line mask reveal (slide up)
+    gsap.from(split.lines, {
+      yPercent: 100,
+      duration: 1.2,
+      ease: 'power2.out',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top 80%',
+        end: 'top 20%',
+        scrub: 1.5,
+      },
+    })
 
-    // "autonomous" — color fill reveal
+    // "autonomous" — also do color fill
     if (i === 1) {
-      // Start: outline only (text-stroke visible, fill transparent)
-      // Animate: fill sweeps left-to-right via clip-path
       gsap.fromTo(line,
-        {
-          WebkitTextStroke: '1px var(--color-text-2)',
-          color: 'transparent',
-        },
+        { WebkitTextStroke: '1px var(--color-text-2)', color: 'transparent' },
         {
           WebkitTextStroke: '0px transparent',
           color: 'var(--color-text-2)',
           scrollTrigger: {
             trigger: '#hero',
             start: 'top 70%',
-            end: 'top 20%',
-            scrub: 1.5,
-          },
-        }
-      )
-
-      // Also do line mask reveal
-      gsap.from(split.lines, {
-        yPercent: 110,
-        duration: 1.2,
-        ease: 'power3.out',
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: '#hero',
-          start: 'top 70%',
-          end: 'top 25%',
-          scrub: 1.5,
-        },
-      })
-    }
-
-    // "systems." — scale + blur emerge
-    if (i === 2) {
-      gsap.fromTo(line,
-        {
-          scale: 1.3,
-          filter: 'blur(10px)',
-          opacity: 0,
-        },
-        {
-          scale: 1,
-          filter: 'blur(0px)',
-          opacity: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top 60%',
             end: 'top 15%',
             scrub: 1.5,
           },
         }
       )
-
-      // Accent dot bounce
-      const dot = line.querySelector('.hero-accent-dot')
-      if (dot) {
-        gsap.fromTo(dot,
-          { scale: 0 },
-          {
-            scale: 1,
-            ease: 'elastic.out(1, 0.5)',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: 'top 50%',
-              end: 'top 10%',
-              scrub: 1.5,
-            },
-          }
-        )
-      }
     }
   })
 
@@ -304,15 +242,15 @@ function initHeroAnimations() {
     const text = tagline.textContent || ''
     const words = text.split(' ')
     tagline.innerHTML = words
-      .map((w) => `<span class="inline-block" style="opacity:0;filter:blur(4px)">${w}</span>`)
+      .map((w) => `<span class="inline-block" style="opacity:0;filter:blur(3px)">${w}</span>`)
       .join(' ')
 
     const wordEls = tagline.querySelectorAll('span')
     gsap.to(wordEls, {
       opacity: 1,
       filter: 'blur(0px)',
-      duration: 0.8,
-      stagger: 0.04,
+      duration: 0.6,
+      stagger: 0.03,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: '#hero',
@@ -327,12 +265,12 @@ function initHeroAnimations() {
   const heroCtas = document.querySelector('.hero-ctas')
   if (heroCtas) {
     gsap.fromTo(heroCtas,
-      { y: 40, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 1,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: '#hero',
           start: 'top 40%',
@@ -420,27 +358,19 @@ function initManifestoAnimations() {
     })
   }
 
-  // Cards — multi-direction reveals
+  // Cards — clean bottom-up reveals
   const cards = section.querySelectorAll<HTMLElement>('.card')
-  const directions = [
-    { x: -80, y: 0, scale: 1 },    // Card 1: from left
-    { x: 80, y: 0, scale: 1 },     // Card 2: from right
-    { x: 0, y: 80, scale: 1 },     // Card 3: from bottom
-    { x: 0, y: 0, scale: 0.85 },   // Card 4: from scale
-  ]
 
   cards.forEach((card, i) => {
-    const dir = directions[i % directions.length]
-
     gsap.fromTo(card,
-      { x: dir.x, y: dir.y, scale: dir.scale, opacity: 0 },
+      { y: 40, opacity: 0 },
       {
-        x: 0, y: 0, scale: 1, opacity: 1,
-        ease: 'power3.out',
+        y: 0, opacity: 1,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: card,
           start: 'top 88%',
-          end: 'top 50%',
+          end: 'top 55%',
           scrub: 1.5,
         },
       }
@@ -458,10 +388,10 @@ function initManifestoAnimations() {
     if (cardTitle) {
       const split = SplitText.create(cardTitle, { type: 'lines', mask: 'lines' })
       gsap.from(split.lines, {
-        yPercent: 110,
+        yPercent: 100,
         duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.08,
+        ease: 'power2.out',
+        stagger: 0.06,
         scrollTrigger: {
           trigger: card,
           start: 'top 85%',
@@ -480,14 +410,14 @@ function initManifestoAnimations() {
       const wordEls = desc.querySelectorAll('span')
       gsap.from(wordEls, {
         opacity: 0,
-        y: 10,
-        duration: 0.6,
-        stagger: 0.02,
+        y: 8,
+        duration: 0.5,
+        stagger: 0.015,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: card,
           start: 'top 82%',
-          end: 'top 50%',
+          end: 'top 55%',
           scrub: 1.5,
         },
       })
@@ -525,26 +455,19 @@ function initFocusAnimations() {
     })
   }
 
-  // Cards — alternating direction reveals
+  // Cards — clean bottom-up reveals
   const cards = section.querySelectorAll<HTMLElement>('.card')
-  const reveals = [
-    { x: -100, y: 0, scale: 1 },   // Card 1: from left
-    { x: 100, y: 0, scale: 1 },    // Card 2: from right
-    { x: 0, y: 0, scale: 0.9 },    // Card 3: scale up
-  ]
 
   cards.forEach((card, i) => {
-    const dir = reveals[i % reveals.length]
-
     gsap.fromTo(card,
-      { x: dir.x, y: dir.y, scale: dir.scale, opacity: 0 },
+      { y: 40, opacity: 0 },
       {
-        x: 0, y: 0, scale: 1, opacity: 1,
-        ease: 'power3.out',
+        y: 0, opacity: 1,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: card,
           start: 'top 88%',
-          end: 'top 50%',
+          end: 'top 55%',
           scrub: 1.5,
         },
       }
@@ -559,16 +482,16 @@ function initFocusAnimations() {
     // Tags cascade
     const tags = card.querySelectorAll<HTMLElement>('.tag')
     gsap.fromTo(tags,
-      { y: 20, opacity: 0 },
+      { y: 15, opacity: 0 },
       {
         y: 0, opacity: 1,
-        duration: 0.6,
-        stagger: 0.06,
+        duration: 0.5,
+        stagger: 0.04,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: card,
           start: 'top 82%',
-          end: 'top 45%',
+          end: 'top 50%',
           scrub: 1.5,
         },
       }
@@ -606,22 +529,22 @@ function initProjectsAnimations() {
     })
   }
 
-  // Featured project cards — staggered clip-path reveal
+  // Featured project cards — clean fade-up
   const featureCards = section.querySelectorAll<HTMLElement>('.feature-card')
   featureCards.forEach((card, i) => {
     gsap.fromTo(card,
-      { clipPath: 'inset(100% 0 0 0)', opacity: 0 },
+      { y: 40, opacity: 0 },
       {
-        clipPath: 'inset(0% 0 0 0)',
+        y: 0,
         opacity: 1,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: card,
           start: 'top 88%',
-          end: 'top 50%',
+          end: 'top 55%',
           scrub: 1.5,
         },
-        delay: i * 0.1,
+        delay: i * 0.08,
       }
     )
 
@@ -698,22 +621,22 @@ function initTechStackAnimations() {
     })
   }
 
-  // Tech cards — center-expand clip-path
+  // Tech cards — clean fade-up
   const cards = section.querySelectorAll<HTMLElement>('.card')
   cards.forEach((card, i) => {
     gsap.fromTo(card,
-      { clipPath: 'inset(50% 50% 50% 50%)', opacity: 0 },
+      { y: 30, opacity: 0 },
       {
-        clipPath: 'inset(0% 0% 0% 0%)',
+        y: 0,
         opacity: 1,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: card,
           start: 'top 88%',
-          end: 'top 55%',
+          end: 'top 60%',
           scrub: 1.5,
         },
-        delay: i * 0.05,
+        delay: i * 0.04,
       }
     )
 
@@ -844,19 +767,19 @@ function initContactAnimations() {
     })
   }
 
-  // CTA button slide up + border draw
+  // CTA button slide up
   const cta = section.querySelector<HTMLElement>('.btn')
   if (cta) {
     gsap.fromTo(cta,
-      { y: 30, opacity: 0 },
+      { y: 20, opacity: 0 },
       {
         y: 0, opacity: 1,
         duration: 1,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: section,
           start: 'top 60%',
-          end: 'top 25%',
+          end: 'top 30%',
           scrub: 1.5,
         },
       }
