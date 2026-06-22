@@ -1,47 +1,25 @@
+---
+---
+
 <section id="contact" class="section-padding relative">
   <div class="section-container">
     <div class="max-w-3xl mx-auto text-center">
-      <span class="section-label">Contact</span>
-      <h2 class="section-title mt-4 mb-6">
+      <div class="reveal">
+        <span class="section-label">Contact</span>
+      </div>
+      <h2 class="section-title mt-6 mb-8 reveal delay-1">
         <span class="block">Find me on GitHub</span>
       </h2>
-      <p class="text-body text-sm max-w-md mx-auto mb-10">
+      <p class="text-body text-sm max-w-md mx-auto mb-12 reveal delay-2">
         All my work is public. No forms, no newsletters, no noise.
+        Just code, ideas, and the tools that make them real.
       </p>
-      <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="btn btn-primary">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        <span>github.com/theyonecodes</span>
-      </a>
+      <div class="reveal delay-3">
+        <a href="https://github.com/theyonecodes" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>github.com/theyonecodes</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
-
-<style>
-  @media (prefers-reduced-motion: no-preference) {
-    #contact .section-label,
-    #contact .section-title,
-    #contact .text-body,
-    #contact .btn {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    #contact .section-label { transition-delay: 0s; }
-    #contact .section-title { transition-delay: 0.15s; }
-    #contact .text-body { transition-delay: 0.3s; }
-    #contact .btn { transition-delay: 0.45s; }
-    
-    #contact:target .section-label,
-    #contact:target .section-title,
-    #contact:target .text-body,
-    #contact:target .btn,
-    #contact:in-view .section-label,
-    #contact:in-view .section-title,
-    #contact:in-view .text-body,
-    #contact:in-view .btn {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>

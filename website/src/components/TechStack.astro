@@ -1,43 +1,22 @@
+---
+const techs = ['Python', 'Rust', 'TypeScript', 'Bash', 'Go', 'Linux', 'Git', 'Docker', 'WebGL', 'Astro']
+---
+
 <section id="stack" class="section-padding relative">
   <div class="section-container">
     <div class="max-w-3xl mb-16">
-      <span class="section-label">Tech Stack</span>
-      <h2 class="section-title">
+      <div class="reveal">
+        <span class="section-label">Tech Stack</span>
+      </div>
+      <h2 class="section-title reveal delay-1">
         <span class="block">Tools & Languages</span>
       </h2>
     </div>
 
-    <div class="flex flex-wrap gap-2">
-      {['Python', 'Rust', 'TypeScript', 'Bash', 'Go', 'Linux', 'Git', 'Docker', 'WebGL', 'Astro'].map(t => (
-        <span class="tag stack-tag">{t}</span>
+    <div class="flex flex-wrap gap-3">
+      {techs.map((t, i) => (
+        <span class={`tag reveal ${i < 10 ? 'delay-' + (i + 1) : ''}`}>{t}</span>
       ))}
     </div>
   </div>
 </section>
-
-<style>
-  @media (prefers-reduced-motion: no-preference) {
-    .stack-tag {
-      opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    
-    .stack-tag:nth-child(1) { transition-delay: 0s; }
-    .stack-tag:nth-child(2) { transition-delay: 0.04s; }
-    .stack-tag:nth-child(3) { transition-delay: 0.08s; }
-    .stack-tag:nth-child(4) { transition-delay: 0.12s; }
-    .stack-tag:nth-child(5) { transition-delay: 0.16s; }
-    .stack-tag:nth-child(6) { transition-delay: 0.2s; }
-    .stack-tag:nth-child(7) { transition-delay: 0.24s; }
-    .stack-tag:nth-child(8) { transition-delay: 0.28s; }
-    .stack-tag:nth-child(9) { transition-delay: 0.32s; }
-    .stack-tag:nth-child(10) { transition-delay: 0.36s; }
-    
-    #stack:target .stack-tag,
-    #stack:in-view .stack-tag {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-</style>

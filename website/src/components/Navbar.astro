@@ -1,20 +1,27 @@
-<nav class="navbar fixed top-0 left-0 right-0 z-50 mix-blend-difference">
-  <div class="section-container flex items-center justify-between h-20">
-    <a href="/" class="text-sm font-semibold tracking-tight text-white hover:text-[var(--color-accent)] transition-colors">
+---
+---
+
+<nav class="navbar fixed top-0 left-0 right-0 z-50" id="navbar">
+  <div class="section-container flex items-center justify-between h-16 md:h-20">
+    <a href="/" class="text-sm font-semibold tracking-tight text-white hover:text-[var(--color-accent)] transition-colors duration-300">
       TheyOne
     </a>
-    <div class="hidden md:flex items-center gap-10">
-      <a href="#manifesto" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Manifesto</a>
-      <a href="#focus" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Focus</a>
-      <a href="#projects" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Projects</a>
-      <a href="#contact" class="nav-link text-xs tracking-widest uppercase text-white/50 hover:text-white transition-colors">Contact</a>
+    <div class="hidden md:flex items-center gap-8">
+      {['philosophy', 'focus', 'projects', 'contact'].map((id) => (
+        <a
+          href={`#${id}`}
+          class="nav-link text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-white transition-colors duration-300"
+        >
+          {id}
+        </a>
+      ))}
     </div>
   </div>
 </nav>
 
-<div class="scroll-indicator fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-3">
-  {['hero', 'manifesto', 'focus', 'projects', 'contact'].map((id, i) => (
-    <a href={`#${id}`} class="scroll-dot w-[2px] h-8 bg-white/10 hover:bg-[var(--color-accent)] transition-colors" data-section={id}></a>
+<div class="scroll-indicator fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-2">
+  {['hero', 'philosophy', 'focus', 'projects', 'contact'].map((id) => (
+    <a href={`#${id}`} class="scroll-dot w-[1px] h-6 bg-white/10 hover:bg-[var(--color-accent)] transition-all duration-300" data-section={id}></a>
   ))}
 </div>
 
@@ -22,33 +29,44 @@
 import { prefersReducedMotion } from '../scripts/utils'
 
 if (!prefersReducedMotion()) {
-  const navbar = document.querySelector('.navbar') as HTMLElement
+  const navbar = document.getElementById('navbar') as HTMLElement
   if (navbar) {
     let lastScroll = 0
+    let ticking = false
+
     window.addEventListener('scroll', () => {
-      const current = window.scrollY
-      if (current > lastScroll && current > 100) {
-        navbar.style.transform = 'translateY(-100%)'
-      } else {
-        navbar.style.transform = 'translateY(0)'
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const current = window.scrollY
+          if (current > lastScroll && current > 100) {
+            navbar.style.transform = 'translateY(-100%)'
+          } else {
+            navbar.style.transform = 'translateY(0)'
+          }
+          lastScroll = current
+          ticking = false
+        })
+        ticking = true
       }
-      lastScroll = current
     })
   }
 
   const dots = document.querySelectorAll('.scroll-dot')
-  const sections = ['hero', 'manifesto', 'focus', 'projects', 'contact']
+  const sections = ['hero', 'philosophy', 'focus', 'projects', 'contact']
 
   sections.forEach((id) => {
     const el = document.getElementById(id)
     if (!el) return
-    new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          updateDots(id)
-        }
-      })
-    }, { rootMargin: '-50% 0px -50% 0px' }).observe(el)
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            updateDots(id)
+          }
+        })
+      },
+      { rootMargin: '-50% 0px -50% 0px' }
+    ).observe(el)
   })
 
   function updateDots(active: string) {
@@ -56,10 +74,10 @@ if (!prefersReducedMotion()) {
       const el = dot as HTMLElement
       if (el.dataset.section === active) {
         el.style.background = 'var(--color-accent)'
-        el.style.opacity = '1'
+        el.style.height = '2rem'
       } else {
         el.style.background = 'rgba(255,255,255,0.1)'
-        el.style.opacity = '0.3'
+        el.style.height = '1.5rem'
       }
     })
   }
@@ -68,6 +86,9 @@ if (!prefersReducedMotion()) {
 
 <style>
   .navbar {
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(10, 10, 10, 0.6);
   }
 </style>
