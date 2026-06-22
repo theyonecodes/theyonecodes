@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
-import ThreeScene from '../components/ThreeScene.astro';
 import Manifesto from '../components/Manifesto.astro';
 import Focus from '../components/Focus.astro';
 import Projects from '../components/Projects.astro';
@@ -13,7 +12,6 @@ import Footer from '../components/Footer.astro';
 
 <Layout>
   <Navbar />
-  <ThreeScene />
   <main>
     <Hero />
     <Manifesto />
@@ -24,17 +22,3 @@ import Footer from '../components/Footer.astro';
     <Footer />
   </main>
 </Layout>
-
-<script>
-import { prefersReducedMotion } from '../scripts/utils'
-
-if (!prefersReducedMotion()) {
-  import('../scripts/three-scene').then(({ ThreeScene }) => {
-    const canvas = document.getElementById('three-canvas') as HTMLCanvasElement
-    if (canvas) {
-      const scene = new ThreeScene(canvas)
-      window.addEventListener('beforeunload', () => scene.destroy())
-    }
-  })
-}
-</script>
