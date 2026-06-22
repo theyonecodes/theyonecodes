@@ -33,28 +33,20 @@
   </div>
 </section>
 
-<script>
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
-document.querySelectorAll('.focus-card').forEach((el, i) => {
-  gsap.fromTo(el, {
-    opacity: 0,
-    x: -30,
-  }, {
-    opacity: 1,
-    x: 0,
-    duration: 0.8,
-    delay: i * 0.15,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 85%',
-      end: 'top 35%',
-      toggleActions: 'play none none reverse',
-    },
-  })
-})
-</script>
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .focus-card {
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: reveal linear;
+      animation-timeline: view();
+      animation-range: entry 15% cover 35%;
+    }
+    .focus-card:nth-child(1) { animation-delay: 0s; }
+    .focus-card:nth-child(2) { animation-delay: 0.15s; }
+    .focus-card:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes reveal {
+      to { opacity: 1; transform: translateX(0); }
+    }
+  }
+</style>

@@ -15,25 +15,29 @@
   </div>
 </section>
 
-<script>
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
-gsap.fromTo('.stack-tag', {
-  opacity: 0,
-  scale: 0.8,
-}, {
-  opacity: 1,
-  scale: 1,
-  duration: 0.4,
-  stagger: 0.04,
-  ease: 'back.out(1.7)',
-  scrollTrigger: {
-    trigger: '#stack',
-    start: 'top 85%',
-    toggleActions: 'play none none reverse',
-  },
-})
-</script>
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .stack-tag {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .stack-tag:nth-child(1) { transition-delay: 0s; }
+    .stack-tag:nth-child(2) { transition-delay: 0.04s; }
+    .stack-tag:nth-child(3) { transition-delay: 0.08s; }
+    .stack-tag:nth-child(4) { transition-delay: 0.12s; }
+    .stack-tag:nth-child(5) { transition-delay: 0.16s; }
+    .stack-tag:nth-child(6) { transition-delay: 0.2s; }
+    .stack-tag:nth-child(7) { transition-delay: 0.24s; }
+    .stack-tag:nth-child(8) { transition-delay: 0.28s; }
+    .stack-tag:nth-child(9) { transition-delay: 0.32s; }
+    .stack-tag:nth-child(10) { transition-delay: 0.36s; }
+    
+    #stack:target .stack-tag,
+    #stack:in-view .stack-tag {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>

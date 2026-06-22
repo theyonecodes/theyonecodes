@@ -1,6 +1,6 @@
 <nav class="navbar fixed top-0 left-0 right-0 z-50 mix-blend-difference">
   <div class="section-container flex items-center justify-between h-20">
-    <a href="/" class="text-sm font-semibold tracking-tight text-white hover:text-[var(--color-accent)] transition-colors" data-cursor>
+    <a href="/" class="text-sm font-semibold tracking-tight text-white hover:text-[var(--color-accent)] transition-colors">
       TheyOne
     </a>
     <div class="hidden md:flex items-center gap-10">
@@ -19,56 +19,55 @@
 </div>
 
 <script>
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { prefersReducedMotion } from '../scripts/utils'
 
-gsap.registerPlugin(ScrollTrigger)
+if (!prefersReducedMotion()) {
+  const navbar = document.querySelector('.navbar') as HTMLElement
+  if (navbar) {
+    let lastScroll = 0
+    window.addEventListener('scroll', () => {
+      const current = window.scrollY
+      if (current > lastScroll && current > 100) {
+        navbar.style.transform = 'translateY(-100%)'
+      } else {
+        navbar.style.transform = 'translateY(0)'
+      }
+      lastScroll = current
+    })
+  }
 
-const navbar = document.querySelector('.navbar') as HTMLElement
-if (navbar) {
-  let lastScroll = 0
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY
-    if (current > lastScroll && current > 100) {
-      gsap.to(navbar, { y: '-100%', duration: 0.4, ease: 'power2.inOut' })
-    } else {
-      gsap.to(navbar, { y: '0%', duration: 0.4, ease: 'power2.inOut' })
-    }
-    lastScroll = current
+  const dots = document.querySelectorAll('.scroll-dot')
+  const sections = ['hero', 'manifesto', 'focus', 'projects', 'contact']
+
+  sections.forEach((id) => {
+    const el = document.getElementById(id)
+    if (!el) return
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          updateDots(id)
+        }
+      })
+    }, { rootMargin: '-50% 0px -50% 0px' }).observe(el)
   })
-}
 
-const dots = document.querySelectorAll('.scroll-dot')
-const sections = ['hero', 'manifesto', 'focus', 'projects', 'contact']
-
-sections.forEach((id) => {
-  const el = document.getElementById(id)
-  if (!el) return
-  ScrollTrigger.create({
-    trigger: el,
-    start: 'top center',
-    end: 'bottom center',
-    onEnter: () => updateDots(id),
-    onEnterBack: () => updateDots(id),
-  })
-})
-
-function updateDots(active: string) {
-  dots.forEach((dot) => {
-    const el = dot as HTMLElement
-    if (el.dataset.section === active) {
-      el.style.background = 'var(--color-accent)'
-      el.style.opacity = '1'
-    } else {
-      el.style.background = 'rgba(255,255,255,0.1)'
-      el.style.opacity = '0.3'
-    }
-  })
+  function updateDots(active: string) {
+    dots.forEach((dot) => {
+      const el = dot as HTMLElement
+      if (el.dataset.section === active) {
+        el.style.background = 'var(--color-accent)'
+        el.style.opacity = '1'
+      } else {
+        el.style.background = 'rgba(255,255,255,0.1)'
+        el.style.opacity = '0.3'
+      }
+    })
+  }
 }
 </script>
 
 <style>
   .navbar {
-    will-change: transform;
+    transition: transform 0.4s ease;
   }
 </style>
