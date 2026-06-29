@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <rect width="400" height="240" fill="#0d1117" rx="12" />
+  <text x="20" y="30" fill="#c9d1d9" font-family="monospace" font-size="16" font-weight="bold">Languages</text>
+  
+        <text x="20" y="50" fill="#8b949e" font-family="monospace" font-size="12">JavaScript</text>
+        <rect x="130" y="40" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="40" width="64" height="12" rx="3" fill="#f1e05a" />
+        <text x="380" y="50" fill="#8b949e" font-family="monospace" font-size="11">10</text>
+        
+        <text x="20" y="72" fill="#8b949e" font-family="monospace" font-size="12">Python</text>
+        <rect x="130" y="62" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="62" width="64" height="12" rx="3" fill="#3572A5" />
+        <text x="380" y="72" fill="#8b949e" font-family="monospace" font-size="11">10</text>
+        
+        <text x="20" y="94" fill="#8b949e" font-family="monospace" font-size="12">Shell</text>
+        <rect x="130" y="84" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="84" width="32" height="12" rx="3" fill="#89e051" />
+        <text x="380" y="94" fill="#8b949e" font-family="monospace" font-size="11">5</text>
+        
+        <text x="20" y="116" fill="#8b949e" font-family="monospace" font-size="12">HTML</text>
+        <rect x="130" y="106" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="106" width="25" height="12" rx="3" fill="#e34c26" />
+        <text x="380" y="116" fill="#8b949e" font-family="monospace" font-size="11">4</text>
+        
+        <text x="20" y="138" fill="#8b949e" font-family="monospace" font-size="12">Other</text>
+        <rect x="130" y="128" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="128" width="19" height="12" rx="3" fill="#8b949e" />
+        <text x="380" y="138" fill="#8b949e" font-family="monospace" font-size="11">3</text>
+        
+        <text x="20" y="160" fill="#8b949e" font-family="monospace" font-size="12">PowerShell</text>
+        <rect x="130" y="150" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="150" width="12" height="12" rx="3" fill="#012456" />
+        <text x="380" y="160" fill="#8b949e" font-family="monospace" font-size="11">2</text>
+        
+        <text x="20" y="182" fill="#8b949e" font-family="monospace" font-size="12">Batchfile</text>
+        <rect x="130" y="172" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="172" width="12" height="12" rx="3" fill="#C1F12E" />
+        <text x="380" y="182" fill="#8b949e" font-family="monospace" font-size="11">2</text>
+        
+        <text x="20" y="204" fill="#8b949e" font-family="monospace" font-size="12">Rust</text>
+        <rect x="130" y="194" width="240" height="12" rx="3" fill="#21262d" />
+        <rect x="130" y="194" width="6" height="12" rx="3" fill="#dea584" />
+        <text x="380" y="204" fill="#8b949e" font-family="monospace" font-size="11">1</text>
+        
+</svg>
