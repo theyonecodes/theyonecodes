@@ -1,98 +1,151 @@
-# Yo, I'm TheyOne
+<!-- ═══════════════════════════════════════════════════════════
+     THEYONE — Profile
+     Built with: pure markdown + SVG assets
+     ═══════════════════════════════════════════════════════════ -->
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=200&section=header&text=TheyOne&fontSize=75&animation=fadeIn&fontAlignY=35&desc=AI+Product+Builder+%E2%80%94+I+build+systems+that+replace+manual+workflows&descAlignY=52&descAlign=50&fontColor=ffffff" />
+
+<!-- Hero -->
+<img src="assets/branding/hero-pro.svg" width="100%" />
+
+<!-- Typing -->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=900&color=f59e0b&center=true&vCenter=true&width=580&lines=Tools+that+just+work.;Python+%7C+Rust+%7C+Bash+%7C+JavaScript;No+bloat+▸+No+accounts+▸+Ships+when+ready" />
+
 </div>
+
+<!-- Divider -->
+<div align="center" style="margin:32px 0; opacity:0.4;">
+  <svg width="200" height="16" viewBox="0 0 200 16">
+    <circle cx="8" cy="8" r="3" fill="#f59e0b" opacity="0.6"/>
+    <line x1="24" y1="8" x2="176" y2="8" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>
+    <circle cx="192" cy="8" r="3" fill="#f59e0b" opacity="0.6"/>
+  </svg>
+</div>
+
+## What I Do
+
+Tools that just work. No dependencies, no account signup, no cloud dependency. I build what I need, ship it when it's ready, and improve it over time.
+
+Private repos hold the backlog — ideas in folders, projects scaffolded and waiting.
+
+---
+
+## Projects
+
+<!-- CISO-Auditor -->
+<div style="display:flex; gap:16px; margin-bottom:20px; align-items:stretch;">
+
+<div style="flex:1; border:1px solid rgba(59,130,246,0.25); border-radius:16px; padding:28px 32px; background:linear-gradient(135deg,rgba(15,23,42,0.95),rgba(15,30,60,0.8)); position:relative; overflow:hidden;">
+<div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(59,130,246,0.6),transparent);"></div>
+<div style="position:absolute; top:0; left:0; width:2px; height:100%; background:linear-gradient(180deg,rgba(59,130,246,0.6),transparent);"></div>
+
+**🛡️ CISO-Auditor** · Windows Security Audit
+
+Security tools are either **$10K/year** or too complex for solo consultants.
+
+→ 100-point offline audit engine with **raw bytecode PDF exports** + **System Restore hooks**. One script, no install, runs anywhere.
+
+`Python` · Zero deps · Portable exe · PDF export
+
+<a href="https://github.com/theyonecodes/CISO-Auditor" style="display:inline-block; margin-top:12px; color:#60a5fa; text-decoration:none; font-size:13px; font-weight:600;">View Project →</a>
+</div>
+
+<!-- archperf-pro -->
+<div style="flex:1; border:1px solid rgba(244,63,94,0.25); border-radius:16px; padding:28px 32px; background:linear-gradient(135deg,rgba(30,10,20,0.95),rgba(50,15,30,0.8)); position:relative; overflow:hidden;">
+<div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(244,63,94,0.6),transparent);"></div>
+<div style="position:absolute; top:0; left:0; width:2px; height:100%; background:linear-gradient(180deg,rgba(244,63,94,0.6),transparent);"></div>
+
+**⚡ archperf-pro** · System Optimization
+
+Generic optimization scripts ignore how you actually use your machine.
+
+→ Pro-grade Arch Linux tuning that **learns your behavior** via Hidden Markov Models + Q-Learning. Real telemetry, not guesswork.
+
+`JavaScript` · HMM · Q-Learning · PID control
+
+<a href="https://github.com/theyonecodes/archperf-pro" style="display:inline-block; margin-top:12px; color:#f472b6; text-decoration:none; font-size:13px; font-weight:600;">View Project →</a>
+</div>
+
+</div>
+
+<!-- pkgdrop -->
+<div style="display:flex; gap:16px; margin-bottom:20px; align-items:stretch;">
+
+<div style="flex:1; border:1px solid rgba(251,191,36,0.25); border-radius:16px; padding:28px 32px; background:linear-gradient(135deg,rgba(30,25,10,0.95),rgba(50,40,15,0.8)); position:relative; overflow:hidden;">
+<div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(251,191,36,0.6),transparent);"></div>
+<div style="position:absolute; top:0; left:0; width:2px; height:100%; background:linear-gradient(180deg,rgba(251,191,36,0.6),transparent);"></div>
+
+**📦 pkgdrop** · Universal Package Installer
+
+Installing packages outside `apt`/`pacman` is a pain. Arch AUR helpers, deb/rpm from anywhere, AppImages — none of it talks to each other.
+
+→ One command installs **deb, rpm, AppImage, tar.xz, pkg.tar.zst**. GPG verified, atomic installs, instant rollback.
+
+`Bash` · 2,338 LOC · GPG · Atomic
+
+<a href="https://github.com/theyonecodes/pkgdrop" style="display:inline-block; margin-top:12px; color:#fbbf24; text-decoration:none; font-size:13px; font-weight:600;">View Project →</a>
+</div>
+
+<!-- theyonepm -->
+<div style="flex:1; border:1px solid rgba(52,211,153,0.25); border-radius:16px; padding:28px 32px; background:linear-gradient(135deg,rgba(10,30,20,0.95),rgba(15,50,30,0.8)); position:relative; overflow:hidden;">
+<div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(52,211,153,0.6),transparent);"></div>
+<div style="position:absolute; top:0; left:0; width:2px; height:100%; background:linear-gradient(180deg,rgba(52,211,153,0.6),transparent);"></div>
+
+**📋 theyonepm** · Project Tracker
+
+Every PM tool is either enterprise bloat or cloud-only. And none work with AI agents.
+
+→ Single HTML file. No backend, no signup. Built for humans and AI to both use. IndexedDB for storage, OKLCH colors, Fibonacci spacing.
+
+`HTML` · 8K LOC · IndexedDB · AI-native
+
+<a href="https://github.com/theyonecodes/theyonepm" style="display:inline-block; margin-top:12px; color:#34d399; text-decoration:none; font-size:13px; font-weight:600;">View Project →</a>
+</div>
+
+</div>
+
+<!-- More repos link -->
+<div align="center" style="margin:8px 0 32px;">
+  <a href="https://github.com/theyonecodes?tab=repositories" style="color:#64748b; text-decoration:none; font-size:13px; font-weight:500; border:1px solid #334155; padding:8px 20px; border-radius:8px; display:inline-block; transition:all 0.2s;" onmouseover="this.style.borderColor='#f59e0b';this.style.color='#f59e0b'" onmouseout="this.style.borderColor='#334155';this.style.color='#64748b'">See all repositories →</a>
+</div>
+
+---
+
+## Stack
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=18&pause=1000&color=38BDF8&center=true&vCenter=true&width=600&lines=If+something+annoys+me+I+build+a+fix;No+accounts.+No+telemetry.+No+cloud+BS;I+run+my+own+tooling" alt="Typing Animation" />
+
+| Systems & Kernel | Security | Automation | Web | Design |
+|:--|:--|:--|:--|:--|
+| Linux · Windows | Audit · FDE · FSB | Python · Rust | Flask · React | OKLCH · CSS |
+
+</div>
+
+<div align="center" style="margin-top:24px;">
+  <img src="https://skillicons.dev/icons?i=rust,python,cpp,go,bash,linux,react,git,docker,typescript,flask&theme=dark&perline=11" alt="Tech stack" />
 </div>
 
 ---
 
-## The hard part was never the code — it's understanding what people need
+## Live Stats
 
-I build tools. If a workflow annoys me, I build a better one. I've got ~40 repos — some are real tools people use, some are ideas I started at 2am and never finished. I don't hide the unfinished ones.
-
-I'm job hunting right now, so I build when I have time. Private repos are my way of using GitHub as versioned storage until projects are ready. The 18 empty repos aren't abandoned — they're bookmarks. Ideas I want to come back to.
-
----
-
-## 🛠️ What I've Actually Built
-
-### 🔒 CISO-Auditor
-100-point Windows security audit engine. Zero dependencies. Runs offline.
-- **The Flex:** Hand-rolled PDF export using raw bytecode, registry backup/restore, and System Restore Point integration.
-- **The Product:** PRD came before code; user personas before UI. Exports to HTML, JSON, CSV, PDF, and PS1 because different teams consume data differently.
-
-→ [github.com/theyonecodes/CISO-Auditor](https://github.com/theyonecodes/CISO-Auditor)
-
-### ⚡ archperf-pro
-Arch Linux optimization suite with an AI engine that learns usage patterns.
-- **The Flex:** Implemented Hidden Markov Models (HMM), Q-learning, Kalman filters, and PID controllers in JavaScript. Concepts most CS grads learn in theory; I put them in a tool.
-- **The Product:** A system that actually learns a user's workflow to optimize the machine.
-
-→ [github.com/theyonecodes/archperf-pro](https://github.com/theyonecodes/archperf-pro)
-
-### 📦 pkgdrop
-Universal package installer for Arch. One command installs AppImages, debs, rpms, tar.xz, and pacman packages.
-- **The Flex:** 2,338 lines of pure bash. No frameworks. Atomic installs with rollback and GPG verification.
-- **The Product:** A single entry point for all Arch package formats.
-
-→ [github.com/theyonecodes/pkgdrop](https://github.com/theyonecodes/pkgdrop)
-
-### 📋 theyonepm
-Project management tool in a single HTML file. No build step. No server. No account.
-- **The Flex:** 8,000 lines of code in one file. Uses OKLCH colors and Fibonacci spacing.
-- **The Product:** Built specifically so AI agents could log work automatically and humans could review it without a login.
-
-→ [github.com/theyonecodes/theyonepm](https://github.com/theyonecodes/theyonepm)
-
-### 🌐 oplire
-Rust proxy that routes AI API calls through free tiers with auto IP rotation.
-- **The Flex:** Anthropic ↔ OpenAI schema translation with WARP/Tor integration and SSE streaming.
-
-→ [github.com/theyonecodes/oplire](https://github.com/theyonecodes/oplire)
-
-### 🧠 Hermes
-Self-hosted AI agent control panel.
-- **The Flex:** Built like production infrastructure for a personal project: circuit breakers, rate limiting, and a hardened Flask backend.
-
-→ [github.com/theyonecodes/hermes](https://github.com/theyonecodes/hermes)
-
----
-
-## 🧠 What I Know
-
-| Category | Expertise |
-|---|---|
-| **Systems** | Windows internals, registry, kernel scheduling, network stacks |
-| **Security** | Offline auditing, Windows security architecture, mitigation bits |
-| **Web** | Flask, FastAPI, React, Electron, TypeScript |
-| **Automation** | Python, Rust, Bash, PowerShell, Batch |
-| **Design** | CSS systems, OKLCH colors, Fibonacci spacing (I notice bad spacing) |
-
----
-
-## 📊 GitHub Stats
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=radical" width="48%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=theyonecodes&layout=compact&theme=radical" width="48%" />
+<div align="center" style="margin:32px 0;">
+  <img src="assets/generated/repo-stats.svg" width="370" alt="Repo stats" style="border-radius:14px; box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,158,11,0.1);" />
+  <img src="assets/generated/language-stats.svg" width="310" alt="Languages" style="border-radius:14px; box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,158,11,0.1); margin-left:14px;" />
+  <br/><br/>
+  <img src="assets/generated/active-projects.svg" width="710" alt="Active projects" style="border-radius:14px; box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,158,11,0.1);" />
 </div>
 
 ---
 
-## Notes
+<!-- Footer -->
+<div align="center" style="padding:24px 0 8px;">
+  <img src="assets/branding/footer.svg" width="60%" alt=""/>
+</div>
 
-- **Empty repos aren't abandoned** — they're bookmarks. I capture the idea, scaffold the PRD, and come back when life gives me the bandwidth.
-- **Documentation is thinking** — I write PRDs, BRDs, and architecture docs because thinking through the problem is where the real work happens.
-- **No star-farming** — I'm building tools for utility, not for likes.
+<div align="center" style="padding-bottom:24px;">
+  <sub style="color:#334155; font-size:12px;">Empty repos are backlogged ideas — not abandoned projects.</sub>
+</div>
 
-**Currently looking for product engineering roles where understanding people matters more than knowing every framework.**
-
----
-
-<p align="center">
-  <a href="https://github.com/theyonecodes">github.com/theyonecodes</a>
-</p>
+<!-- Hidden palette ref -->
+<div style="display:none;color:#1e3c72;color:#2a5298;color:#f59e0b">.</div>

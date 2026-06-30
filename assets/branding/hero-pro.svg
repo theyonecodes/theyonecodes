@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 320" width="1400" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="25%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e3c72"/>
+      <stop offset="75%" stop-color="#1e3c72"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="40%" stop-color="#f59e0b"/>
+      <stop offset="60%" stop-color="#fcd34d"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    
+    <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fcd34d"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+
+    <radialGradient id="glow1" cx="25%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="rgba(245,158,11,0.12)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+    
+    <radialGradient id="glow2" cx="75%" cy="60%" r="40%">
+      <stop offset="0%" stop-color="rgba(59,130,246,0.10)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="rgba(245,158,11,0.15)"/>
+    </pattern>
+    
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(59,130,246,0.04)" stroke-width="0.5"/>
+    </pattern>
+
+    <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="f2" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#f59e0b" flood-opacity="0.4"/>
+    </filter>
+    <filter id="f3" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feFlood flood-color="#f59e0b" flood-opacity="0.5"/>
+      <feComposite in2="b" operator="in"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode/></feMerge>
+    </filter>
+
+    <clipPath id="clipHeader">
+      <rect x="0" y="0" width="1400" height="320" rx="0"/>
+    </clipPath>
+
+    <style>
+      .t1 { font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif; font-size: 72px; font-weight: 800; fill: #f8fafc; letter-spacing: -2px; }
+      .t2 { font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif; font-size: 18px; font-weight: 500; fill: #94a3b8; letter-spacing: 6px; }
+      .t3 { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 14px; font-weight: 400; fill: #64748b; letter-spacing: 1px; }
+      .t4 { font-family: 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: url(#goldV); letter-spacing: 4px; }
+      @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+      @keyframes slide { 0%{stroke-dashoffset:0} 100%{stroke-dashoffset:-300} }
+      @keyframes fade { 0%,100%{opacity:0.06} 50%{opacity:0.14} }
+      @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+      .a1 { animation: pulse 3s ease-in-out infinite }
+      .a2 { animation: slide 4s linear infinite }
+      .a3 { animation: fade 5s ease-in-out infinite }
+      .a4 { animation: spin 60s linear infinite; transform-origin: 700px 160px }
+    </style>
+  </defs>
+
+  <g clip-path="url(#clipHeader)">
+    <!-- Base -->
+    <rect width="1400" height="320" fill="url(#bg)"/>
+    <rect width="1400" height="320" fill="url(#glow1)"/>
+    <rect width="1400" height="320" fill="url(#glow2)"/>
+    <rect width="1400" height="320" fill="url(#grid)"/>
+    <rect width="1400" height="320" fill="url(#dots)"/>
+
+    <!-- Top gold rule -->
+    <rect x="0" y="0" width="1400" height="2" fill="url(#gold)" class="a1"/>
+
+    <!-- Rotating rings -->
+    <g class="a4" style="">
+      <circle cx="700" cy="160" r="280" fill="none" stroke="rgba(59,130,246,0.04)" stroke-width="1" stroke-dasharray="4 12"/>
+      <circle cx="700" cy="160" r="220" fill="none" stroke="rgba(245,158,11,0.06)" stroke-width="1" stroke-dasharray="2 8"/>
+    </g>
+
+    <!-- Corner L-brackets gold -->
+    <g stroke="#f59e0b" stroke-width="2" opacity="0.35" stroke-linecap="round">
+      <path d="M 48 48 L 48 20 L 75 20"/>
+      <path d="M 1352 48 L 1379 20 L 1379 48"/>
+      <path d="M 48 272 L 48 299 L 75 299"/>
+      <path d="M 1352 272 L 1379 299 L 1379 272"/>
+    </g>
+
+    <!-- Left timeline -->
+    <g transform="translate(120, 140)">
+      <circle r="4" fill="#f59e0b" class="a1"/>
+      <line x1="0" y1="-40" x2="0" y2="50" stroke="url(#gold)" stroke-width="1" stroke-dasharray="3 6" opacity="0.4"/>
+      <circle cx="0" cy="50" r="3" fill="#f59e0b" opacity="0.5"/>
+    </g>
+
+    <!-- Right timeline -->
+    <g transform="translate(1280, 140)">
+      <circle r="4" fill="#f59e0b" class="a1" style="animation-delay:1.5s"/>
+      <line x1="0" y1="-40" x2="0" y2="50" stroke="url(#gold)" stroke-width="1" stroke-dasharray="3 6" opacity="0.4"/>
+      <circle cx="0" cy="50" r="3" fill="#f59e0b" opacity="0.5"/>
+    </g>
+
+    <!-- Main title -->
+    <text x="700" y="118" class="t1" text-anchor="middle" filter="url(#f1)">THEYONE</text>
+
+    <!-- Gold underline with animation -->
+    <line x1="460" y1="130" x2="940" y2="130" stroke="url(#gold)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="480" class="a2" filter="url(#f2)"/>
+    <line x1="460" y1="130" x2="940" y2="130" stroke="#f59e0b" stroke-width="1" opacity="0.25"/>
+
+    <!-- Tagline -->
+    <text x="700" y="168" class="t2" text-anchor="middle">SOLO DEV. BUILDS TOOLS THAT JUST WORK.</text>
+
+    <!-- Divider dots -->
+    <g transform="translate(700, 188)" class="a3">
+      <circle cx="-120" cy="0" r="2.5" fill="#f59e0b" opacity="0.6"/>
+      <circle cx="-68" cy="0" r="2" fill="#f59e0b" opacity="0.45"/>
+      <circle cx="-16" cy="0" r="2" fill="#f59e0b" opacity="0.35"/>
+      <circle cx="16" cy="0" r="2" fill="#f59e0b" opacity="0.35"/>
+      <circle cx="68" cy="0" r="2" fill="#f59e0b" opacity="0.45"/>
+      <circle cx="120" cy="0" r="2.5" fill="#f59e0b" opacity="0.6"/>
+    </g>
+
+    <!-- Tech stack pills -->
+    <g transform="translate(700, 225)">
+      <rect x="-340" y="-18" width="680" height="36" rx="18" fill="rgba(15,23,42,0.6)" stroke="rgba(245,158,11,0.2)" stroke-width="1"/>
+      <text x="-300" y="5" class="t4" text-anchor="middle">PYTHON</text>
+      <circle cx="-90" cy="-3" r="2" fill="#f59e0b" opacity="0.4"/>
+      <text x="-60" y="5" class="t4" text-anchor="middle">RUST</text>
+      <circle cx="30" cy="-3" r="2" fill="#f59e0b" opacity="0.4"/>
+      <text x="60" y="5" class="t4" text-anchor="middle">BASH</text>
+      <circle cx="180" cy="-3" r="2" fill="#f59e0b" opacity="0.4"/>
+      <text x="210" y="5" class="t4" text-anchor="middle">JAVASCRIPT</text>
+    </g>
+
+    <!-- Bottom gold rule -->
+    <rect x="0" y="318" width="1400" height="2" fill="url(#gold)" opacity="0.7" class="a1" style="animation-delay:1.5s"/>
+  </g>
+</svg>

@@ -1,228 +1,334 @@
+#!/usr/bin/env python3
 """
-Profile README generator.
-
-Scrapes all repos from the theyonecodes GitHub account and generates:
-1. repo-stats.svg     — repo count, total stars, forks, active repos
-2. language-stats.svg — language distribution bar chart
-3. active-projects.svg — repos with recent commits
-4. Updates README.md dynamic sections
+GitHub Profile README Updater
+Automatically generates statistics SVGs and updates README.md
 """
 
 import json
 import os
 import subprocess
-import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Dict, List, Optional
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-ASSETS_DIR = REPO_ROOT / "assets" / "generated"
-README_PATH = REPO_ROOT / "README.md"
-USERNAME = "theyonecodes"
+# Constants
+REPO_SIZE_THRESHOLD = 20  # KB - minimum size to consider a repo "real"
+ACTIVITY_DAYS = 90  # Days since last push to consider "active"
+OUTPUT_DIR = Path("assets/generated")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# ── helpers ──────────────────────────────────────────────────
-
-def run(cmd: str) -> str:
-    return subprocess.check_output(cmd, shell=True, text=True)
-
-
-def fetch_repos() -> list[dict]:
-    """Fetch all repos via gh CLI. Falls back to curl if gh not available."""
+def run_command(cmd: list) -> str:
+    """Run a shell command and return stdout."""
     try:
-        result = run(f"gh api /user/repos --paginate --jq '.[] | {{name,description,language,private,pushed_at,stargazers_count,forks_count,topics,size,fork,archived}}'")
-        return [json.loads(line) for line in result.strip().split("\n") if line.strip()]
-    except Exception:
-        try:
-            result = run(f"curl -s 'https://api.github.com/users/{USERNAME}/repos?per_page=100'")
-            return json.loads(result)
-        except Exception:
-            print("Failed to fetch repos", file=sys.stderr)
-            return []
-
-
-def is_real_repo(repo: dict) -> bool:
-    """A repo with actual code, not just a template shell."""
-    if repo.get("fork"):
-        return repo.get("size", 0) > 100
-    if repo.get("archived"):
-        return False
-    return repo.get("size", 0) > 20  # more than just README + template
-
-
-def recent_activity(repo: dict) -> bool:
-    """Has the repo been touched in the last 90 days?"""
-    pushed = repo.get("pushed_at", "")
-    if not pushed:
-        return False
-    dt = datetime.fromisoformat(pushed.replace("Z", "+00:00"))
-    delta = datetime.now(timezone.utc) - dt
-    return delta.days < 90
-
-
-# ── SVG generators ───────────────────────────────────────────
-
-def generate_repo_stats(repos: list[dict]) -> str:
-    total = len(repos)
-    real = sum(1 for r in repos if is_real_repo(r))
-    active = sum(1 for r in repos if recent_activity(r))
-    public = sum(1 for r in repos if not r.get("private", True))
-    stars = sum(r.get("stargazers_count", 0) or 0 for r in repos)
-
-    width, height = 400, 240
-    items = [
-        ("Repos", str(total), "#8b949e"),
-        ("With Code", str(real), "#56d364"),
-        ("Active (90d)", str(active), "#58a6ff"),
-        ("Public", str(public), "#f0883e"),
-        ("Stars", str(stars), "#d2a8ff"),
-    ]
-
-    rows = ""
-    y = 50
-    for label, value, color in items:
-        rows += f'''
-        <text x="30" y="{y}" fill="#8b949e" font-family="monospace" font-size="14">{label}</text>
-        <text x="300" y="{y}" fill="{color}" font-family="monospace" font-size="14" font-weight="bold" text-anchor="end">{value}</text>
-        <rect x="30" y="{y + 8}" width="270" height="3" rx="1.5" fill="#21262d" />
-        <rect x="30" y="{y + 8}" width="{270 * int(value or 0) / max(max(int(value or 0) for _, v, _ in items), 1)}" height="3" rx="1.5" fill="{color}" opacity="0.5" />
-        '''
-        y += 35
-
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">
-  <style>
-    text {{ font-family: 'Segoe UI', monospace; }}
-  </style>
-  <rect width="{width}" height="{height}" fill="#0d1117" rx="12" />
-  <text x="30" y="30" fill="#c9d1d9" font-family="monospace" font-size="16" font-weight="bold">Overview</text>
-  {rows}
-</svg>'''
-
-
-def generate_language_chart(repos: list[dict]) -> str:
-    # Count languages from real repos
-    lang_counts: dict[str, int] = {}
-    for r in repos:
-        if not is_real_repo(r):
-            continue
-        lang = r.get("language") or "Other"
-        lang_counts[lang] = lang_counts.get(lang, 0) + 1
-
-    sorted_langs = sorted(lang_counts.items(), key=lambda x: x[1], reverse=True)[:8]
-    if not sorted_langs:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"Error running {' '.join(cmd)}: {e.stderr}")
         return ""
 
+def fetch_repos() -> List[Dict]:
+    """Fetch all repositories (public and private) using GitHub CLI."""
+    print("Fetching repositories from GitHub...")
+    output = run_command(["gh", "api", "user/repos?per_page=100&sort=updated&direction=desc"])
+    if not output:
+        print("Failed to fetch repositories")
+        return []
+    
+    try:
+        return json.loads(output)
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}")
+        return []
+
+def is_real_repo(repo: Dict) -> bool:
+    """Determine if a repository is a real project (not a template/fork)."""
+    # Skip forks
+    if repo.get("fork", False):
+        return False
+    
+    # Check size (in KB)
+    size_kb = repo.get("size", 0)
+    if size_kb < REPO_SIZE_THRESHOLD:
+        return False
+    
+    # Skip obvious template/demo repositories unless recently active
+    name = repo.get("name", "").lower()
+    if any(template in name for template in ["template", "boilerplate", "starter", "example", "demo"]):
+        pushed_at = datetime.fromisoformat(repo["pushed_at"].replace("Z", "+00:00"))
+        if datetime.now().astimezone() - pushed_at > timedelta(days=30):
+            return False
+    
+    return True
+
+def get_language_color(language: str) -> str:
+    """Get a color for a programming language."""
     colors = {
-        "Python": "#3572A5", "JavaScript": "#f1e05a", "TypeScript": "#3178c6",
-        "Rust": "#dea584", "Shell": "#89e051", "PowerShell": "#012456",
-        "HTML": "#e34c26", "CSS": "#563d7c", "Batchfile": "#C1F12E",
-        "C++": "#f34b7d", "C": "#555555", "Go": "#00ADD8",
+        "JavaScript": "#f1e05a",
+        "TypeScript": "#2b7489",
+        "Python": "#3572A5",
+        "Rust": "#dea584",
+        "Go": "#00ADD8",
+        "C++": "#f34b7d",
+        "C": "#555555",
+        "C#": "#178600",
+        "Java": "#b07219",
+        "PHP": "#4F5D95",
+        "Ruby": "#701516",
+        "Swift": "#FFAC45",
+        "Kotlin": "#A97BFF",
+        "Shell": "#89e051",
+        "Bash": "#89e051",
+        "Zsh": "#89e051",
+        "HTML": "#e34c26",
+        "CSS": "#563d7c",
+        "SCSS": "#c6538c",
+        "Less": "#1d365d",
+        "JSON": "#292929",
+        "YAML": "#cb171e",
+        "TOML": "#9c4221",
+        "Markdown": "#083fa1",
+        "Dockerfile": "#384d54",
     }
+    return colors.get(language, "#8b949e")  # GitHub's default gray
 
-    width, height = 400, 240
-    total = sum(c for _, c in sorted_langs)
+def generate_repo_stats(repos: List[Dict]) -> str:
+    """Generate premium SVG repository statistics card."""
+    total = len(repos)
+    with_code = sum(1 for r in repos if r.get("size", 0) > 0)
+    public = sum(1 for r in repos if not r.get("private", True))
+    private = total - public
+    total_stars = sum(r.get("stargazers_count", 0) for r in repos)
+    languages = set(r.get("language") for r in repos if r.get("language"))
+    lang_count = len(languages)
 
-    bars = ""
-    y = 50
-    bar_start = 130
-    bar_width = 240
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="370" height="168">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <style>
+      .l {{ font-family: system-ui, sans-serif; fill: #64748b; font-size: 11px; letter-spacing: 0.5px; }}
+      .v {{ font-family: system-ui, sans-serif; fill: #f8fafc; font-size: 32px; font-weight: 700; }}
+      .sub {{ font-family: system-ui, sans-serif; fill: #94a3b8; font-size: 13px; }}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" rx="14" fill="url(#bg)"/>
+  <rect x="0" y="0" width="370" height="2" rx="14" fill="url(#gold)" opacity="0.6"/>
+  <rect x="0" y="0" width="2" height="168" fill="url(#gold)" opacity="0.25"/>
 
-    for lang, count in sorted_langs:
-        pct = count / total if total else 0
-        color = colors.get(lang, "#8b949e")
-        bar_w = int(bar_width * pct)
-        bars += f'''
-        <text x="20" y="{y}" fill="#8b949e" font-family="monospace" font-size="12">{lang}</text>
-        <rect x="{bar_start}" y="{y - 10}" width="{bar_width}" height="12" rx="3" fill="#21262d" />
-        <rect x="{bar_start}" y="{y - 10}" width="{bar_w}" height="12" rx="3" fill="{color}" />
-        <text x="{bar_start + bar_width + 10}" y="{y}" fill="#8b949e" font-family="monospace" font-size="11">{count}</text>
-        '''
-        y += 22
+  <text x="24" y="36" class="l">REPOS</text>
+  <text x="24" y="68" class="v">{total}</text>
+  <text x="24" y="88" class="sub">{public} public · {private} private</text>
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">
-  <rect width="{width}" height="{height}" fill="#0d1117" rx="12" />
-  <text x="20" y="30" fill="#c9d1d9" font-family="monospace" font-size="16" font-weight="bold">Languages</text>
-  {bars}
+  <text x="140" y="36" class="l">STARS</text>
+  <text x="140" y="68" class="v">{total_stars}</text>
+
+  <text x="224" y="36" class="l">LANGUAGES</text>
+  <text x="224" y="68" class="v">{lang_count}</text>
+
+  <text x="24" y="120" class="l">ACTIVITY RATE</text>
+  <rect x="24" y="130" width="320" height="6" rx="3" fill="#1e293b"/>
+  <rect x="24" y="130" width="320" height="6" rx="3" fill="url(#gold)" opacity="0.7"/>
+  <text x="24" y="156" class="sub" fill="#475569">{with_code} / {total} repos with code</text>
 </svg>'''
 
+def generate_language_chart(repos: List[Dict]) -> str:
+    """Generate premium SVG language distribution chart."""
+    lang_counts: Dict[str, int] = {}
+    for repo in repos:
+        lang = repo.get("language")
+        if lang and lang != "Other":
+            lang_counts[lang] = lang_counts.get(lang, 0) + 1
 
-def generate_active_projects(repos: list[dict]) -> str:
-    active = [r for r in repos if is_real_repo(r) and recent_activity(r)]
-    active.sort(key=lambda r: r.get("pushed_at", ""), reverse=True)
-    active = active[:5]
+    sorted_langs = sorted(lang_counts.items(), key=lambda x: x[1], reverse=True)[:6]
 
-    if not active:
-        return ""
-
-    height = 40 + len(active) * 50
-    width = 600
-
-    rows = ""
-    y = 50
-    for r in active:
-        name = r["name"]
-        desc = (r.get("description") or "")[:60]
-        lang = r.get("language") or ""
-        pushed = r.get("pushed_at", "")[:10]
-
-        rows += f'''
-        <text x="20" y="{y}" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">{name}</text>
-        <text x="20" y="{y + 18}" fill="#8b949e" font-family="monospace" font-size="11">{desc}</text>
-        <text x="500" y="{y}" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">{lang} · {pushed}</text>
-        '''
-        y += 45
-
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">
-  <rect width="{width}" height="{height}" fill="#0d1117" rx="12" />
-  <text x="20" y="30" fill="#c9d1d9" font-family="monospace" font-size="16" font-weight="bold">Recently Active</text>
-  {rows}
+    if not sorted_langs:
+        return '''<svg xmlns="http://www.w3.org/2000/svg" width="310" height="120">
+  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
+  <rect width="100%" height="100%" rx="14" fill="url(#bg)"/>
+  <text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-family="system-ui" font-size="14" fill="#64748b">No language data</text>
 </svg>'''
 
+    max_count = max(c for _, c in sorted_langs)
+    bar_h = 22
+    gap = 12
+    total_h = 40 + len(sorted_langs) * (bar_h + gap) + 16
+    max_bar = 220
 
-# ── README updater ───────────────────────────────────────────
+    rows = []
+    for i, (lang, count) in enumerate(sorted_langs):
+        y = 40 + i * (bar_h + gap)
+        bar_w = int(max_bar * count / max_count) if max_count > 0 else 0
+        color = get_language_color(lang)
+        rows.append(f'''  <text x="20" y="{y + 16}" font-family="system-ui" fill="#f8fafc" font-size="13" font-weight="500">{lang}</text>
+  <text x="290" y="{y + 16}" font-family="system-ui" fill="#94a3b8" font-size="12" text-anchor="end">{count}</text>
+  <rect x="20" y="{y + 20}" width="{max_bar}" height="{bar_h}" rx="3" fill="#1e293b"/>
+  <rect x="20" y="{y + 20}" width="{bar_w}" height="{bar_h}" rx="3" fill="{color}"/>''')
 
-def update_readme(repos: list[dict]):
-    if not os.getenv("GITHUB_ACTIONS"):
-        content = README_PATH.read_text()
-        content = content.replace("repo-stats.svg", "assets/generated/repo-stats.svg")
-        content = content.replace("language-stats.svg", "assets/generated/language-stats.svg")
-        content = content.replace("active-projects.svg", "assets/generated/active-projects.svg")
-        README_PATH.write_text(content)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="310" height="{total_h}">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="14" fill="url(#bg)"/>
+  <rect x="0" y="0" width="310" height="2" fill="url(#gold)" opacity="0.6"/>
+  <rect x="0" y="0" width="2" height="{total_h}" fill="url(#gold)" opacity="0.25"/>
+  <text x="20" y="28" font-family="system-ui" fill="#64748b" font-size="11" letter-spacing="0.5px">LANGUAGE DISTRIBUTION</text>
+{chr(10).join(rows)}
+</svg>'''
 
+def generate_active_projects(repos: List[Dict]) -> str:
+    """Generate premium SVG active projects timeline (pure SVG, GitHub compatible)."""
+    cutoff_date = datetime.now().astimezone() - timedelta(days=ACTIVITY_DAYS)
+    active_repos = [
+        r for r in repos 
+        if is_real_repo(r) and 
+        datetime.fromisoformat(r["pushed_at"].replace("Z", "+00:00")) > cutoff_date
+    ]
+    active_repos.sort(key=lambda r: r["pushed_at"], reverse=True)
+    active_repos = active_repos[:6]
 
-# ── main ─────────────────────────────────────────────────────
+    if not active_repos:
+        return '''<svg xmlns="http://www.w3.org/2000/svg" width="710" height="100">
+  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
+  <rect width="100%" height="100%" rx="14" fill="url(#bg)"/>
+  <text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-family="system-ui" font-size="14" fill="#64748b">No recent activity</text>
+</svg>'''
+
+    item_h = 50
+    y_start = 50
+    total_h = y_start + len(active_repos) * item_h + 16
+
+    rows = []
+    for i, repo in enumerate(active_repos):
+        y = y_start + i * item_h
+        name = repo.get("name", "Unknown")
+        desc = (repo.get("description") or "No description")[:52]
+        lang = repo.get("language") or ""
+        days = (datetime.now().astimezone() - datetime.fromisoformat(repo["pushed_at"].replace("Z", "+00:00"))).days
+        time_str = "today" if days == 0 else f"{days}d ago"
+        rows.append(f'''  <circle cx="60" cy="{y + 15}" r="5" fill="#f59e0b"/>
+  <circle cx="60" cy="{y + 15}" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
+  <text x="88" y="{y + 10}" font-family="system-ui" fill="#f8fafc" font-size="14" font-weight="600">{name}</text>
+  <text x="88" y="{y + 26}" font-family="system-ui" fill="#64748b" font-size="12">{desc}</text>
+  <text x="620" y="{y + 10}" font-family="system-ui" fill="#60a5fa" font-size="11" font-weight="500" text-anchor="end">{lang}</text>
+  <text x="620" y="{y + 26}" font-family="system-ui" fill="#475569" font-size="11" text-anchor="end">{time_str}</text>''')
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="710" height="{total_h}">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="14" fill="url(#bg)"/>
+  <rect x="0" y="0" width="710" height="2" fill="url(#gold)" opacity="0.6"/>
+  <rect x="0" y="0" width="2" height="{total_h}" fill="url(#gold)" opacity="0.25"/>
+  <text x="60" y="28" font-family="system-ui" fill="#64748b" font-size="11" letter-spacing="1px">RECENTLY ACTIVE</text>
+  <line x1="60" y1="55" x2="60" y2="{y_start + (len(active_repos) - 1) * item_h + 15}" stroke="#334155" stroke-width="1.5" stroke-dasharray="3 5"/>
+{chr(10).join(rows)}
+</svg>'''
+
+def update_readme_with_svgs() -> bool:
+    """Update README.md to reference generated SVGs instead of external services."""
+    readme_path = Path("README.md")
+    if not readme_path.exists():
+        print("README.md not found")
+        return False
+    
+    content = readme_path.read_text()
+    
+    # Replace external stats with local SVGs
+    # Replace the stats section
+    stats_start = '<!-- STATS_START -->'
+    stats_end = '<!-- STATS_END -->'
+    
+    if stats_start in content and stats_end in content:
+        new_stats = f'''{stats_start}
+<div align="center">
+  <img src="assets/generated/repo-stats.svg" width="340" />
+  <img src="assets/generated/language-stats.svg" width="340" />
+  <br/><br/>
+  <img src="assets/generated/active-projects.svg" width="340" />
+</div>
+{stats_end}'''
+        
+        # Find the section between markers and replace it
+        start_idx = content.find(stats_start)
+        end_idx = content.find(stats_end) + len(stats_end)
+        if start_idx != -1 and end_idx != -1:
+            content = content[:start_idx] + new_stats + content[end_idx:]
+            print("Updated stats section with local SVGs")
+        else:
+            print("Could not find stats markers")
+            return False
+    else:
+        # If markers don't exist, just note that SVGs were generated
+        print("SVGs generated in assets/generated/ - update README manually to use them")
+        return True
+    
+    # Write back the updated content
+    try:
+        readme_path.write_text(content)
+        print("README.md updated successfully")
+        return True
+    except Exception as e:
+        print(f"Error writing README.md: {e}")
+        return False
 
 def main():
-    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
-
+    """Main function to generate SVGs and update README."""
+    print("Starting GitHub profile README update...")
+    
+    # Fetch repositories
     repos = fetch_repos()
+    
     if not repos:
-        print("No repos fetched — aborting")
-        return
-
-    # Exclude the profile repo itself
-    repos = [r for r in repos if r["name"] != "dargah-sharif-bakarpur-website"]
-
-    print(f"Fetched {len(repos)} repos")
-
+        print("No repositories found or unable to fetch. Using empty data.")
+        repos = []
+    
+    print(f"Found {len(repos)} repositories")
+    
+    # Filter real repos
+    real_repos = [r for r in repos if is_real_repo(r)]
+    print(f"Found {len(real_repos)} real repositories (filtered out templates/forks)")
+    
     # Generate SVGs
-    stats_svg = generate_repo_stats(repos)
-    if stats_svg:
-        (ASSETS_DIR / "repo-stats.svg").write_text(stats_svg)
-        print("Generated repo-stats.svg")
-
-    lang_svg = generate_language_chart(repos)
-    if lang_svg:
-        (ASSETS_DIR / "language-stats.svg").write_text(lang_svg)
-        print("Generated language-stats.svg")
-
-    active_svg = generate_active_projects(repos)
-    if active_svg:
-        (ASSETS_DIR / "active-projects.svg").write_text(active_svg)
-        print("Generated active-projects.svg")
-
-    update_readme(repos)
-    print("Done.")
-
+    print("Generating repository stats SVG...")
+    (OUTPUT_DIR / "repo-stats.svg").write_text(generate_repo_stats(real_repos))
+    
+    print("Generating language chart SVG...")
+    (OUTPUT_DIR / "language-stats.svg").write_text(generate_language_chart(real_repos))
+    
+    print("Generating active projects SVG...")
+    (OUTPUT_DIR / "active-projects.svg").write_text(generate_active_projects(real_repos))
+    
+    # Update README
+    print("Updating README...")
+    updated = update_readme_with_svgs()
+    
+    if updated:
+        print("✅ Update complete!")
+    else:
+        print("⚠️  SVGs generated but README update incomplete")
 
 if __name__ == "__main__":
     main()
