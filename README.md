@@ -18,53 +18,63 @@ I'm job hunting right now, so I build when I have time. Private repos are my way
 
 ---
 
-## What I'm Proud Of
+## 🛠️ What I've Actually Built
 
 ### 🔒 CISO-Auditor
-100-point Windows security audit. Offline. Zero deps. Auto-fixes 15 checks in one click. Hand-rolled PDF export (raw bytecode), registry backup/restore, System Restore integration. Built by one person between job applications.
+100-point Windows security audit engine. Zero dependencies. Runs offline.
+- **The Flex:** Hand-rolled PDF export using raw bytecode, registry backup/restore, and System Restore Point integration.
+- **The Product:** PRD came before code; user personas before UI. Exports to HTML, JSON, CSV, PDF, and PS1 because different teams consume data differently.
 
 → [github.com/theyonecodes/CISO-Auditor](https://github.com/theyonecodes/CISO-Auditor)
 
 ### ⚡ archperf-pro
-Arch Linux optimization suite with an AI engine that learns your usage patterns. Hidden Markov Models, Q-learning, Kalman filters, PID controllers — concepts most CS grads learn in theory and never implement. In JavaScript. For a real tool.
+Arch Linux optimization suite with an AI engine that learns usage patterns.
+- **The Flex:** Implemented Hidden Markov Models (HMM), Q-learning, Kalman filters, and PID controllers in JavaScript. Concepts most CS grads learn in theory; I put them in a tool.
+- **The Product:** A system that actually learns a user's workflow to optimize the machine.
 
 → [github.com/theyonecodes/archperf-pro](https://github.com/theyonecodes/archperf-pro)
 
 ### 📦 pkgdrop
-Universal package installer for Arch. One command installs AppImages, debs, rpms, tar.xz, and pacman packages. Atomic installs with rollback. GPG verification. 2,338 lines of bash. No framework.
+Universal package installer for Arch. One command installs AppImages, debs, rpms, tar.xz, and pacman packages.
+- **The Flex:** 2,338 lines of pure bash. No frameworks. Atomic installs with rollback and GPG verification.
+- **The Product:** A single entry point for all Arch package formats.
 
 → [github.com/theyonecodes/pkgdrop](https://github.com/theyonecodes/pkgdrop)
 
 ### 📋 theyonepm
-Project management tool in a single HTML file. No build step. No server. IndexedDB storage. Fibonacci spacing. OKLCH colors. Built for AI agents to log work automatically. 8,000 lines. One file.
+Project management tool in a single HTML file. No build step. No server. No account.
+- **The Flex:** 8,000 lines of code in one file. Uses OKLCH colors and Fibonacci spacing.
+- **The Product:** Built specifically so AI agents could log work automatically and humans could review it without a login.
 
 → [github.com/theyonecodes/theyonepm](https://github.com/theyonecodes/theyonepm)
 
 ### 🌐 oplire
-Rust proxy that routes AI API calls through free tiers with auto IP rotation. Anthropic ↔ OpenAI schema translation. WARP/Tor integration. SSE streaming.
+Rust proxy that routes AI API calls through free tiers with auto IP rotation.
+- **The Flex:** Anthropic ↔ OpenAI schema translation with WARP/Tor integration and SSE streaming.
 
 → [github.com/theyonecodes/oplire](https://github.com/theyonecodes/oplire)
 
 ### 🧠 Hermes
-Self-hosted AI agent control panel. Flask + web dashboard. Circuit breakers. Rate limiting. Built like production infrastructure for a personal project.
+Self-hosted AI agent control panel.
+- **The Flex:** Built like production infrastructure for a personal project: circuit breakers, rate limiting, and a hardened Flask backend.
 
 → [github.com/theyonecodes/hermes](https://github.com/theyonecodes/hermes)
 
 ---
 
-## What I Know
+## 🧠 What I Know
 
-| | |
+| Category | Expertise |
 |---|---|
-| 🛠️ Systems | Windows internals, registry, kernel scheduling, network stacks |
-| 🔒 Security | Offline auditing, Windows security architecture, mitigation bits |
-| 🌐 Web | Flask, FastAPI, React, Electron, TypeScript |
-| 🔧 Automation | Python, Rust, Bash, PowerShell, Batch |
-| 🎨 Design | CSS systems, OKLCH colors, Fibonacci spacing (I notice bad spacing) |
+| **Systems** | Windows internals, registry, kernel scheduling, network stacks |
+| **Security** | Offline auditing, Windows security architecture, mitigation bits |
+| **Web** | Flask, FastAPI, React, Electron, TypeScript |
+| **Automation** | Python, Rust, Bash, PowerShell, Batch |
+| **Design** | CSS systems, OKLCH colors, Fibonacci spacing (I notice bad spacing) |
 
 ---
 
-## GitHub Stats
+## 📊 GitHub Stats
 
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=theyonecodes&show_icons=true&theme=radical" width="48%" />
@@ -75,9 +85,11 @@ Self-hosted AI agent control panel. Flask + web dashboard. Circuit breakers. Rat
 
 ## Notes
 
-- Empty repos aren't abandoned — they're bookmarks. Ideas I want to come back to when I have time.
-- I write too much documentation sometimes. Some repos have PRDs and 8,000 lines of code but no tests. I'm aware.
-- Currently looking for product engineering roles where understanding people matters more than knowing every framework.
+- **Empty repos aren't abandoned** — they're bookmarks. I capture the idea, scaffold the PRD, and come back when life gives me the bandwidth.
+- **Documentation is thinking** — I write PRDs, BRDs, and architecture docs because thinking through the problem is where the real work happens.
+- **No star-farming** — I'm building tools for utility, not for likes.
+
+**Currently looking for product engineering roles where understanding people matters more than knowing every framework.**
 
 ---
 
