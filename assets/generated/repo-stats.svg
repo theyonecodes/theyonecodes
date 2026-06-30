@@ -1,36 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="370" height="168">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="160">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0f172a"/>
       <stop offset="100%" stop-color="#1e293b"/>
     </linearGradient>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#b45309"/>
-      <stop offset="50%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#b45309"/>
+    <linearGradient id="blueBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3c72"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
     </linearGradient>
-    <style>
-      .l { font-family: system-ui, sans-serif; fill: #64748b; font-size: 11px; letter-spacing: 0.5px; }
-      .v { font-family: system-ui, sans-serif; fill: #f8fafc; font-size: 32px; font-weight: 700; }
-      .sub { font-family: system-ui, sans-serif; fill: #94a3b8; font-size: 13px; }
-    </style>
+    <linearGradient id="goldBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#92400e"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fcd34d"/>
+    </linearGradient>
   </defs>
-  <rect width="100%" height="100%" rx="14" fill="url(#bg)"/>
-  <rect x="0" y="0" width="370" height="2" rx="14" fill="url(#gold)" opacity="0.6"/>
-  <rect x="0" y="0" width="2" height="168" fill="url(#gold)" opacity="0.25"/>
+  <style>
+    .l { font: 500 11px system-ui, sans-serif; fill: #64748b; letter-spacing: 1px; }
+    .v { font: 700 28px system-ui, sans-serif; fill: #f8fafc; }
+    .sub { font: 400 12px system-ui, sans-serif; fill: #475569; }
+    .n { font: 600 13px system-ui, sans-serif; fill: #94a3b8; }
+  </style>
+  <rect width="360" height="160" rx="12" fill="url(#bg)"/>
+  <rect x="0" y="0" width="360" height="3" rx="12" fill="url(#goldBar)" opacity="0.8"/>
+  <rect x="0" y="0" width="3" height="160" fill="url(#blueBar)" opacity="0.4"/>
 
-  <text x="24" y="36" class="l">REPOS</text>
-  <text x="24" y="68" class="v">37</text>
-  <text x="24" y="88" class="sub">6 public · 31 private</text>
+  <!-- Repos -->
+  <text x="20" y="32" class="l">REPOSITORIES</text>
+  <text x="20" y="62" class="v">37</text>
+  <text x="20" y="80" class="sub">6 public · 31 private</text>
 
-  <text x="140" y="36" class="l">STARS</text>
-  <text x="140" y="68" class="v">0</text>
+  <!-- Stars -->
+  <text x="120" y="32" class="l">STARS</text>
+  <text x="120" y="62" class="v">0</text>
 
-  <text x="224" y="36" class="l">LANGUAGES</text>
-  <text x="224" y="68" class="v">6</text>
+  <!-- Languages -->
+  <text x="200" y="32" class="l">LANGUAGES</text>
+  <text x="200" y="62" class="v">6</text>
 
-  <text x="24" y="120" class="l">ACTIVITY RATE</text>
-  <rect x="24" y="130" width="320" height="6" rx="3" fill="#1e293b"/>
-  <rect x="24" y="130" width="320" height="6" rx="3" fill="url(#gold)" opacity="0.7"/>
-  <text x="24" y="156" class="sub" fill="#475569">37 / 37 repos with code</text>
+  <!-- Bar -->
+  <text x="20" y="108" class="l">ACTIVITY</text>
+  <rect x="20" y="116" width="320" height="8" rx="4" fill="#1e293b"/>
+  <rect x="20" y="116" width="280" height="8" rx="4" fill="url(#blueBar)" opacity="0.8"/>
+  <text x="20" y="148" class="n">37 repos with code</text>
 </svg>

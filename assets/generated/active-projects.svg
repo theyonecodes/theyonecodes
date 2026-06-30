@@ -1,54 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="710" height="366">
+<svg xmlns="http://www.w3.org/2000/svg" width="710" height="340">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0f172a"/>
       <stop offset="100%" stop-color="#1e293b"/>
     </linearGradient>
     <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="0%" stop-color="#92400e"/>
       <stop offset="50%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#fcd34d"/>
     </linearGradient>
+    <style>
+      .label { font: 500 11px system-ui, sans-serif; fill: #64748b; letter-spacing: 1px; }
+      .name { font: 600 14px system-ui, sans-serif; fill: #f8fafc; }
+      .desc { font: 400 12px system-ui, sans-serif; fill: #64748b; }
+      .lang { font: 500 11px system-ui, sans-serif; fill: #60a5fa; }
+      .date { font: 400 11px system-ui, sans-serif; fill: #475569; }
+    </style>
   </defs>
-  <rect width="100%" height="100%" rx="14" fill="url(#bg)"/>
-  <rect x="0" y="0" width="710" height="2" fill="url(#gold)" opacity="0.6"/>
-  <rect x="0" y="0" width="2" height="366" fill="url(#gold)" opacity="0.25"/>
-  <text x="60" y="28" font-family="system-ui" fill="#64748b" font-size="11" letter-spacing="1px">RECENTLY ACTIVE</text>
-  <line x1="60" y1="55" x2="60" y2="315" stroke="#334155" stroke-width="1.5" stroke-dasharray="3 5"/>
+  <rect width="710" height="340" rx="12" fill="url(#bg)"/>
+  <rect x="0" y="0" width="710" height="3" fill="url(#gold)" opacity="0.8"/>
+  <rect x="0" y="0" width="3" height="340" fill="url(#gold)" opacity="0.3"/>
+
+  <text x="60" y="28" class="label">RECENTLY ACTIVE</text>
+
+  <!-- Timeline spine -->
+  <line x1="60" y1="55" x2="60" y2="305" stroke="#334155" stroke-width="1.5" stroke-dasharray="3 5"/>
+
+  <!-- theyonecodes -->
   <circle cx="60" cy="65" r="5" fill="#f59e0b"/>
-  <circle cx="60" cy="65" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
-  <text x="88" y="60" font-family="system-ui" fill="#f8fafc" font-size="14" font-weight="600">theyonecodes</text>
-  <text x="88" y="76" font-family="system-ui" fill="#64748b" font-size="12">I build fast, lean tools. No bloat. No telemetry. No</text>
-  <text x="620" y="60" font-family="system-ui" fill="#60a5fa" font-size="11" font-weight="500" text-anchor="end">HTML</text>
-  <text x="620" y="76" font-family="system-ui" fill="#475569" font-size="11" text-anchor="end">today</text>
+  <circle cx="60" cy="65" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.25"/>
+  <text x="88" y="60" class="name">theyonecodes</text>
+  <text x="88" y="76" class="desc">tools that just work</text>
+  <text x="620" y="60" class="lang" text-anchor="end">Python</text>
+  <text x="620" y="76" class="date" text-anchor="end">today</text>
+
+  <!-- archperf-pro -->
   <circle cx="60" cy="115" r="5" fill="#f59e0b"/>
-  <circle cx="60" cy="115" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
-  <text x="88" y="110" font-family="system-ui" fill="#f8fafc" font-size="14" font-weight="600">archperf-pro</text>
-  <text x="88" y="126" font-family="system-ui" fill="#64748b" font-size="12">Pro-grade Arch Linux System Optimization Suite with </text>
-  <text x="620" y="110" font-family="system-ui" fill="#60a5fa" font-size="11" font-weight="500" text-anchor="end">JavaScript</text>
-  <text x="620" y="126" font-family="system-ui" fill="#475569" font-size="11" text-anchor="end">today</text>
+  <circle cx="60" cy="115" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.25"/>
+  <text x="88" y="110" class="name">archperf-pro</text>
+  <text x="88" y="126" class="desc">Arch Linux System Optimization Suite</text>
+  <text x="620" y="110" class="lang" text-anchor="end">JavaScript</text>
+  <text x="620" y="126" class="date" text-anchor="end">today</text>
+
+  <!-- hermes -->
   <circle cx="60" cy="165" r="5" fill="#f59e0b"/>
-  <circle cx="60" cy="165" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
-  <text x="88" y="160" font-family="system-ui" fill="#f8fafc" font-size="14" font-weight="600">hermes</text>
-  <text x="88" y="176" font-family="system-ui" fill="#64748b" font-size="12">No description</text>
-  <text x="620" y="160" font-family="system-ui" fill="#60a5fa" font-size="11" font-weight="500" text-anchor="end">Python</text>
-  <text x="620" y="176" font-family="system-ui" fill="#475569" font-size="11" text-anchor="end">today</text>
+  <circle cx="60" cy="165" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.25"/>
+  <text x="88" y="160" class="name">hermes</text>
+  <text x="88" y="176" class="desc">Self-hosted AI agent — 10+ providers</text>
+  <text x="620" y="160" class="lang" text-anchor="end">Python</text>
+  <text x="620" y="176" class="date" text-anchor="end">today</text>
+
+  <!-- theyonecodes-workspace -->
   <circle cx="60" cy="215" r="5" fill="#f59e0b"/>
-  <circle cx="60" cy="215" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
-  <text x="88" y="210" font-family="system-ui" fill="#f8fafc" font-size="14" font-weight="600">theyonecodes-workspace</text>
-  <text x="88" y="226" font-family="system-ui" fill="#64748b" font-size="12">TheyOne Codes Workspace Hub - Universal Organization</text>
-  <text x="620" y="210" font-family="system-ui" fill="#60a5fa" font-size="11" font-weight="500" text-anchor="end">Python</text>
-  <text x="620" y="226" font-family="system-ui" fill="#475569" font-size="11" text-anchor="end">today</text>
+  <circle cx="60" cy="215" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.25"/>
+  <text x="88" y="210" class="name">theyonecodes-workspace</text>
+  <text x="88" y="226" class="desc">Universal Organization Hub</text>
+  <text x="620" y="210" class="lang" text-anchor="end">Python</text>
+  <text x="620" y="226" class="date" text-anchor="end">today</text>
+
+  <!-- tor-tinker -->
   <circle cx="60" cy="265" r="5" fill="#f59e0b"/>
-  <circle cx="60" cy="265" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
-  <text x="88" y="260" font-family="system-ui" fill="#f8fafc" font-size="14" font-weight="600">tor-tinker</text>
-  <text x="88" y="276" font-family="system-ui" fill="#64748b" font-size="12">Tor Tinker Master Edition - System Anonymizer</text>
-  <text x="620" y="260" font-family="system-ui" fill="#60a5fa" font-size="11" font-weight="500" text-anchor="end">Python</text>
-  <text x="620" y="276" font-family="system-ui" fill="#475569" font-size="11" text-anchor="end">today</text>
-  <circle cx="60" cy="315" r="5" fill="#f59e0b"/>
-  <circle cx="60" cy="315" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
-  <text x="88" y="310" font-family="system-ui" fill="#f8fafc" font-size="14" font-weight="600">linkedin-auto-applier</text>
-  <text x="88" y="326" font-family="system-ui" fill="#64748b" font-size="12">LinkedIn Auto Job Applier - automation bot</text>
-  <text x="620" y="310" font-family="system-ui" fill="#60a5fa" font-size="11" font-weight="500" text-anchor="end">Python</text>
-  <text x="620" y="326" font-family="system-ui" fill="#475569" font-size="11" text-anchor="end">today</text>
+  <circle cx="60" cy="265" r="8" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.25"/>
+  <text x="88" y="260" class="name">tor-tinker</text>
+  <text x="88" y="276" class="desc">Tor Tinker — System Anonymizer</text>
+  <text x="620" y="260" class="lang" text-anchor="end">Python</text>
+  <text x="620" y="276" class="date" text-anchor="end">today</text>
+
+  <!-- linkedin-auto-applier -->
+  <circle cx="60" cy="305" r="5" fill="#f59e0b" opacity="0.6"/>
+  <text x="88" y="302" class="name">linkedin-auto-applier</text>
+  <text x="88" y="318" class="desc">LinkedIn Auto Job Applier</text>
+  <text x="620" y="302" class="lang" text-anchor="end">Python</text>
+  <text x="620" y="318" class="date" text-anchor="end">today</text>
 </svg>
