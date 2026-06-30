@@ -20,17 +20,17 @@
   <rect x="0" y="0" width="2" height="168" fill="url(#gold)" opacity="0.25"/>
 
   <text x="24" y="36" class="l">REPOS</text>
-  <text x="24" y="68" class="v">37</text>
-  <text x="24" y="88" class="sub">6 public · 31 private</text>
+  <text x="24" y="68" class="v">0</text>
+  <text x="24" y="88" class="sub">0 public · 0 private</text>
 
   <text x="140" y="36" class="l">STARS</text>
   <text x="140" y="68" class="v">0</text>
 
   <text x="224" y="36" class="l">LANGUAGES</text>
-  <text x="224" y="68" class="v">6</text>
+  <text x="224" y="68" class="v">0</text>
 
   <text x="24" y="120" class="l">ACTIVITY RATE</text>
   <rect x="24" y="130" width="320" height="6" rx="3" fill="#1e293b"/>
   <rect x="24" y="130" width="320" height="6" rx="3" fill="url(#gold)" opacity="0.7"/>
-  <text x="24" y="156" class="sub" fill="#475569">37 / 37 repos with code</text>
+  <text x="24" y="156" class="sub" fill="#475569">0 / 0 repos with code</text>
 </svg>
