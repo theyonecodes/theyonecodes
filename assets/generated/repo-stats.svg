@@ -16,7 +16,7 @@
         <rect x="30" y="93" width="270.0" height="3" rx="1.5" fill="#56d364" opacity="0.5" />
         
         <text x="30" y="120" fill="#8b949e" font-family="monospace" font-size="14">Active (90d)</text>
-        <text x="300" y="120" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold" text-anchor="end">12</text>
+        <text x="300" y="120" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold" text-anchor="end">17</text>
         <rect x="30" y="128" width="270" height="3" rx="1.5" fill="#21262d" />
         <rect x="30" y="128" width="270.0" height="3" rx="1.5" fill="#58a6ff" opacity="0.5" />
         

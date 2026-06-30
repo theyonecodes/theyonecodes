@@ -2,24 +2,24 @@
   <rect width="600" height="290" fill="#0d1117" rx="12" />
   <text x="20" y="30" fill="#c9d1d9" font-family="monospace" font-size="16" font-weight="bold">Recently Active</text>
   
-        <text x="20" y="50" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">theyonecodes</text>
-        <text x="20" y="68" fill="#8b949e" font-family="monospace" font-size="11">I build fast, lean tools. No bloat. No telemetry. No vendor </text>
-        <text x="500" y="50" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">HTML · 2026-06-29</text>
+        <text x="20" y="50" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">archperf-pro</text>
+        <text x="20" y="68" fill="#8b949e" font-family="monospace" font-size="11">Pro-grade Arch Linux System Optimization Suite with transpar</text>
+        <text x="500" y="50" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">JavaScript · 2026-06-29</text>
         
-        <text x="20" y="95" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">theyonepm</text>
-        <text x="20" y="113" fill="#8b949e" font-family="monospace" font-size="11">AI work tracker. Single HTML file, no build, no dependencies</text>
-        <text x="500" y="95" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">JavaScript · 2026-06-29</text>
+        <text x="20" y="95" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">hermes</text>
+        <text x="20" y="113" fill="#8b949e" font-family="monospace" font-size="11"></text>
+        <text x="500" y="95" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">Python · 2026-06-29</text>
         
-        <text x="20" y="140" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">archperf-pro</text>
-        <text x="20" y="158" fill="#8b949e" font-family="monospace" font-size="11">Pro-grade Arch Linux System Optimization Suite with transpar</text>
-        <text x="500" y="140" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">JavaScript · 2026-06-29</text>
+        <text x="20" y="140" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">theyonecodes-workspace</text>
+        <text x="20" y="158" fill="#8b949e" font-family="monospace" font-size="11">TheyOne Codes Workspace Hub - Universal Organizational Struc</text>
+        <text x="500" y="140" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">Python · 2026-06-29</text>
         
-        <text x="20" y="185" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">pkgdrop</text>
-        <text x="20" y="203" fill="#8b949e" font-family="monospace" font-size="11">Universal Package Installer for Arch Linux - Install AppImag</text>
-        <text x="500" y="185" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">Shell · 2026-06-28</text>
+        <text x="20" y="185" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">tor-tinker</text>
+        <text x="20" y="203" fill="#8b949e" font-family="monospace" font-size="11">Tor Tinker Master Edition - System Anonymizer</text>
+        <text x="500" y="185" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">Python · 2026-06-29</text>
         
-        <text x="20" y="230" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">techno-sapien</text>
-        <text x="20" y="248" fill="#8b949e" font-family="monospace" font-size="11">Techno-Sapien — AI partner with a species name, not a tool n</text>
-        <text x="500" y="230" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end"> · 2026-06-22</text>
+        <text x="20" y="230" fill="#58a6ff" font-family="monospace" font-size="14" font-weight="bold">linkedin-auto-applier</text>
+        <text x="20" y="248" fill="#8b949e" font-family="monospace" font-size="11">LinkedIn Auto Job Applier - automation bot</text>
+        <text x="500" y="230" fill="#8b949e" font-family="monospace" font-size="11" text-anchor="end">Python · 2026-06-29</text>
         
 </svg>
