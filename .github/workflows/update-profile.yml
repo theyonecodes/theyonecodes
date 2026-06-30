@@ -1,9 +1,9 @@
-name: Update Profile README
+name: Update Profile Stats
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Daily at 6am UTC
-  workflow_dispatch:  # Allow manual triggering
+    - cron: '0 6 * * *'
+  workflow_dispatch:
   push:
     paths:
       - 'scripts/update_profile.py'
@@ -13,40 +13,28 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Needed to commit and push changes
-    
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true  # Needed for push
-    
-      - name: Set up Python
-        uses: actions/setup-python@v5
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-    
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # No external dependencies - uses only standard library + gh cli
-    
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-    
-      - name: Run update script
+
+      - run: git config user.name "github-actions[bot]" && git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Generate stats SVGs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/update_profile.py
+
+      - name: Commit if changed
         run: |
-          python scripts/update_profile.py
-    
-      - name: Commit and push changes
-        run: |
-          git add assets/generated/ README.md
-          # Check if there are changes to commit
+          git add assets/generated/
           if ! git diff --staged --quiet; then
-            git commit -m "Update profile README [skip ci]"
+            git commit -m "Update profile stats [skip ci]"
             git push
           fi
-        # The [skip ci] in commit message prevents infinite loops

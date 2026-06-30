@@ -1,13 +1,10 @@
-node_modules/
-dist/
-.build/
+*.backup
+*.phase1-update
 .DS_Store
 Thumbs.db
 *.log
-npm-debug.log*
 .env
 .env.local
 .vscode/
 .idea/
-.cache/
-.astro/
+node_modules/

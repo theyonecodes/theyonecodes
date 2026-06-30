@@ -1,13 +1,7 @@
 # Security Policy
 
-## Supported Versions
-
-| Version | Supported |
-|---------|----------|
-| 42.x.x  | ✅ Yes    |
-
 ## Reporting a Vulnerability
 
-Please report security vulnerabilities by opening an issue or contacting support@theyone.codes.
+Report security vulnerabilities by opening an issue or contacting **theyonecodes@gmail.com**.
 
-All reports are taken seriously and will be responded to promptly.
+All reports are reviewed. If the issue is confirmed, a fix will be shipped as soon as possible.
